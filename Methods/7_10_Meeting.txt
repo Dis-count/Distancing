@@ -3,5 +3,17 @@
 
 #1. 电影院 100 人， 只容纳 60 人时
 00：00 ~ 23：59
+电影种类 ： A，B
 
-#2.
+1. 电影院排片
+
+      max profit
+space distance >= 1.25 灵敏度分析
+ time distance >= 1 h/ 0 h
+电影排片需求量 > ...
+
+2. customer appointment
+  new feature added to the model.
+
+
+3.

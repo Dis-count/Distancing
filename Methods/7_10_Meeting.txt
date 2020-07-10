@@ -1,0 +1,7 @@
+电影院模型（没有appointment这个new feature），
+相关文献（判断问题是不是一个reduced problem with smaller capacities）
+
+#1. 电影院 100 人， 只容纳 60 人时
+00：00 ~ 23：59
+
+#2.

@@ -4,6 +4,7 @@
 #1. 电影院 100 人， 只容纳 60 人时
 00：00 ~ 23：59
 电影种类 ： A，B
+          D_A, D_B
 
 1. 电影院排片
 
@@ -15,5 +16,10 @@ space distance >= 1.25 灵敏度分析
 2. customer appointment
   new feature added to the model.
 
+customer
+time window
 
-3.
+3. 收费自习室，共享会议室
+
+
+4. Group identical track/ hierarchical track

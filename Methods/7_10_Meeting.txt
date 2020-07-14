@@ -23,3 +23,5 @@ time window
 
 
 4. Group identical track/ hierarchical track
+
+appointment + cinema rules

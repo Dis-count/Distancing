@@ -29,7 +29,7 @@ $s_i$ is the service time for each group.(Given)
 
 2. Set the Maximize time distancing as the objective function.
 
-Define the time distance $t_{ij}$ for each room. Time interval we set it as 0.5 hours.
+Define the time distance $t_{i}$ for each room. Time interval we set it as 0.5 hours.
 
 Define a binary variable $x_{ijk}$ for each room. If the room is used by (i,j) and i followed by j, then $x_{ijk} = 1$, else $x_{ijk} = 0$.
 
@@ -59,25 +59,32 @@ $$
 min_{i,j,k} \quad & \sum_{(i,j) \in A} \sum_{k \in K} c_{ij} x_{ijk} \\
 s.t. \quad  & \sum_{k \in K} \sum_{j \in \delta^+ (i)} x_{ijk} =1 & \forall i \in N  \\
 & \sum_{i \in \delta^- (j)} x_{ijk} - \sum_{i \in \delta^+ (j)} x_{ijk} = 0  & \forall k \in K, j \in N \\
-& w_{ik} + s_i + t_{ij} - w_{jk} \leq (1-x_{ijk}) M_{ij}, & \forall k \in K (i,j) \in A \\
-& a_i \sum_{j \in \delta^+ (i)} x_{ijk} \leq w_{ik} \leq b_i \sum_{j \in \delta^+ (i)} x_{ijk} & \forall k \in K, j \in N \\
-& E \leq w_{ik} \leq L  & \forall k \in K, i \in N \\
-& t_{ij} \geq 0.5 x_{ijk}  & \forall k \in K, (i,j) \in A  \\
+& \sum_{j \in \delta^+ (0)} x_{0jk} =1 & \forall k \in K \\
+& \sum_{i \in \delta^- (n+1)} x_{i,n+1,k} =1 & \forall k \in K \\
+& w_{ik} + s_i + t_{i} - w_{jk} \leq (1-x_{ijk}) M_{ij} & \forall k \in K, (i,j) \in A \\
+& a_i \sum_{j \in \delta^+ (i)} x_{ijk} \leq w_{ik} \leq b_i \sum_{j \in \delta^+ (i)} x_{ijk} & \forall k \in K, i \in N \\
+& w_{0k}=E, w_{n+1,k}=L  & \forall k \in K \\
+& t_{i} \geq 0.5 \sum_{j \in \delta^+(i)} x_{ijk}  & \forall k \in K, i \in N  \\
 & p_i \sum_{j \in \delta^+ (i)} x_{ijk} \leq 0.3 q_k & \forall k \in K, i \in N \\
+& x_{ijk} \in \{0,1\} & \forall k \in K, (i,j) \in A
 \end{align}$$
 
-The constraint (1) minimize the cost resulted by opning a
+The constraint (1) Minimizes the cost resulted by opening rooms.
 
-The constraint (2)
+The constraint (2) Every group i which is followed by group j is only served once by one room k.
 
-The constraint (3)
+The constraint (3) For every room k, start from group 0.
 
-The constraint (4)
+The constraint (4) For every room k, end at group (n+1).
 
-The constraint (5)
+The constraint (5) For every room k, group j will leave when it is served.
 
-The constraint (6)
+The constraint (6) i start time + service time + interval(required) < next j start time. M for linearize.
 
-The constraint (7)
+The constraint (7) time constraints for every group.
 
-The constraint (8)
+The constraint (8) Add two node indicate the start node and end node.
+
+The constraint (9) time distance
+
+The constraint (10) space distance

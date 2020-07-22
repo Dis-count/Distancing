@@ -1,49 +1,73 @@
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
-import scipy.sparse as sp
+
 
 # q_k capacity.
 # s_i service time for each group.
 # p_i demand number of people.
 # variable x_ijk  w_ik t_i
+# i \in N (not include 0 and N+1)
+help(gp.Model.addMVar)
+
 def TW(s,q,p):
 
     try:
+        M = 1e4
+        E = 0
+        L = 24
 
-        subscript_i = len(s)
-        subscript_j = len(s)
+        a = [0,8, 14,10,19,0]
+        b = [0,11,15,16,21,0]
+        subscript_i = len(s)  # the number of nodes
+        subscript_j = subscript_i
         subscript_k = len(q)
 
         m = gp.Model("TW_dis")
 
-        x = m.addMVar((subscript_i, subscript_j, subscript_k), vtype=GRB.BINARY, name="open")
-        w = m.addMVar((subscript_i,subscript_k), lb=0, name="start")
-        t = m.addMVar(subscript_i, lb=0, name="start")
+        x = m.addVars(subscript_i, subscript_j, subscript_k, vtype=GRB.BINARY, name="open")
+        w = m.addVars(subscript_i,subscript_k, lb=0, name="start")
+        t = m.addVars(subscript_i, lb=0, name="interval")
+        m.update()
 
-        # Set objective
+        # Set objective   c_ij =1
         m.setObjective(x.sum(), GRB.MINIMIZE)
 
         # Add constraints
         # constraint 1
-
-        for i in range(subscript_i):
-
-            m.addConstr(x[i, :] == 1, name="serve"+str(i))
+        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j) for k in range(subscript_k)) == 1) for i in range(1,subscript_i-1))
 
         # constraint 2
 
-        for i in range(row1):
-
-            m.addConstr(x0*lambda0[i] @ x[i,:]- x0*lambda0[i] @ y[i,:] == (lambda0[i]*b[i] - lambda0[i]* x0 @ xx[i,:]) , name="equal"+str(i))
+        m.addConstrs((gp.quicksum(x[i,j,k] for i in range(subscript_i)) == gp.quicksum(x[j,i,k] for i in range(subscript_i))) for j in range(1,subscript_j-1) for k in range(subscript_k))
 
         # constraint 3
+        m.addConstrs((gp.quicksum(x[0,j,k] for j in range(1,subscript_j)) == 1) for k in range(subscript_k))
+
         # constraint 4
+        m.addConstrs((gp.quicksum(x[i,subscript_j-1,k] for i in range(subscript_i-1)) == 1) for k in range(subscript_k))
+
         # constraint 5
-        # constraint 6
+        m.addConstrs((w[i,k] + s[i] + t[i] -w[j,k]) <= ((1-x[i,j,k])*M) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j))
+
+        # constraint 6.1
+        m.addConstrs((gp.quicksum(x[i,j,k]*a[i] for j in range(1,subscript_j)) <= w[i,k]) for k in range(subscript_k) for i in range(1,subscript_i-1))
+
+        # constraint 6.2
+        m.addConstrs((gp.quicksum(x[i,j,k]*b[i] for j in range(1,subscript_j)) >= w[i,k]) for k in range(subscript_k) for i in range(1,subscript_i-1))
+
         # constraint 7
+        m.addConstrs(w[0,k] == E for k in range(subscript_k))
+        m.addConstrs(w[subscript_i-1,k] == L for k in range(subscript_k))
+
         # constraint 8
+        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j)) <= 2*t[i]) for k in range(subscript_k) for i in range(1,subscript_i-1))
+
         # constraint 9
+        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j)) *p[i] <= 0.3*q[k]) for i in range(1,subscript_i-1) for k in range(subscript_k))
+
+        # constructs 10
+        m.addConstrs(x[i,i,k] ==0 for i in range(subscript_i) for k in range(subscript_k))
 
         m.write('TW.lp')
 
@@ -59,47 +83,9 @@ def TW(s,q,p):
         print('Main-Encountered an attribute error')
 
 
+s = [0,2,2,2,2,0]
+q = [100,200]
+p = [0,35,20,44,10,0]
 
-A = [[-1,1],[6,4],[1,4]]
-C = [5,4]
-b = [1,24,9]
-x0 =[2,3]
 
-def sub(A,C,b):
-
-    try:
-        m = gp.Model("sub")
-
-        xx = np.array(A)
-        row = xx.shape[0]
-        col = xx.shape[1]
-
-        x = m.addMVar(shape=row, lb=0, name="x")
-        A = xx.T
-        A = sp.csr_matrix(A)
-        # Set objective
-
-        obj = np.array(b)
-        m.setObjective(obj @ x, GRB.MINIMIZE)
-
-        rhs = np.array(C)
-        # Add constraints
-
-        m.addConstr(A @ x >= rhs, name="c")
-        m.write('sub.lp')
-        # Optimize model
-        m.optimize()
-
-        print('The sub-object: %g' % m.objVal)
-
-        return x.X,m
-
-    except gp.GurobiError as e:
-        print('Sub-Error code ' + str(e.errno) + ": " + str(e))
-
-    except AttributeError:
-        print('Sub-Encountered an attribute error')
-
-lambda0,m = sub(A,C,b)
-
-rmain(A,C,b,x0,lambda0)
+TW(s,q,p)

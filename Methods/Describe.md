@@ -29,7 +29,7 @@ $s_i$ is the service time for each group.(Given)
 
 2. Set the Maximize time distancing as the objective function.
 
-Define the time distance $t_{i}$ for each room. Time interval we set it as 0.5 hours.
+Define the time distance $t_{i}$ for group i. Time interval we set it as 0.5 hours.
 
 Define a binary variable $x_{ijk}$ for each room. If the room is used by (i,j) and i followed by j, then $x_{ijk} = 1$, else $x_{ijk} = 0$.
 

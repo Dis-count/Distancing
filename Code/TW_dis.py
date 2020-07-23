@@ -74,6 +74,31 @@ def TW(s,q,p):
         m.params.outputflag = 0
         m.optimize()
 
+        x_ijk =  m.getAttr('X', x)
+
+        w_ik = m.getAttr('X', w)
+
+        route =[]
+        serviceT = []
+        # Generate the route and Specific service time
+        for k in range(subscript_k):
+            route.append([0])
+            i = 0
+            serviceT.append([w_ik[i,k]])
+            terminate = True
+            while terminate:
+                for j in range(subscript_j):
+                    if x_ijk[i,j,k] >= 0.5:
+
+                        route[k].append(j)
+                        serviceT[k].append(w_ik[j,k])
+                        i = j
+                        break
+                if (i == subscript_i-1):
+                    terminate = False
+        print('The route is' + str(route))
+        print('The corresponding service time is' + str(serviceT))
+
         return m.objVal
 
     except gp.GurobiError as e:

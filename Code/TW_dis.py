@@ -2,7 +2,6 @@ import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
 
-
 # q_k capacity.
 # s_i service time for each group.
 # p_i demand number of people.
@@ -78,7 +77,7 @@ def TW(s,q,p):
 
         w_ik = m.getAttr('X', w)
 
-        route =[]
+        route = []
         serviceT = []
         # Generate the route and Specific service time
         for k in range(subscript_k):
@@ -97,7 +96,7 @@ def TW(s,q,p):
                 if (i == subscript_i-1):
                     terminate = False
         print('The route is' + str(route))
-        print('The corresponding service time is' + str(serviceT))
+        print('The service start time is' + str(serviceT))
 
         return m.objVal
 
@@ -107,10 +106,8 @@ def TW(s,q,p):
     except AttributeError:
         print('Main-Encountered an attribute error')
 
-
 s = [0,2,2,2,2,0]
 q = [100,200]
-p = [0,35,20,44,10,0]
-
+p = [0,35,30,44,40,0]
 
 TW(s,q,p)

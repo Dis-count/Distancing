@@ -7,7 +7,7 @@ from gurobipy import GRB
 # p_i demand number of people.
 # variable x_ijk  w_ik t_i
 # i \in N (not include 0 and N+1)
-help(gp.Model.addMVar)
+# help(gp.Model.addMVar)
 
 def TW(s,q,p):
 

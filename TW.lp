@@ -1,230 +1,1194 @@
 \ Model TW_dis
 \ LP format - for model browsing. Use MPS format to capture full model detail.
 Minimize
-  open[0,0,0] + open[0,0,1] + open[0,1,0] + open[0,1,1] + open[0,2,0]
-   + open[0,2,1] + open[0,3,0] + open[0,3,1] + open[0,4,0] + open[0,4,1]
-   + open[0,5,0] + open[0,5,1] + open[1,0,0] + open[1,0,1] + open[1,1,0]
-   + open[1,1,1] + open[1,2,0] + open[1,2,1] + open[1,3,0] + open[1,3,1]
-   + open[1,4,0] + open[1,4,1] + open[1,5,0] + open[1,5,1] + open[2,0,0]
-   + open[2,0,1] + open[2,1,0] + open[2,1,1] + open[2,2,0] + open[2,2,1]
-   + open[2,3,0] + open[2,3,1] + open[2,4,0] + open[2,4,1] + open[2,5,0]
-   + open[2,5,1] + open[3,0,0] + open[3,0,1] + open[3,1,0] + open[3,1,1]
-   + open[3,2,0] + open[3,2,1] + open[3,3,0] + open[3,3,1] + open[3,4,0]
-   + open[3,4,1] + open[3,5,0] + open[3,5,1] + open[4,0,0] + open[4,0,1]
-   + open[4,1,0] + open[4,1,1] + open[4,2,0] + open[4,2,1] + open[4,3,0]
-   + open[4,3,1] + open[4,4,0] + open[4,4,1] + open[4,5,0] + open[4,5,1]
-   + open[5,0,0] + open[5,0,1] + open[5,1,0] + open[5,1,1] + open[5,2,0]
-   + open[5,2,1] + open[5,3,0] + open[5,3,1] + open[5,4,0] + open[5,4,1]
-   + open[5,5,0] + open[5,5,1]
+  open[0,0,0] + open[0,0,1] + open[0,0,2] + open[0,0,3] + open[0,1,0]
+   + open[0,1,1] + open[0,1,2] + open[0,1,3] + open[0,2,0] + open[0,2,1]
+   + open[0,2,2] + open[0,2,3] + open[0,3,0] + open[0,3,1] + open[0,3,2]
+   + open[0,3,3] + open[0,4,0] + open[0,4,1] + open[0,4,2] + open[0,4,3]
+   + open[0,5,0] + open[0,5,1] + open[0,5,2] + open[0,5,3] + open[0,6,0]
+   + open[0,6,1] + open[0,6,2] + open[0,6,3] + open[0,7,0] + open[0,7,1]
+   + open[0,7,2] + open[0,7,3] + open[0,8,0] + open[0,8,1] + open[0,8,2]
+   + open[0,8,3] + open[0,9,0] + open[0,9,1] + open[0,9,2] + open[0,9,3]
+   + open[1,0,0] + open[1,0,1] + open[1,0,2] + open[1,0,3] + open[1,1,0]
+   + open[1,1,1] + open[1,1,2] + open[1,1,3] + open[1,2,0] + open[1,2,1]
+   + open[1,2,2] + open[1,2,3] + open[1,3,0] + open[1,3,1] + open[1,3,2]
+   + open[1,3,3] + open[1,4,0] + open[1,4,1] + open[1,4,2] + open[1,4,3]
+   + open[1,5,0] + open[1,5,1] + open[1,5,2] + open[1,5,3] + open[1,6,0]
+   + open[1,6,1] + open[1,6,2] + open[1,6,3] + open[1,7,0] + open[1,7,1]
+   + open[1,7,2] + open[1,7,3] + open[1,8,0] + open[1,8,1] + open[1,8,2]
+   + open[1,8,3] + open[1,9,0] + open[1,9,1] + open[1,9,2] + open[1,9,3]
+   + open[2,0,0] + open[2,0,1] + open[2,0,2] + open[2,0,3] + open[2,1,0]
+   + open[2,1,1] + open[2,1,2] + open[2,1,3] + open[2,2,0] + open[2,2,1]
+   + open[2,2,2] + open[2,2,3] + open[2,3,0] + open[2,3,1] + open[2,3,2]
+   + open[2,3,3] + open[2,4,0] + open[2,4,1] + open[2,4,2] + open[2,4,3]
+   + open[2,5,0] + open[2,5,1] + open[2,5,2] + open[2,5,3] + open[2,6,0]
+   + open[2,6,1] + open[2,6,2] + open[2,6,3] + open[2,7,0] + open[2,7,1]
+   + open[2,7,2] + open[2,7,3] + open[2,8,0] + open[2,8,1] + open[2,8,2]
+   + open[2,8,3] + open[2,9,0] + open[2,9,1] + open[2,9,2] + open[2,9,3]
+   + open[3,0,0] + open[3,0,1] + open[3,0,2] + open[3,0,3] + open[3,1,0]
+   + open[3,1,1] + open[3,1,2] + open[3,1,3] + open[3,2,0] + open[3,2,1]
+   + open[3,2,2] + open[3,2,3] + open[3,3,0] + open[3,3,1] + open[3,3,2]
+   + open[3,3,3] + open[3,4,0] + open[3,4,1] + open[3,4,2] + open[3,4,3]
+   + open[3,5,0] + open[3,5,1] + open[3,5,2] + open[3,5,3] + open[3,6,0]
+   + open[3,6,1] + open[3,6,2] + open[3,6,3] + open[3,7,0] + open[3,7,1]
+   + open[3,7,2] + open[3,7,3] + open[3,8,0] + open[3,8,1] + open[3,8,2]
+   + open[3,8,3] + open[3,9,0] + open[3,9,1] + open[3,9,2] + open[3,9,3]
+   + open[4,0,0] + open[4,0,1] + open[4,0,2] + open[4,0,3] + open[4,1,0]
+   + open[4,1,1] + open[4,1,2] + open[4,1,3] + open[4,2,0] + open[4,2,1]
+   + open[4,2,2] + open[4,2,3] + open[4,3,0] + open[4,3,1] + open[4,3,2]
+   + open[4,3,3] + open[4,4,0] + open[4,4,1] + open[4,4,2] + open[4,4,3]
+   + open[4,5,0] + open[4,5,1] + open[4,5,2] + open[4,5,3] + open[4,6,0]
+   + open[4,6,1] + open[4,6,2] + open[4,6,3] + open[4,7,0] + open[4,7,1]
+   + open[4,7,2] + open[4,7,3] + open[4,8,0] + open[4,8,1] + open[4,8,2]
+   + open[4,8,3] + open[4,9,0] + open[4,9,1] + open[4,9,2] + open[4,9,3]
+   + open[5,0,0] + open[5,0,1] + open[5,0,2] + open[5,0,3] + open[5,1,0]
+   + open[5,1,1] + open[5,1,2] + open[5,1,3] + open[5,2,0] + open[5,2,1]
+   + open[5,2,2] + open[5,2,3] + open[5,3,0] + open[5,3,1] + open[5,3,2]
+   + open[5,3,3] + open[5,4,0] + open[5,4,1] + open[5,4,2] + open[5,4,3]
+   + open[5,5,0] + open[5,5,1] + open[5,5,2] + open[5,5,3] + open[5,6,0]
+   + open[5,6,1] + open[5,6,2] + open[5,6,3] + open[5,7,0] + open[5,7,1]
+   + open[5,7,2] + open[5,7,3] + open[5,8,0] + open[5,8,1] + open[5,8,2]
+   + open[5,8,3] + open[5,9,0] + open[5,9,1] + open[5,9,2] + open[5,9,3]
+   + open[6,0,0] + open[6,0,1] + open[6,0,2] + open[6,0,3] + open[6,1,0]
+   + open[6,1,1] + open[6,1,2] + open[6,1,3] + open[6,2,0] + open[6,2,1]
+   + open[6,2,2] + open[6,2,3] + open[6,3,0] + open[6,3,1] + open[6,3,2]
+   + open[6,3,3] + open[6,4,0] + open[6,4,1] + open[6,4,2] + open[6,4,3]
+   + open[6,5,0] + open[6,5,1] + open[6,5,2] + open[6,5,3] + open[6,6,0]
+   + open[6,6,1] + open[6,6,2] + open[6,6,3] + open[6,7,0] + open[6,7,1]
+   + open[6,7,2] + open[6,7,3] + open[6,8,0] + open[6,8,1] + open[6,8,2]
+   + open[6,8,3] + open[6,9,0] + open[6,9,1] + open[6,9,2] + open[6,9,3]
+   + open[7,0,0] + open[7,0,1] + open[7,0,2] + open[7,0,3] + open[7,1,0]
+   + open[7,1,1] + open[7,1,2] + open[7,1,3] + open[7,2,0] + open[7,2,1]
+   + open[7,2,2] + open[7,2,3] + open[7,3,0] + open[7,3,1] + open[7,3,2]
+   + open[7,3,3] + open[7,4,0] + open[7,4,1] + open[7,4,2] + open[7,4,3]
+   + open[7,5,0] + open[7,5,1] + open[7,5,2] + open[7,5,3] + open[7,6,0]
+   + open[7,6,1] + open[7,6,2] + open[7,6,3] + open[7,7,0] + open[7,7,1]
+   + open[7,7,2] + open[7,7,3] + open[7,8,0] + open[7,8,1] + open[7,8,2]
+   + open[7,8,3] + open[7,9,0] + open[7,9,1] + open[7,9,2] + open[7,9,3]
+   + open[8,0,0] + open[8,0,1] + open[8,0,2] + open[8,0,3] + open[8,1,0]
+   + open[8,1,1] + open[8,1,2] + open[8,1,3] + open[8,2,0] + open[8,2,1]
+   + open[8,2,2] + open[8,2,3] + open[8,3,0] + open[8,3,1] + open[8,3,2]
+   + open[8,3,3] + open[8,4,0] + open[8,4,1] + open[8,4,2] + open[8,4,3]
+   + open[8,5,0] + open[8,5,1] + open[8,5,2] + open[8,5,3] + open[8,6,0]
+   + open[8,6,1] + open[8,6,2] + open[8,6,3] + open[8,7,0] + open[8,7,1]
+   + open[8,7,2] + open[8,7,3] + open[8,8,0] + open[8,8,1] + open[8,8,2]
+   + open[8,8,3] + open[8,9,0] + open[8,9,1] + open[8,9,2] + open[8,9,3]
+   + open[9,0,0] + open[9,0,1] + open[9,0,2] + open[9,0,3] + open[9,1,0]
+   + open[9,1,1] + open[9,1,2] + open[9,1,3] + open[9,2,0] + open[9,2,1]
+   + open[9,2,2] + open[9,2,3] + open[9,3,0] + open[9,3,1] + open[9,3,2]
+   + open[9,3,3] + open[9,4,0] + open[9,4,1] + open[9,4,2] + open[9,4,3]
+   + open[9,5,0] + open[9,5,1] + open[9,5,2] + open[9,5,3] + open[9,6,0]
+   + open[9,6,1] + open[9,6,2] + open[9,6,3] + open[9,7,0] + open[9,7,1]
+   + open[9,7,2] + open[9,7,3] + open[9,8,0] + open[9,8,1] + open[9,8,2]
+   + open[9,8,3] + open[9,9,0] + open[9,9,1] + open[9,9,2] + open[9,9,3]
 Subject To
- R0: open[1,1,0] + open[1,1,1] + open[1,2,0] + open[1,2,1] + open[1,3,0]
-   + open[1,3,1] + open[1,4,0] + open[1,4,1] + open[1,5,0] + open[1,5,1]
-   = 1
- R1: open[2,1,0] + open[2,1,1] + open[2,2,0] + open[2,2,1] + open[2,3,0]
-   + open[2,3,1] + open[2,4,0] + open[2,4,1] + open[2,5,0] + open[2,5,1]
-   = 1
- R2: open[3,1,0] + open[3,1,1] + open[3,2,0] + open[3,2,1] + open[3,3,0]
-   + open[3,3,1] + open[3,4,0] + open[3,4,1] + open[3,5,0] + open[3,5,1]
-   = 1
- R3: open[4,1,0] + open[4,1,1] + open[4,2,0] + open[4,2,1] + open[4,3,0]
-   + open[4,3,1] + open[4,4,0] + open[4,4,1] + open[4,5,0] + open[4,5,1]
-   = 1
- R4: open[0,1,0] - open[1,0,0] - open[1,2,0] - open[1,3,0] - open[1,4,0]
-   - open[1,5,0] + open[2,1,0] + open[3,1,0] + open[4,1,0] + open[5,1,0]
-   = 0
- R5: open[0,1,1] - open[1,0,1] - open[1,2,1] - open[1,3,1] - open[1,4,1]
-   - open[1,5,1] + open[2,1,1] + open[3,1,1] + open[4,1,1] + open[5,1,1]
-   = 0
- R6: open[0,2,0] + open[1,2,0] - open[2,0,0] - open[2,1,0] - open[2,3,0]
-   - open[2,4,0] - open[2,5,0] + open[3,2,0] + open[4,2,0] + open[5,2,0]
-   = 0
- R7: open[0,2,1] + open[1,2,1] - open[2,0,1] - open[2,1,1] - open[2,3,1]
-   - open[2,4,1] - open[2,5,1] + open[3,2,1] + open[4,2,1] + open[5,2,1]
-   = 0
- R8: open[0,3,0] + open[1,3,0] + open[2,3,0] - open[3,0,0] - open[3,1,0]
-   - open[3,2,0] - open[3,4,0] - open[3,5,0] + open[4,3,0] + open[5,3,0]
-   = 0
- R9: open[0,3,1] + open[1,3,1] + open[2,3,1] - open[3,0,1] - open[3,1,1]
-   - open[3,2,1] - open[3,4,1] - open[3,5,1] + open[4,3,1] + open[5,3,1]
-   = 0
- R10: open[0,4,0] + open[1,4,0] + open[2,4,0] + open[3,4,0] - open[4,0,0]
-   - open[4,1,0] - open[4,2,0] - open[4,3,0] - open[4,5,0] + open[5,4,0]
-   = 0
- R11: open[0,4,1] + open[1,4,1] + open[2,4,1] + open[3,4,1] - open[4,0,1]
-   - open[4,1,1] - open[4,2,1] - open[4,3,1] - open[4,5,1] + open[5,4,1]
-   = 0
- R12: open[0,1,0] + open[0,2,0] + open[0,3,0] + open[0,4,0] + open[0,5,0]
-   = 1
- R13: open[0,1,1] + open[0,2,1] + open[0,3,1] + open[0,4,1] + open[0,5,1]
-   = 1
- R14: open[0,5,0] + open[1,5,0] + open[2,5,0] + open[3,5,0] + open[4,5,0]
-   = 1
- R15: open[0,5,1] + open[1,5,1] + open[2,5,1] + open[3,5,1] + open[4,5,1]
-   = 1
- R16: 10000 open[0,0,0] + interval[0] <= 10000
- R17: 10000 open[0,1,0] + start[0,0] - start[1,0] + interval[0] <= 10000
- R18: 10000 open[0,2,0] + start[0,0] - start[2,0] + interval[0] <= 10000
- R19: 10000 open[0,3,0] + start[0,0] - start[3,0] + interval[0] <= 10000
- R20: 10000 open[0,4,0] + start[0,0] - start[4,0] + interval[0] <= 10000
- R21: 10000 open[0,5,0] + start[0,0] - start[5,0] + interval[0] <= 10000
- R22: 10000 open[1,0,0] - start[0,0] + start[1,0] + interval[1] <= 9998
- R23: 10000 open[1,1,0] + interval[1] <= 9998
- R24: 10000 open[1,2,0] + start[1,0] - start[2,0] + interval[1] <= 9998
- R25: 10000 open[1,3,0] + start[1,0] - start[3,0] + interval[1] <= 9998
- R26: 10000 open[1,4,0] + start[1,0] - start[4,0] + interval[1] <= 9998
- R27: 10000 open[1,5,0] + start[1,0] - start[5,0] + interval[1] <= 9998
- R28: 10000 open[2,0,0] - start[0,0] + start[2,0] + interval[2] <= 9998
- R29: 10000 open[2,1,0] - start[1,0] + start[2,0] + interval[2] <= 9998
- R30: 10000 open[2,2,0] + interval[2] <= 9998
- R31: 10000 open[2,3,0] + start[2,0] - start[3,0] + interval[2] <= 9998
- R32: 10000 open[2,4,0] + start[2,0] - start[4,0] + interval[2] <= 9998
- R33: 10000 open[2,5,0] + start[2,0] - start[5,0] + interval[2] <= 9998
- R34: 10000 open[3,0,0] - start[0,0] + start[3,0] + interval[3] <= 9998
- R35: 10000 open[3,1,0] - start[1,0] + start[3,0] + interval[3] <= 9998
- R36: 10000 open[3,2,0] - start[2,0] + start[3,0] + interval[3] <= 9998
- R37: 10000 open[3,3,0] + interval[3] <= 9998
- R38: 10000 open[3,4,0] + start[3,0] - start[4,0] + interval[3] <= 9998
- R39: 10000 open[3,5,0] + start[3,0] - start[5,0] + interval[3] <= 9998
- R40: 10000 open[4,0,0] - start[0,0] + start[4,0] + interval[4] <= 9998
- R41: 10000 open[4,1,0] - start[1,0] + start[4,0] + interval[4] <= 9998
- R42: 10000 open[4,2,0] - start[2,0] + start[4,0] + interval[4] <= 9998
- R43: 10000 open[4,3,0] - start[3,0] + start[4,0] + interval[4] <= 9998
- R44: 10000 open[4,4,0] + interval[4] <= 9998
- R45: 10000 open[4,5,0] + start[4,0] - start[5,0] + interval[4] <= 9998
- R46: 10000 open[5,0,0] - start[0,0] + start[5,0] + interval[5] <= 10000
- R47: 10000 open[5,1,0] - start[1,0] + start[5,0] + interval[5] <= 10000
- R48: 10000 open[5,2,0] - start[2,0] + start[5,0] + interval[5] <= 10000
- R49: 10000 open[5,3,0] - start[3,0] + start[5,0] + interval[5] <= 10000
- R50: 10000 open[5,4,0] - start[4,0] + start[5,0] + interval[5] <= 10000
- R51: 10000 open[5,5,0] + interval[5] <= 10000
- R52: 10000 open[0,0,1] + interval[0] <= 10000
- R53: 10000 open[0,1,1] + start[0,1] - start[1,1] + interval[0] <= 10000
- R54: 10000 open[0,2,1] + start[0,1] - start[2,1] + interval[0] <= 10000
- R55: 10000 open[0,3,1] + start[0,1] - start[3,1] + interval[0] <= 10000
- R56: 10000 open[0,4,1] + start[0,1] - start[4,1] + interval[0] <= 10000
- R57: 10000 open[0,5,1] + start[0,1] - start[5,1] + interval[0] <= 10000
- R58: 10000 open[1,0,1] - start[0,1] + start[1,1] + interval[1] <= 9998
- R59: 10000 open[1,1,1] + interval[1] <= 9998
- R60: 10000 open[1,2,1] + start[1,1] - start[2,1] + interval[1] <= 9998
- R61: 10000 open[1,3,1] + start[1,1] - start[3,1] + interval[1] <= 9998
- R62: 10000 open[1,4,1] + start[1,1] - start[4,1] + interval[1] <= 9998
- R63: 10000 open[1,5,1] + start[1,1] - start[5,1] + interval[1] <= 9998
- R64: 10000 open[2,0,1] - start[0,1] + start[2,1] + interval[2] <= 9998
- R65: 10000 open[2,1,1] - start[1,1] + start[2,1] + interval[2] <= 9998
- R66: 10000 open[2,2,1] + interval[2] <= 9998
- R67: 10000 open[2,3,1] + start[2,1] - start[3,1] + interval[2] <= 9998
- R68: 10000 open[2,4,1] + start[2,1] - start[4,1] + interval[2] <= 9998
- R69: 10000 open[2,5,1] + start[2,1] - start[5,1] + interval[2] <= 9998
- R70: 10000 open[3,0,1] - start[0,1] + start[3,1] + interval[3] <= 9998
- R71: 10000 open[3,1,1] - start[1,1] + start[3,1] + interval[3] <= 9998
- R72: 10000 open[3,2,1] - start[2,1] + start[3,1] + interval[3] <= 9998
- R73: 10000 open[3,3,1] + interval[3] <= 9998
- R74: 10000 open[3,4,1] + start[3,1] - start[4,1] + interval[3] <= 9998
- R75: 10000 open[3,5,1] + start[3,1] - start[5,1] + interval[3] <= 9998
- R76: 10000 open[4,0,1] - start[0,1] + start[4,1] + interval[4] <= 9998
- R77: 10000 open[4,1,1] - start[1,1] + start[4,1] + interval[4] <= 9998
- R78: 10000 open[4,2,1] - start[2,1] + start[4,1] + interval[4] <= 9998
- R79: 10000 open[4,3,1] - start[3,1] + start[4,1] + interval[4] <= 9998
- R80: 10000 open[4,4,1] + interval[4] <= 9998
- R81: 10000 open[4,5,1] + start[4,1] - start[5,1] + interval[4] <= 9998
- R82: 10000 open[5,0,1] - start[0,1] + start[5,1] + interval[5] <= 10000
- R83: 10000 open[5,1,1] - start[1,1] + start[5,1] + interval[5] <= 10000
- R84: 10000 open[5,2,1] - start[2,1] + start[5,1] + interval[5] <= 10000
- R85: 10000 open[5,3,1] - start[3,1] + start[5,1] + interval[5] <= 10000
- R86: 10000 open[5,4,1] - start[4,1] + start[5,1] + interval[5] <= 10000
- R87: 10000 open[5,5,1] + interval[5] <= 10000
- R88: 8 open[1,1,0] + 8 open[1,2,0] + 8 open[1,3,0] + 8 open[1,4,0]
-   + 8 open[1,5,0] - start[1,0] <= 0
- R89: 14 open[2,1,0] + 14 open[2,2,0] + 14 open[2,3,0] + 14 open[2,4,0]
-   + 14 open[2,5,0] - start[2,0] <= 0
- R90: 10 open[3,1,0] + 10 open[3,2,0] + 10 open[3,3,0] + 10 open[3,4,0]
-   + 10 open[3,5,0] - start[3,0] <= 0
- R91: 19 open[4,1,0] + 19 open[4,2,0] + 19 open[4,3,0] + 19 open[4,4,0]
-   + 19 open[4,5,0] - start[4,0] <= 0
- R92: 8 open[1,1,1] + 8 open[1,2,1] + 8 open[1,3,1] + 8 open[1,4,1]
-   + 8 open[1,5,1] - start[1,1] <= 0
- R93: 14 open[2,1,1] + 14 open[2,2,1] + 14 open[2,3,1] + 14 open[2,4,1]
-   + 14 open[2,5,1] - start[2,1] <= 0
- R94: 10 open[3,1,1] + 10 open[3,2,1] + 10 open[3,3,1] + 10 open[3,4,1]
-   + 10 open[3,5,1] - start[3,1] <= 0
- R95: 19 open[4,1,1] + 19 open[4,2,1] + 19 open[4,3,1] + 19 open[4,4,1]
-   + 19 open[4,5,1] - start[4,1] <= 0
- R96: 11 open[1,1,0] + 11 open[1,2,0] + 11 open[1,3,0] + 11 open[1,4,0]
-   + 11 open[1,5,0] - start[1,0] >= 0
- R97: 15 open[2,1,0] + 15 open[2,2,0] + 15 open[2,3,0] + 15 open[2,4,0]
-   + 15 open[2,5,0] - start[2,0] >= 0
- R98: 16 open[3,1,0] + 16 open[3,2,0] + 16 open[3,3,0] + 16 open[3,4,0]
-   + 16 open[3,5,0] - start[3,0] >= 0
- R99: 21 open[4,1,0] + 21 open[4,2,0] + 21 open[4,3,0] + 21 open[4,4,0]
-   + 21 open[4,5,0] - start[4,0] >= 0
- R100: 11 open[1,1,1] + 11 open[1,2,1] + 11 open[1,3,1] + 11 open[1,4,1]
-   + 11 open[1,5,1] - start[1,1] >= 0
- R101: 15 open[2,1,1] + 15 open[2,2,1] + 15 open[2,3,1] + 15 open[2,4,1]
-   + 15 open[2,5,1] - start[2,1] >= 0
- R102: 16 open[3,1,1] + 16 open[3,2,1] + 16 open[3,3,1] + 16 open[3,4,1]
-   + 16 open[3,5,1] - start[3,1] >= 0
- R103: 21 open[4,1,1] + 21 open[4,2,1] + 21 open[4,3,1] + 21 open[4,4,1]
-   + 21 open[4,5,1] - start[4,1] >= 0
- R104: start[0,0] = 0
- R105: start[0,1] = 0
- R106: start[5,0] = 24
- R107: start[5,1] = 24
- R108: open[1,1,0] + open[1,2,0] + open[1,3,0] + open[1,4,0] + open[1,5,0]
-   - 2 interval[1] <= 0
- R109: open[2,1,0] + open[2,2,0] + open[2,3,0] + open[2,4,0] + open[2,5,0]
-   - 2 interval[2] <= 0
- R110: open[3,1,0] + open[3,2,0] + open[3,3,0] + open[3,4,0] + open[3,5,0]
-   - 2 interval[3] <= 0
- R111: open[4,1,0] + open[4,2,0] + open[4,3,0] + open[4,4,0] + open[4,5,0]
-   - 2 interval[4] <= 0
- R112: open[1,1,1] + open[1,2,1] + open[1,3,1] + open[1,4,1] + open[1,5,1]
-   - 2 interval[1] <= 0
- R113: open[2,1,1] + open[2,2,1] + open[2,3,1] + open[2,4,1] + open[2,5,1]
-   - 2 interval[2] <= 0
- R114: open[3,1,1] + open[3,2,1] + open[3,3,1] + open[3,4,1] + open[3,5,1]
-   - 2 interval[3] <= 0
- R115: open[4,1,1] + open[4,2,1] + open[4,3,1] + open[4,4,1] + open[4,5,1]
-   - 2 interval[4] <= 0
- R116: 35 open[1,1,0] + 35 open[1,2,0] + 35 open[1,3,0] + 35 open[1,4,0]
-   + 35 open[1,5,0] <= 30
- R117: 35 open[1,1,1] + 35 open[1,2,1] + 35 open[1,3,1] + 35 open[1,4,1]
-   + 35 open[1,5,1] <= 60
- R118: 30 open[2,1,0] + 30 open[2,2,0] + 30 open[2,3,0] + 30 open[2,4,0]
-   + 30 open[2,5,0] <= 30
- R119: 30 open[2,1,1] + 30 open[2,2,1] + 30 open[2,3,1] + 30 open[2,4,1]
-   + 30 open[2,5,1] <= 60
- R120: 44 open[3,1,0] + 44 open[3,2,0] + 44 open[3,3,0] + 44 open[3,4,0]
-   + 44 open[3,5,0] <= 30
- R121: 44 open[3,1,1] + 44 open[3,2,1] + 44 open[3,3,1] + 44 open[3,4,1]
-   + 44 open[3,5,1] <= 60
- R122: 40 open[4,1,0] + 40 open[4,2,0] + 40 open[4,3,0] + 40 open[4,4,0]
-   + 40 open[4,5,0] <= 30
- R123: 40 open[4,1,1] + 40 open[4,2,1] + 40 open[4,3,1] + 40 open[4,4,1]
-   + 40 open[4,5,1] <= 60
- R124: open[0,0,0] = 0
- R125: open[0,0,1] = 0
- R126: open[1,1,0] = 0
- R127: open[1,1,1] = 0
- R128: open[2,2,0] = 0
- R129: open[2,2,1] = 0
- R130: open[3,3,0] = 0
- R131: open[3,3,1] = 0
- R132: open[4,4,0] = 0
- R133: open[4,4,1] = 0
- R134: open[5,5,0] = 0
- R135: open[5,5,1] = 0
+ R0: open[1,1,0] + open[1,1,1] + open[1,1,2] + open[1,1,3] + open[1,2,0]
+   + open[1,2,1] + open[1,2,2] + open[1,2,3] + open[1,3,0] + open[1,3,1]
+   + open[1,3,2] + open[1,3,3] + open[1,4,0] + open[1,4,1] + open[1,4,2]
+   + open[1,4,3] + open[1,5,0] + open[1,5,1] + open[1,5,2] + open[1,5,3]
+   + open[1,6,0] + open[1,6,1] + open[1,6,2] + open[1,6,3] + open[1,7,0]
+   + open[1,7,1] + open[1,7,2] + open[1,7,3] + open[1,8,0] + open[1,8,1]
+   + open[1,8,2] + open[1,8,3] + open[1,9,0] + open[1,9,1] + open[1,9,2]
+   + open[1,9,3] = 1
+ R1: open[2,1,0] + open[2,1,1] + open[2,1,2] + open[2,1,3] + open[2,2,0]
+   + open[2,2,1] + open[2,2,2] + open[2,2,3] + open[2,3,0] + open[2,3,1]
+   + open[2,3,2] + open[2,3,3] + open[2,4,0] + open[2,4,1] + open[2,4,2]
+   + open[2,4,3] + open[2,5,0] + open[2,5,1] + open[2,5,2] + open[2,5,3]
+   + open[2,6,0] + open[2,6,1] + open[2,6,2] + open[2,6,3] + open[2,7,0]
+   + open[2,7,1] + open[2,7,2] + open[2,7,3] + open[2,8,0] + open[2,8,1]
+   + open[2,8,2] + open[2,8,3] + open[2,9,0] + open[2,9,1] + open[2,9,2]
+   + open[2,9,3] = 1
+ R2: open[3,1,0] + open[3,1,1] + open[3,1,2] + open[3,1,3] + open[3,2,0]
+   + open[3,2,1] + open[3,2,2] + open[3,2,3] + open[3,3,0] + open[3,3,1]
+   + open[3,3,2] + open[3,3,3] + open[3,4,0] + open[3,4,1] + open[3,4,2]
+   + open[3,4,3] + open[3,5,0] + open[3,5,1] + open[3,5,2] + open[3,5,3]
+   + open[3,6,0] + open[3,6,1] + open[3,6,2] + open[3,6,3] + open[3,7,0]
+   + open[3,7,1] + open[3,7,2] + open[3,7,3] + open[3,8,0] + open[3,8,1]
+   + open[3,8,2] + open[3,8,3] + open[3,9,0] + open[3,9,1] + open[3,9,2]
+   + open[3,9,3] = 1
+ R3: open[4,1,0] + open[4,1,1] + open[4,1,2] + open[4,1,3] + open[4,2,0]
+   + open[4,2,1] + open[4,2,2] + open[4,2,3] + open[4,3,0] + open[4,3,1]
+   + open[4,3,2] + open[4,3,3] + open[4,4,0] + open[4,4,1] + open[4,4,2]
+   + open[4,4,3] + open[4,5,0] + open[4,5,1] + open[4,5,2] + open[4,5,3]
+   + open[4,6,0] + open[4,6,1] + open[4,6,2] + open[4,6,3] + open[4,7,0]
+   + open[4,7,1] + open[4,7,2] + open[4,7,3] + open[4,8,0] + open[4,8,1]
+   + open[4,8,2] + open[4,8,3] + open[4,9,0] + open[4,9,1] + open[4,9,2]
+   + open[4,9,3] = 1
+ R4: open[5,1,0] + open[5,1,1] + open[5,1,2] + open[5,1,3] + open[5,2,0]
+   + open[5,2,1] + open[5,2,2] + open[5,2,3] + open[5,3,0] + open[5,3,1]
+   + open[5,3,2] + open[5,3,3] + open[5,4,0] + open[5,4,1] + open[5,4,2]
+   + open[5,4,3] + open[5,5,0] + open[5,5,1] + open[5,5,2] + open[5,5,3]
+   + open[5,6,0] + open[5,6,1] + open[5,6,2] + open[5,6,3] + open[5,7,0]
+   + open[5,7,1] + open[5,7,2] + open[5,7,3] + open[5,8,0] + open[5,8,1]
+   + open[5,8,2] + open[5,8,3] + open[5,9,0] + open[5,9,1] + open[5,9,2]
+   + open[5,9,3] = 1
+ R5: open[6,1,0] + open[6,1,1] + open[6,1,2] + open[6,1,3] + open[6,2,0]
+   + open[6,2,1] + open[6,2,2] + open[6,2,3] + open[6,3,0] + open[6,3,1]
+   + open[6,3,2] + open[6,3,3] + open[6,4,0] + open[6,4,1] + open[6,4,2]
+   + open[6,4,3] + open[6,5,0] + open[6,5,1] + open[6,5,2] + open[6,5,3]
+   + open[6,6,0] + open[6,6,1] + open[6,6,2] + open[6,6,3] + open[6,7,0]
+   + open[6,7,1] + open[6,7,2] + open[6,7,3] + open[6,8,0] + open[6,8,1]
+   + open[6,8,2] + open[6,8,3] + open[6,9,0] + open[6,9,1] + open[6,9,2]
+   + open[6,9,3] = 1
+ R6: open[7,1,0] + open[7,1,1] + open[7,1,2] + open[7,1,3] + open[7,2,0]
+   + open[7,2,1] + open[7,2,2] + open[7,2,3] + open[7,3,0] + open[7,3,1]
+   + open[7,3,2] + open[7,3,3] + open[7,4,0] + open[7,4,1] + open[7,4,2]
+   + open[7,4,3] + open[7,5,0] + open[7,5,1] + open[7,5,2] + open[7,5,3]
+   + open[7,6,0] + open[7,6,1] + open[7,6,2] + open[7,6,3] + open[7,7,0]
+   + open[7,7,1] + open[7,7,2] + open[7,7,3] + open[7,8,0] + open[7,8,1]
+   + open[7,8,2] + open[7,8,3] + open[7,9,0] + open[7,9,1] + open[7,9,2]
+   + open[7,9,3] = 1
+ R7: open[8,1,0] + open[8,1,1] + open[8,1,2] + open[8,1,3] + open[8,2,0]
+   + open[8,2,1] + open[8,2,2] + open[8,2,3] + open[8,3,0] + open[8,3,1]
+   + open[8,3,2] + open[8,3,3] + open[8,4,0] + open[8,4,1] + open[8,4,2]
+   + open[8,4,3] + open[8,5,0] + open[8,5,1] + open[8,5,2] + open[8,5,3]
+   + open[8,6,0] + open[8,6,1] + open[8,6,2] + open[8,6,3] + open[8,7,0]
+   + open[8,7,1] + open[8,7,2] + open[8,7,3] + open[8,8,0] + open[8,8,1]
+   + open[8,8,2] + open[8,8,3] + open[8,9,0] + open[8,9,1] + open[8,9,2]
+   + open[8,9,3] = 1
+ R8: open[0,1,0] - open[1,0,0] - open[1,2,0] - open[1,3,0] - open[1,4,0]
+   - open[1,5,0] - open[1,6,0] - open[1,7,0] - open[1,8,0] - open[1,9,0]
+   + open[2,1,0] + open[3,1,0] + open[4,1,0] + open[5,1,0] + open[6,1,0]
+   + open[7,1,0] + open[8,1,0] + open[9,1,0] = 0
+ R9: open[0,1,1] - open[1,0,1] - open[1,2,1] - open[1,3,1] - open[1,4,1]
+   - open[1,5,1] - open[1,6,1] - open[1,7,1] - open[1,8,1] - open[1,9,1]
+   + open[2,1,1] + open[3,1,1] + open[4,1,1] + open[5,1,1] + open[6,1,1]
+   + open[7,1,1] + open[8,1,1] + open[9,1,1] = 0
+ R10: open[0,1,2] - open[1,0,2] - open[1,2,2] - open[1,3,2] - open[1,4,2]
+   - open[1,5,2] - open[1,6,2] - open[1,7,2] - open[1,8,2] - open[1,9,2]
+   + open[2,1,2] + open[3,1,2] + open[4,1,2] + open[5,1,2] + open[6,1,2]
+   + open[7,1,2] + open[8,1,2] + open[9,1,2] = 0
+ R11: open[0,1,3] - open[1,0,3] - open[1,2,3] - open[1,3,3] - open[1,4,3]
+   - open[1,5,3] - open[1,6,3] - open[1,7,3] - open[1,8,3] - open[1,9,3]
+   + open[2,1,3] + open[3,1,3] + open[4,1,3] + open[5,1,3] + open[6,1,3]
+   + open[7,1,3] + open[8,1,3] + open[9,1,3] = 0
+ R12: open[0,2,0] + open[1,2,0] - open[2,0,0] - open[2,1,0] - open[2,3,0]
+   - open[2,4,0] - open[2,5,0] - open[2,6,0] - open[2,7,0] - open[2,8,0]
+   - open[2,9,0] + open[3,2,0] + open[4,2,0] + open[5,2,0] + open[6,2,0]
+   + open[7,2,0] + open[8,2,0] + open[9,2,0] = 0
+ R13: open[0,2,1] + open[1,2,1] - open[2,0,1] - open[2,1,1] - open[2,3,1]
+   - open[2,4,1] - open[2,5,1] - open[2,6,1] - open[2,7,1] - open[2,8,1]
+   - open[2,9,1] + open[3,2,1] + open[4,2,1] + open[5,2,1] + open[6,2,1]
+   + open[7,2,1] + open[8,2,1] + open[9,2,1] = 0
+ R14: open[0,2,2] + open[1,2,2] - open[2,0,2] - open[2,1,2] - open[2,3,2]
+   - open[2,4,2] - open[2,5,2] - open[2,6,2] - open[2,7,2] - open[2,8,2]
+   - open[2,9,2] + open[3,2,2] + open[4,2,2] + open[5,2,2] + open[6,2,2]
+   + open[7,2,2] + open[8,2,2] + open[9,2,2] = 0
+ R15: open[0,2,3] + open[1,2,3] - open[2,0,3] - open[2,1,3] - open[2,3,3]
+   - open[2,4,3] - open[2,5,3] - open[2,6,3] - open[2,7,3] - open[2,8,3]
+   - open[2,9,3] + open[3,2,3] + open[4,2,3] + open[5,2,3] + open[6,2,3]
+   + open[7,2,3] + open[8,2,3] + open[9,2,3] = 0
+ R16: open[0,3,0] + open[1,3,0] + open[2,3,0] - open[3,0,0] - open[3,1,0]
+   - open[3,2,0] - open[3,4,0] - open[3,5,0] - open[3,6,0] - open[3,7,0]
+   - open[3,8,0] - open[3,9,0] + open[4,3,0] + open[5,3,0] + open[6,3,0]
+   + open[7,3,0] + open[8,3,0] + open[9,3,0] = 0
+ R17: open[0,3,1] + open[1,3,1] + open[2,3,1] - open[3,0,1] - open[3,1,1]
+   - open[3,2,1] - open[3,4,1] - open[3,5,1] - open[3,6,1] - open[3,7,1]
+   - open[3,8,1] - open[3,9,1] + open[4,3,1] + open[5,3,1] + open[6,3,1]
+   + open[7,3,1] + open[8,3,1] + open[9,3,1] = 0
+ R18: open[0,3,2] + open[1,3,2] + open[2,3,2] - open[3,0,2] - open[3,1,2]
+   - open[3,2,2] - open[3,4,2] - open[3,5,2] - open[3,6,2] - open[3,7,2]
+   - open[3,8,2] - open[3,9,2] + open[4,3,2] + open[5,3,2] + open[6,3,2]
+   + open[7,3,2] + open[8,3,2] + open[9,3,2] = 0
+ R19: open[0,3,3] + open[1,3,3] + open[2,3,3] - open[3,0,3] - open[3,1,3]
+   - open[3,2,3] - open[3,4,3] - open[3,5,3] - open[3,6,3] - open[3,7,3]
+   - open[3,8,3] - open[3,9,3] + open[4,3,3] + open[5,3,3] + open[6,3,3]
+   + open[7,3,3] + open[8,3,3] + open[9,3,3] = 0
+ R20: open[0,4,0] + open[1,4,0] + open[2,4,0] + open[3,4,0] - open[4,0,0]
+   - open[4,1,0] - open[4,2,0] - open[4,3,0] - open[4,5,0] - open[4,6,0]
+   - open[4,7,0] - open[4,8,0] - open[4,9,0] + open[5,4,0] + open[6,4,0]
+   + open[7,4,0] + open[8,4,0] + open[9,4,0] = 0
+ R21: open[0,4,1] + open[1,4,1] + open[2,4,1] + open[3,4,1] - open[4,0,1]
+   - open[4,1,1] - open[4,2,1] - open[4,3,1] - open[4,5,1] - open[4,6,1]
+   - open[4,7,1] - open[4,8,1] - open[4,9,1] + open[5,4,1] + open[6,4,1]
+   + open[7,4,1] + open[8,4,1] + open[9,4,1] = 0
+ R22: open[0,4,2] + open[1,4,2] + open[2,4,2] + open[3,4,2] - open[4,0,2]
+   - open[4,1,2] - open[4,2,2] - open[4,3,2] - open[4,5,2] - open[4,6,2]
+   - open[4,7,2] - open[4,8,2] - open[4,9,2] + open[5,4,2] + open[6,4,2]
+   + open[7,4,2] + open[8,4,2] + open[9,4,2] = 0
+ R23: open[0,4,3] + open[1,4,3] + open[2,4,3] + open[3,4,3] - open[4,0,3]
+   - open[4,1,3] - open[4,2,3] - open[4,3,3] - open[4,5,3] - open[4,6,3]
+   - open[4,7,3] - open[4,8,3] - open[4,9,3] + open[5,4,3] + open[6,4,3]
+   + open[7,4,3] + open[8,4,3] + open[9,4,3] = 0
+ R24: open[0,5,0] + open[1,5,0] + open[2,5,0] + open[3,5,0] + open[4,5,0]
+   - open[5,0,0] - open[5,1,0] - open[5,2,0] - open[5,3,0] - open[5,4,0]
+   - open[5,6,0] - open[5,7,0] - open[5,8,0] - open[5,9,0] + open[6,5,0]
+   + open[7,5,0] + open[8,5,0] + open[9,5,0] = 0
+ R25: open[0,5,1] + open[1,5,1] + open[2,5,1] + open[3,5,1] + open[4,5,1]
+   - open[5,0,1] - open[5,1,1] - open[5,2,1] - open[5,3,1] - open[5,4,1]
+   - open[5,6,1] - open[5,7,1] - open[5,8,1] - open[5,9,1] + open[6,5,1]
+   + open[7,5,1] + open[8,5,1] + open[9,5,1] = 0
+ R26: open[0,5,2] + open[1,5,2] + open[2,5,2] + open[3,5,2] + open[4,5,2]
+   - open[5,0,2] - open[5,1,2] - open[5,2,2] - open[5,3,2] - open[5,4,2]
+   - open[5,6,2] - open[5,7,2] - open[5,8,2] - open[5,9,2] + open[6,5,2]
+   + open[7,5,2] + open[8,5,2] + open[9,5,2] = 0
+ R27: open[0,5,3] + open[1,5,3] + open[2,5,3] + open[3,5,3] + open[4,5,3]
+   - open[5,0,3] - open[5,1,3] - open[5,2,3] - open[5,3,3] - open[5,4,3]
+   - open[5,6,3] - open[5,7,3] - open[5,8,3] - open[5,9,3] + open[6,5,3]
+   + open[7,5,3] + open[8,5,3] + open[9,5,3] = 0
+ R28: open[0,6,0] + open[1,6,0] + open[2,6,0] + open[3,6,0] + open[4,6,0]
+   + open[5,6,0] - open[6,0,0] - open[6,1,0] - open[6,2,0] - open[6,3,0]
+   - open[6,4,0] - open[6,5,0] - open[6,7,0] - open[6,8,0] - open[6,9,0]
+   + open[7,6,0] + open[8,6,0] + open[9,6,0] = 0
+ R29: open[0,6,1] + open[1,6,1] + open[2,6,1] + open[3,6,1] + open[4,6,1]
+   + open[5,6,1] - open[6,0,1] - open[6,1,1] - open[6,2,1] - open[6,3,1]
+   - open[6,4,1] - open[6,5,1] - open[6,7,1] - open[6,8,1] - open[6,9,1]
+   + open[7,6,1] + open[8,6,1] + open[9,6,1] = 0
+ R30: open[0,6,2] + open[1,6,2] + open[2,6,2] + open[3,6,2] + open[4,6,2]
+   + open[5,6,2] - open[6,0,2] - open[6,1,2] - open[6,2,2] - open[6,3,2]
+   - open[6,4,2] - open[6,5,2] - open[6,7,2] - open[6,8,2] - open[6,9,2]
+   + open[7,6,2] + open[8,6,2] + open[9,6,2] = 0
+ R31: open[0,6,3] + open[1,6,3] + open[2,6,3] + open[3,6,3] + open[4,6,3]
+   + open[5,6,3] - open[6,0,3] - open[6,1,3] - open[6,2,3] - open[6,3,3]
+   - open[6,4,3] - open[6,5,3] - open[6,7,3] - open[6,8,3] - open[6,9,3]
+   + open[7,6,3] + open[8,6,3] + open[9,6,3] = 0
+ R32: open[0,7,0] + open[1,7,0] + open[2,7,0] + open[3,7,0] + open[4,7,0]
+   + open[5,7,0] + open[6,7,0] - open[7,0,0] - open[7,1,0] - open[7,2,0]
+   - open[7,3,0] - open[7,4,0] - open[7,5,0] - open[7,6,0] - open[7,8,0]
+   - open[7,9,0] + open[8,7,0] + open[9,7,0] = 0
+ R33: open[0,7,1] + open[1,7,1] + open[2,7,1] + open[3,7,1] + open[4,7,1]
+   + open[5,7,1] + open[6,7,1] - open[7,0,1] - open[7,1,1] - open[7,2,1]
+   - open[7,3,1] - open[7,4,1] - open[7,5,1] - open[7,6,1] - open[7,8,1]
+   - open[7,9,1] + open[8,7,1] + open[9,7,1] = 0
+ R34: open[0,7,2] + open[1,7,2] + open[2,7,2] + open[3,7,2] + open[4,7,2]
+   + open[5,7,2] + open[6,7,2] - open[7,0,2] - open[7,1,2] - open[7,2,2]
+   - open[7,3,2] - open[7,4,2] - open[7,5,2] - open[7,6,2] - open[7,8,2]
+   - open[7,9,2] + open[8,7,2] + open[9,7,2] = 0
+ R35: open[0,7,3] + open[1,7,3] + open[2,7,3] + open[3,7,3] + open[4,7,3]
+   + open[5,7,3] + open[6,7,3] - open[7,0,3] - open[7,1,3] - open[7,2,3]
+   - open[7,3,3] - open[7,4,3] - open[7,5,3] - open[7,6,3] - open[7,8,3]
+   - open[7,9,3] + open[8,7,3] + open[9,7,3] = 0
+ R36: open[0,8,0] + open[1,8,0] + open[2,8,0] + open[3,8,0] + open[4,8,0]
+   + open[5,8,0] + open[6,8,0] + open[7,8,0] - open[8,0,0] - open[8,1,0]
+   - open[8,2,0] - open[8,3,0] - open[8,4,0] - open[8,5,0] - open[8,6,0]
+   - open[8,7,0] - open[8,9,0] + open[9,8,0] = 0
+ R37: open[0,8,1] + open[1,8,1] + open[2,8,1] + open[3,8,1] + open[4,8,1]
+   + open[5,8,1] + open[6,8,1] + open[7,8,1] - open[8,0,1] - open[8,1,1]
+   - open[8,2,1] - open[8,3,1] - open[8,4,1] - open[8,5,1] - open[8,6,1]
+   - open[8,7,1] - open[8,9,1] + open[9,8,1] = 0
+ R38: open[0,8,2] + open[1,8,2] + open[2,8,2] + open[3,8,2] + open[4,8,2]
+   + open[5,8,2] + open[6,8,2] + open[7,8,2] - open[8,0,2] - open[8,1,2]
+   - open[8,2,2] - open[8,3,2] - open[8,4,2] - open[8,5,2] - open[8,6,2]
+   - open[8,7,2] - open[8,9,2] + open[9,8,2] = 0
+ R39: open[0,8,3] + open[1,8,3] + open[2,8,3] + open[3,8,3] + open[4,8,3]
+   + open[5,8,3] + open[6,8,3] + open[7,8,3] - open[8,0,3] - open[8,1,3]
+   - open[8,2,3] - open[8,3,3] - open[8,4,3] - open[8,5,3] - open[8,6,3]
+   - open[8,7,3] - open[8,9,3] + open[9,8,3] = 0
+ R40: open[0,1,0] + open[0,2,0] + open[0,3,0] + open[0,4,0] + open[0,5,0]
+   + open[0,6,0] + open[0,7,0] + open[0,8,0] + open[0,9,0] = 1
+ R41: open[0,1,1] + open[0,2,1] + open[0,3,1] + open[0,4,1] + open[0,5,1]
+   + open[0,6,1] + open[0,7,1] + open[0,8,1] + open[0,9,1] = 1
+ R42: open[0,1,2] + open[0,2,2] + open[0,3,2] + open[0,4,2] + open[0,5,2]
+   + open[0,6,2] + open[0,7,2] + open[0,8,2] + open[0,9,2] = 1
+ R43: open[0,1,3] + open[0,2,3] + open[0,3,3] + open[0,4,3] + open[0,5,3]
+   + open[0,6,3] + open[0,7,3] + open[0,8,3] + open[0,9,3] = 1
+ R44: open[0,9,0] + open[1,9,0] + open[2,9,0] + open[3,9,0] + open[4,9,0]
+   + open[5,9,0] + open[6,9,0] + open[7,9,0] + open[8,9,0] = 1
+ R45: open[0,9,1] + open[1,9,1] + open[2,9,1] + open[3,9,1] + open[4,9,1]
+   + open[5,9,1] + open[6,9,1] + open[7,9,1] + open[8,9,1] = 1
+ R46: open[0,9,2] + open[1,9,2] + open[2,9,2] + open[3,9,2] + open[4,9,2]
+   + open[5,9,2] + open[6,9,2] + open[7,9,2] + open[8,9,2] = 1
+ R47: open[0,9,3] + open[1,9,3] + open[2,9,3] + open[3,9,3] + open[4,9,3]
+   + open[5,9,3] + open[6,9,3] + open[7,9,3] + open[8,9,3] = 1
+ R48: 10000 open[0,0,0] + interval[0] <= 10000
+ R49: 10000 open[0,1,0] + start[0,0] - start[1,0] + interval[0] <= 10000
+ R50: 10000 open[0,2,0] + start[0,0] - start[2,0] + interval[0] <= 10000
+ R51: 10000 open[0,3,0] + start[0,0] - start[3,0] + interval[0] <= 10000
+ R52: 10000 open[0,4,0] + start[0,0] - start[4,0] + interval[0] <= 10000
+ R53: 10000 open[0,5,0] + start[0,0] - start[5,0] + interval[0] <= 10000
+ R54: 10000 open[0,6,0] + start[0,0] - start[6,0] + interval[0] <= 10000
+ R55: 10000 open[0,7,0] + start[0,0] - start[7,0] + interval[0] <= 10000
+ R56: 10000 open[0,8,0] + start[0,0] - start[8,0] + interval[0] <= 10000
+ R57: 10000 open[0,9,0] + start[0,0] - start[9,0] + interval[0] <= 10000
+ R58: 10000 open[1,0,0] - start[0,0] + start[1,0] + interval[1] <= 9999
+ R59: 10000 open[1,1,0] + interval[1] <= 9999
+ R60: 10000 open[1,2,0] + start[1,0] - start[2,0] + interval[1] <= 9999
+ R61: 10000 open[1,3,0] + start[1,0] - start[3,0] + interval[1] <= 9999
+ R62: 10000 open[1,4,0] + start[1,0] - start[4,0] + interval[1] <= 9999
+ R63: 10000 open[1,5,0] + start[1,0] - start[5,0] + interval[1] <= 9999
+ R64: 10000 open[1,6,0] + start[1,0] - start[6,0] + interval[1] <= 9999
+ R65: 10000 open[1,7,0] + start[1,0] - start[7,0] + interval[1] <= 9999
+ R66: 10000 open[1,8,0] + start[1,0] - start[8,0] + interval[1] <= 9999
+ R67: 10000 open[1,9,0] + start[1,0] - start[9,0] + interval[1] <= 9999
+ R68: 10000 open[2,0,0] - start[0,0] + start[2,0] + interval[2] <= 9997
+ R69: 10000 open[2,1,0] - start[1,0] + start[2,0] + interval[2] <= 9997
+ R70: 10000 open[2,2,0] + interval[2] <= 9997
+ R71: 10000 open[2,3,0] + start[2,0] - start[3,0] + interval[2] <= 9997
+ R72: 10000 open[2,4,0] + start[2,0] - start[4,0] + interval[2] <= 9997
+ R73: 10000 open[2,5,0] + start[2,0] - start[5,0] + interval[2] <= 9997
+ R74: 10000 open[2,6,0] + start[2,0] - start[6,0] + interval[2] <= 9997
+ R75: 10000 open[2,7,0] + start[2,0] - start[7,0] + interval[2] <= 9997
+ R76: 10000 open[2,8,0] + start[2,0] - start[8,0] + interval[2] <= 9997
+ R77: 10000 open[2,9,0] + start[2,0] - start[9,0] + interval[2] <= 9997
+ R78: 10000 open[3,0,0] - start[0,0] + start[3,0] + interval[3] <= 9998
+ R79: 10000 open[3,1,0] - start[1,0] + start[3,0] + interval[3] <= 9998
+ R80: 10000 open[3,2,0] - start[2,0] + start[3,0] + interval[3] <= 9998
+ R81: 10000 open[3,3,0] + interval[3] <= 9998
+ R82: 10000 open[3,4,0] + start[3,0] - start[4,0] + interval[3] <= 9998
+ R83: 10000 open[3,5,0] + start[3,0] - start[5,0] + interval[3] <= 9998
+ R84: 10000 open[3,6,0] + start[3,0] - start[6,0] + interval[3] <= 9998
+ R85: 10000 open[3,7,0] + start[3,0] - start[7,0] + interval[3] <= 9998
+ R86: 10000 open[3,8,0] + start[3,0] - start[8,0] + interval[3] <= 9998
+ R87: 10000 open[3,9,0] + start[3,0] - start[9,0] + interval[3] <= 9998
+ R88: 10000 open[4,0,0] - start[0,0] + start[4,0] + interval[4] <= 9998
+ R89: 10000 open[4,1,0] - start[1,0] + start[4,0] + interval[4] <= 9998
+ R90: 10000 open[4,2,0] - start[2,0] + start[4,0] + interval[4] <= 9998
+ R91: 10000 open[4,3,0] - start[3,0] + start[4,0] + interval[4] <= 9998
+ R92: 10000 open[4,4,0] + interval[4] <= 9998
+ R93: 10000 open[4,5,0] + start[4,0] - start[5,0] + interval[4] <= 9998
+ R94: 10000 open[4,6,0] + start[4,0] - start[6,0] + interval[4] <= 9998
+ R95: 10000 open[4,7,0] + start[4,0] - start[7,0] + interval[4] <= 9998
+ R96: 10000 open[4,8,0] + start[4,0] - start[8,0] + interval[4] <= 9998
+ R97: 10000 open[4,9,0] + start[4,0] - start[9,0] + interval[4] <= 9998
+ R98: 10000 open[5,0,0] - start[0,0] + start[5,0] + interval[5] <= 9997
+ R99: 10000 open[5,1,0] - start[1,0] + start[5,0] + interval[5] <= 9997
+ R100: 10000 open[5,2,0] - start[2,0] + start[5,0] + interval[5] <= 9997
+ R101: 10000 open[5,3,0] - start[3,0] + start[5,0] + interval[5] <= 9997
+ R102: 10000 open[5,4,0] - start[4,0] + start[5,0] + interval[5] <= 9997
+ R103: 10000 open[5,5,0] + interval[5] <= 9997
+ R104: 10000 open[5,6,0] + start[5,0] - start[6,0] + interval[5] <= 9997
+ R105: 10000 open[5,7,0] + start[5,0] - start[7,0] + interval[5] <= 9997
+ R106: 10000 open[5,8,0] + start[5,0] - start[8,0] + interval[5] <= 9997
+ R107: 10000 open[5,9,0] + start[5,0] - start[9,0] + interval[5] <= 9997
+ R108: 10000 open[6,0,0] - start[0,0] + start[6,0] + interval[6] <= 9999
+ R109: 10000 open[6,1,0] - start[1,0] + start[6,0] + interval[6] <= 9999
+ R110: 10000 open[6,2,0] - start[2,0] + start[6,0] + interval[6] <= 9999
+ R111: 10000 open[6,3,0] - start[3,0] + start[6,0] + interval[6] <= 9999
+ R112: 10000 open[6,4,0] - start[4,0] + start[6,0] + interval[6] <= 9999
+ R113: 10000 open[6,5,0] - start[5,0] + start[6,0] + interval[6] <= 9999
+ R114: 10000 open[6,6,0] + interval[6] <= 9999
+ R115: 10000 open[6,7,0] + start[6,0] - start[7,0] + interval[6] <= 9999
+ R116: 10000 open[6,8,0] + start[6,0] - start[8,0] + interval[6] <= 9999
+ R117: 10000 open[6,9,0] + start[6,0] - start[9,0] + interval[6] <= 9999
+ R118: 10000 open[7,0,0] - start[0,0] + start[7,0] + interval[7] <= 9998
+ R119: 10000 open[7,1,0] - start[1,0] + start[7,0] + interval[7] <= 9998
+ R120: 10000 open[7,2,0] - start[2,0] + start[7,0] + interval[7] <= 9998
+ R121: 10000 open[7,3,0] - start[3,0] + start[7,0] + interval[7] <= 9998
+ R122: 10000 open[7,4,0] - start[4,0] + start[7,0] + interval[7] <= 9998
+ R123: 10000 open[7,5,0] - start[5,0] + start[7,0] + interval[7] <= 9998
+ R124: 10000 open[7,6,0] - start[6,0] + start[7,0] + interval[7] <= 9998
+ R125: 10000 open[7,7,0] + interval[7] <= 9998
+ R126: 10000 open[7,8,0] + start[7,0] - start[8,0] + interval[7] <= 9998
+ R127: 10000 open[7,9,0] + start[7,0] - start[9,0] + interval[7] <= 9998
+ R128: 10000 open[8,0,0] - start[0,0] + start[8,0] + interval[8] <= 9998
+ R129: 10000 open[8,1,0] - start[1,0] + start[8,0] + interval[8] <= 9998
+ R130: 10000 open[8,2,0] - start[2,0] + start[8,0] + interval[8] <= 9998
+ R131: 10000 open[8,3,0] - start[3,0] + start[8,0] + interval[8] <= 9998
+ R132: 10000 open[8,4,0] - start[4,0] + start[8,0] + interval[8] <= 9998
+ R133: 10000 open[8,5,0] - start[5,0] + start[8,0] + interval[8] <= 9998
+ R134: 10000 open[8,6,0] - start[6,0] + start[8,0] + interval[8] <= 9998
+ R135: 10000 open[8,7,0] - start[7,0] + start[8,0] + interval[8] <= 9998
+ R136: 10000 open[8,8,0] + interval[8] <= 9998
+ R137: 10000 open[8,9,0] + start[8,0] - start[9,0] + interval[8] <= 9998
+ R138: 10000 open[9,0,0] - start[0,0] + start[9,0] + interval[9] <= 10000
+ R139: 10000 open[9,1,0] - start[1,0] + start[9,0] + interval[9] <= 10000
+ R140: 10000 open[9,2,0] - start[2,0] + start[9,0] + interval[9] <= 10000
+ R141: 10000 open[9,3,0] - start[3,0] + start[9,0] + interval[9] <= 10000
+ R142: 10000 open[9,4,0] - start[4,0] + start[9,0] + interval[9] <= 10000
+ R143: 10000 open[9,5,0] - start[5,0] + start[9,0] + interval[9] <= 10000
+ R144: 10000 open[9,6,0] - start[6,0] + start[9,0] + interval[9] <= 10000
+ R145: 10000 open[9,7,0] - start[7,0] + start[9,0] + interval[9] <= 10000
+ R146: 10000 open[9,8,0] - start[8,0] + start[9,0] + interval[9] <= 10000
+ R147: 10000 open[9,9,0] + interval[9] <= 10000
+ R148: 10000 open[0,0,1] + interval[0] <= 10000
+ R149: 10000 open[0,1,1] + start[0,1] - start[1,1] + interval[0] <= 10000
+ R150: 10000 open[0,2,1] + start[0,1] - start[2,1] + interval[0] <= 10000
+ R151: 10000 open[0,3,1] + start[0,1] - start[3,1] + interval[0] <= 10000
+ R152: 10000 open[0,4,1] + start[0,1] - start[4,1] + interval[0] <= 10000
+ R153: 10000 open[0,5,1] + start[0,1] - start[5,1] + interval[0] <= 10000
+ R154: 10000 open[0,6,1] + start[0,1] - start[6,1] + interval[0] <= 10000
+ R155: 10000 open[0,7,1] + start[0,1] - start[7,1] + interval[0] <= 10000
+ R156: 10000 open[0,8,1] + start[0,1] - start[8,1] + interval[0] <= 10000
+ R157: 10000 open[0,9,1] + start[0,1] - start[9,1] + interval[0] <= 10000
+ R158: 10000 open[1,0,1] - start[0,1] + start[1,1] + interval[1] <= 9999
+ R159: 10000 open[1,1,1] + interval[1] <= 9999
+ R160: 10000 open[1,2,1] + start[1,1] - start[2,1] + interval[1] <= 9999
+ R161: 10000 open[1,3,1] + start[1,1] - start[3,1] + interval[1] <= 9999
+ R162: 10000 open[1,4,1] + start[1,1] - start[4,1] + interval[1] <= 9999
+ R163: 10000 open[1,5,1] + start[1,1] - start[5,1] + interval[1] <= 9999
+ R164: 10000 open[1,6,1] + start[1,1] - start[6,1] + interval[1] <= 9999
+ R165: 10000 open[1,7,1] + start[1,1] - start[7,1] + interval[1] <= 9999
+ R166: 10000 open[1,8,1] + start[1,1] - start[8,1] + interval[1] <= 9999
+ R167: 10000 open[1,9,1] + start[1,1] - start[9,1] + interval[1] <= 9999
+ R168: 10000 open[2,0,1] - start[0,1] + start[2,1] + interval[2] <= 9997
+ R169: 10000 open[2,1,1] - start[1,1] + start[2,1] + interval[2] <= 9997
+ R170: 10000 open[2,2,1] + interval[2] <= 9997
+ R171: 10000 open[2,3,1] + start[2,1] - start[3,1] + interval[2] <= 9997
+ R172: 10000 open[2,4,1] + start[2,1] - start[4,1] + interval[2] <= 9997
+ R173: 10000 open[2,5,1] + start[2,1] - start[5,1] + interval[2] <= 9997
+ R174: 10000 open[2,6,1] + start[2,1] - start[6,1] + interval[2] <= 9997
+ R175: 10000 open[2,7,1] + start[2,1] - start[7,1] + interval[2] <= 9997
+ R176: 10000 open[2,8,1] + start[2,1] - start[8,1] + interval[2] <= 9997
+ R177: 10000 open[2,9,1] + start[2,1] - start[9,1] + interval[2] <= 9997
+ R178: 10000 open[3,0,1] - start[0,1] + start[3,1] + interval[3] <= 9998
+ R179: 10000 open[3,1,1] - start[1,1] + start[3,1] + interval[3] <= 9998
+ R180: 10000 open[3,2,1] - start[2,1] + start[3,1] + interval[3] <= 9998
+ R181: 10000 open[3,3,1] + interval[3] <= 9998
+ R182: 10000 open[3,4,1] + start[3,1] - start[4,1] + interval[3] <= 9998
+ R183: 10000 open[3,5,1] + start[3,1] - start[5,1] + interval[3] <= 9998
+ R184: 10000 open[3,6,1] + start[3,1] - start[6,1] + interval[3] <= 9998
+ R185: 10000 open[3,7,1] + start[3,1] - start[7,1] + interval[3] <= 9998
+ R186: 10000 open[3,8,1] + start[3,1] - start[8,1] + interval[3] <= 9998
+ R187: 10000 open[3,9,1] + start[3,1] - start[9,1] + interval[3] <= 9998
+ R188: 10000 open[4,0,1] - start[0,1] + start[4,1] + interval[4] <= 9998
+ R189: 10000 open[4,1,1] - start[1,1] + start[4,1] + interval[4] <= 9998
+ R190: 10000 open[4,2,1] - start[2,1] + start[4,1] + interval[4] <= 9998
+ R191: 10000 open[4,3,1] - start[3,1] + start[4,1] + interval[4] <= 9998
+ R192: 10000 open[4,4,1] + interval[4] <= 9998
+ R193: 10000 open[4,5,1] + start[4,1] - start[5,1] + interval[4] <= 9998
+ R194: 10000 open[4,6,1] + start[4,1] - start[6,1] + interval[4] <= 9998
+ R195: 10000 open[4,7,1] + start[4,1] - start[7,1] + interval[4] <= 9998
+ R196: 10000 open[4,8,1] + start[4,1] - start[8,1] + interval[4] <= 9998
+ R197: 10000 open[4,9,1] + start[4,1] - start[9,1] + interval[4] <= 9998
+ R198: 10000 open[5,0,1] - start[0,1] + start[5,1] + interval[5] <= 9997
+ R199: 10000 open[5,1,1] - start[1,1] + start[5,1] + interval[5] <= 9997
+ R200: 10000 open[5,2,1] - start[2,1] + start[5,1] + interval[5] <= 9997
+ R201: 10000 open[5,3,1] - start[3,1] + start[5,1] + interval[5] <= 9997
+ R202: 10000 open[5,4,1] - start[4,1] + start[5,1] + interval[5] <= 9997
+ R203: 10000 open[5,5,1] + interval[5] <= 9997
+ R204: 10000 open[5,6,1] + start[5,1] - start[6,1] + interval[5] <= 9997
+ R205: 10000 open[5,7,1] + start[5,1] - start[7,1] + interval[5] <= 9997
+ R206: 10000 open[5,8,1] + start[5,1] - start[8,1] + interval[5] <= 9997
+ R207: 10000 open[5,9,1] + start[5,1] - start[9,1] + interval[5] <= 9997
+ R208: 10000 open[6,0,1] - start[0,1] + start[6,1] + interval[6] <= 9999
+ R209: 10000 open[6,1,1] - start[1,1] + start[6,1] + interval[6] <= 9999
+ R210: 10000 open[6,2,1] - start[2,1] + start[6,1] + interval[6] <= 9999
+ R211: 10000 open[6,3,1] - start[3,1] + start[6,1] + interval[6] <= 9999
+ R212: 10000 open[6,4,1] - start[4,1] + start[6,1] + interval[6] <= 9999
+ R213: 10000 open[6,5,1] - start[5,1] + start[6,1] + interval[6] <= 9999
+ R214: 10000 open[6,6,1] + interval[6] <= 9999
+ R215: 10000 open[6,7,1] + start[6,1] - start[7,1] + interval[6] <= 9999
+ R216: 10000 open[6,8,1] + start[6,1] - start[8,1] + interval[6] <= 9999
+ R217: 10000 open[6,9,1] + start[6,1] - start[9,1] + interval[6] <= 9999
+ R218: 10000 open[7,0,1] - start[0,1] + start[7,1] + interval[7] <= 9998
+ R219: 10000 open[7,1,1] - start[1,1] + start[7,1] + interval[7] <= 9998
+ R220: 10000 open[7,2,1] - start[2,1] + start[7,1] + interval[7] <= 9998
+ R221: 10000 open[7,3,1] - start[3,1] + start[7,1] + interval[7] <= 9998
+ R222: 10000 open[7,4,1] - start[4,1] + start[7,1] + interval[7] <= 9998
+ R223: 10000 open[7,5,1] - start[5,1] + start[7,1] + interval[7] <= 9998
+ R224: 10000 open[7,6,1] - start[6,1] + start[7,1] + interval[7] <= 9998
+ R225: 10000 open[7,7,1] + interval[7] <= 9998
+ R226: 10000 open[7,8,1] + start[7,1] - start[8,1] + interval[7] <= 9998
+ R227: 10000 open[7,9,1] + start[7,1] - start[9,1] + interval[7] <= 9998
+ R228: 10000 open[8,0,1] - start[0,1] + start[8,1] + interval[8] <= 9998
+ R229: 10000 open[8,1,1] - start[1,1] + start[8,1] + interval[8] <= 9998
+ R230: 10000 open[8,2,1] - start[2,1] + start[8,1] + interval[8] <= 9998
+ R231: 10000 open[8,3,1] - start[3,1] + start[8,1] + interval[8] <= 9998
+ R232: 10000 open[8,4,1] - start[4,1] + start[8,1] + interval[8] <= 9998
+ R233: 10000 open[8,5,1] - start[5,1] + start[8,1] + interval[8] <= 9998
+ R234: 10000 open[8,6,1] - start[6,1] + start[8,1] + interval[8] <= 9998
+ R235: 10000 open[8,7,1] - start[7,1] + start[8,1] + interval[8] <= 9998
+ R236: 10000 open[8,8,1] + interval[8] <= 9998
+ R237: 10000 open[8,9,1] + start[8,1] - start[9,1] + interval[8] <= 9998
+ R238: 10000 open[9,0,1] - start[0,1] + start[9,1] + interval[9] <= 10000
+ R239: 10000 open[9,1,1] - start[1,1] + start[9,1] + interval[9] <= 10000
+ R240: 10000 open[9,2,1] - start[2,1] + start[9,1] + interval[9] <= 10000
+ R241: 10000 open[9,3,1] - start[3,1] + start[9,1] + interval[9] <= 10000
+ R242: 10000 open[9,4,1] - start[4,1] + start[9,1] + interval[9] <= 10000
+ R243: 10000 open[9,5,1] - start[5,1] + start[9,1] + interval[9] <= 10000
+ R244: 10000 open[9,6,1] - start[6,1] + start[9,1] + interval[9] <= 10000
+ R245: 10000 open[9,7,1] - start[7,1] + start[9,1] + interval[9] <= 10000
+ R246: 10000 open[9,8,1] - start[8,1] + start[9,1] + interval[9] <= 10000
+ R247: 10000 open[9,9,1] + interval[9] <= 10000
+ R248: 10000 open[0,0,2] + interval[0] <= 10000
+ R249: 10000 open[0,1,2] + start[0,2] - start[1,2] + interval[0] <= 10000
+ R250: 10000 open[0,2,2] + start[0,2] - start[2,2] + interval[0] <= 10000
+ R251: 10000 open[0,3,2] + start[0,2] - start[3,2] + interval[0] <= 10000
+ R252: 10000 open[0,4,2] + start[0,2] - start[4,2] + interval[0] <= 10000
+ R253: 10000 open[0,5,2] + start[0,2] - start[5,2] + interval[0] <= 10000
+ R254: 10000 open[0,6,2] + start[0,2] - start[6,2] + interval[0] <= 10000
+ R255: 10000 open[0,7,2] + start[0,2] - start[7,2] + interval[0] <= 10000
+ R256: 10000 open[0,8,2] + start[0,2] - start[8,2] + interval[0] <= 10000
+ R257: 10000 open[0,9,2] + start[0,2] - start[9,2] + interval[0] <= 10000
+ R258: 10000 open[1,0,2] - start[0,2] + start[1,2] + interval[1] <= 9999
+ R259: 10000 open[1,1,2] + interval[1] <= 9999
+ R260: 10000 open[1,2,2] + start[1,2] - start[2,2] + interval[1] <= 9999
+ R261: 10000 open[1,3,2] + start[1,2] - start[3,2] + interval[1] <= 9999
+ R262: 10000 open[1,4,2] + start[1,2] - start[4,2] + interval[1] <= 9999
+ R263: 10000 open[1,5,2] + start[1,2] - start[5,2] + interval[1] <= 9999
+ R264: 10000 open[1,6,2] + start[1,2] - start[6,2] + interval[1] <= 9999
+ R265: 10000 open[1,7,2] + start[1,2] - start[7,2] + interval[1] <= 9999
+ R266: 10000 open[1,8,2] + start[1,2] - start[8,2] + interval[1] <= 9999
+ R267: 10000 open[1,9,2] + start[1,2] - start[9,2] + interval[1] <= 9999
+ R268: 10000 open[2,0,2] - start[0,2] + start[2,2] + interval[2] <= 9997
+ R269: 10000 open[2,1,2] - start[1,2] + start[2,2] + interval[2] <= 9997
+ R270: 10000 open[2,2,2] + interval[2] <= 9997
+ R271: 10000 open[2,3,2] + start[2,2] - start[3,2] + interval[2] <= 9997
+ R272: 10000 open[2,4,2] + start[2,2] - start[4,2] + interval[2] <= 9997
+ R273: 10000 open[2,5,2] + start[2,2] - start[5,2] + interval[2] <= 9997
+ R274: 10000 open[2,6,2] + start[2,2] - start[6,2] + interval[2] <= 9997
+ R275: 10000 open[2,7,2] + start[2,2] - start[7,2] + interval[2] <= 9997
+ R276: 10000 open[2,8,2] + start[2,2] - start[8,2] + interval[2] <= 9997
+ R277: 10000 open[2,9,2] + start[2,2] - start[9,2] + interval[2] <= 9997
+ R278: 10000 open[3,0,2] - start[0,2] + start[3,2] + interval[3] <= 9998
+ R279: 10000 open[3,1,2] - start[1,2] + start[3,2] + interval[3] <= 9998
+ R280: 10000 open[3,2,2] - start[2,2] + start[3,2] + interval[3] <= 9998
+ R281: 10000 open[3,3,2] + interval[3] <= 9998
+ R282: 10000 open[3,4,2] + start[3,2] - start[4,2] + interval[3] <= 9998
+ R283: 10000 open[3,5,2] + start[3,2] - start[5,2] + interval[3] <= 9998
+ R284: 10000 open[3,6,2] + start[3,2] - start[6,2] + interval[3] <= 9998
+ R285: 10000 open[3,7,2] + start[3,2] - start[7,2] + interval[3] <= 9998
+ R286: 10000 open[3,8,2] + start[3,2] - start[8,2] + interval[3] <= 9998
+ R287: 10000 open[3,9,2] + start[3,2] - start[9,2] + interval[3] <= 9998
+ R288: 10000 open[4,0,2] - start[0,2] + start[4,2] + interval[4] <= 9998
+ R289: 10000 open[4,1,2] - start[1,2] + start[4,2] + interval[4] <= 9998
+ R290: 10000 open[4,2,2] - start[2,2] + start[4,2] + interval[4] <= 9998
+ R291: 10000 open[4,3,2] - start[3,2] + start[4,2] + interval[4] <= 9998
+ R292: 10000 open[4,4,2] + interval[4] <= 9998
+ R293: 10000 open[4,5,2] + start[4,2] - start[5,2] + interval[4] <= 9998
+ R294: 10000 open[4,6,2] + start[4,2] - start[6,2] + interval[4] <= 9998
+ R295: 10000 open[4,7,2] + start[4,2] - start[7,2] + interval[4] <= 9998
+ R296: 10000 open[4,8,2] + start[4,2] - start[8,2] + interval[4] <= 9998
+ R297: 10000 open[4,9,2] + start[4,2] - start[9,2] + interval[4] <= 9998
+ R298: 10000 open[5,0,2] - start[0,2] + start[5,2] + interval[5] <= 9997
+ R299: 10000 open[5,1,2] - start[1,2] + start[5,2] + interval[5] <= 9997
+ R300: 10000 open[5,2,2] - start[2,2] + start[5,2] + interval[5] <= 9997
+ R301: 10000 open[5,3,2] - start[3,2] + start[5,2] + interval[5] <= 9997
+ R302: 10000 open[5,4,2] - start[4,2] + start[5,2] + interval[5] <= 9997
+ R303: 10000 open[5,5,2] + interval[5] <= 9997
+ R304: 10000 open[5,6,2] + start[5,2] - start[6,2] + interval[5] <= 9997
+ R305: 10000 open[5,7,2] + start[5,2] - start[7,2] + interval[5] <= 9997
+ R306: 10000 open[5,8,2] + start[5,2] - start[8,2] + interval[5] <= 9997
+ R307: 10000 open[5,9,2] + start[5,2] - start[9,2] + interval[5] <= 9997
+ R308: 10000 open[6,0,2] - start[0,2] + start[6,2] + interval[6] <= 9999
+ R309: 10000 open[6,1,2] - start[1,2] + start[6,2] + interval[6] <= 9999
+ R310: 10000 open[6,2,2] - start[2,2] + start[6,2] + interval[6] <= 9999
+ R311: 10000 open[6,3,2] - start[3,2] + start[6,2] + interval[6] <= 9999
+ R312: 10000 open[6,4,2] - start[4,2] + start[6,2] + interval[6] <= 9999
+ R313: 10000 open[6,5,2] - start[5,2] + start[6,2] + interval[6] <= 9999
+ R314: 10000 open[6,6,2] + interval[6] <= 9999
+ R315: 10000 open[6,7,2] + start[6,2] - start[7,2] + interval[6] <= 9999
+ R316: 10000 open[6,8,2] + start[6,2] - start[8,2] + interval[6] <= 9999
+ R317: 10000 open[6,9,2] + start[6,2] - start[9,2] + interval[6] <= 9999
+ R318: 10000 open[7,0,2] - start[0,2] + start[7,2] + interval[7] <= 9998
+ R319: 10000 open[7,1,2] - start[1,2] + start[7,2] + interval[7] <= 9998
+ R320: 10000 open[7,2,2] - start[2,2] + start[7,2] + interval[7] <= 9998
+ R321: 10000 open[7,3,2] - start[3,2] + start[7,2] + interval[7] <= 9998
+ R322: 10000 open[7,4,2] - start[4,2] + start[7,2] + interval[7] <= 9998
+ R323: 10000 open[7,5,2] - start[5,2] + start[7,2] + interval[7] <= 9998
+ R324: 10000 open[7,6,2] - start[6,2] + start[7,2] + interval[7] <= 9998
+ R325: 10000 open[7,7,2] + interval[7] <= 9998
+ R326: 10000 open[7,8,2] + start[7,2] - start[8,2] + interval[7] <= 9998
+ R327: 10000 open[7,9,2] + start[7,2] - start[9,2] + interval[7] <= 9998
+ R328: 10000 open[8,0,2] - start[0,2] + start[8,2] + interval[8] <= 9998
+ R329: 10000 open[8,1,2] - start[1,2] + start[8,2] + interval[8] <= 9998
+ R330: 10000 open[8,2,2] - start[2,2] + start[8,2] + interval[8] <= 9998
+ R331: 10000 open[8,3,2] - start[3,2] + start[8,2] + interval[8] <= 9998
+ R332: 10000 open[8,4,2] - start[4,2] + start[8,2] + interval[8] <= 9998
+ R333: 10000 open[8,5,2] - start[5,2] + start[8,2] + interval[8] <= 9998
+ R334: 10000 open[8,6,2] - start[6,2] + start[8,2] + interval[8] <= 9998
+ R335: 10000 open[8,7,2] - start[7,2] + start[8,2] + interval[8] <= 9998
+ R336: 10000 open[8,8,2] + interval[8] <= 9998
+ R337: 10000 open[8,9,2] + start[8,2] - start[9,2] + interval[8] <= 9998
+ R338: 10000 open[9,0,2] - start[0,2] + start[9,2] + interval[9] <= 10000
+ R339: 10000 open[9,1,2] - start[1,2] + start[9,2] + interval[9] <= 10000
+ R340: 10000 open[9,2,2] - start[2,2] + start[9,2] + interval[9] <= 10000
+ R341: 10000 open[9,3,2] - start[3,2] + start[9,2] + interval[9] <= 10000
+ R342: 10000 open[9,4,2] - start[4,2] + start[9,2] + interval[9] <= 10000
+ R343: 10000 open[9,5,2] - start[5,2] + start[9,2] + interval[9] <= 10000
+ R344: 10000 open[9,6,2] - start[6,2] + start[9,2] + interval[9] <= 10000
+ R345: 10000 open[9,7,2] - start[7,2] + start[9,2] + interval[9] <= 10000
+ R346: 10000 open[9,8,2] - start[8,2] + start[9,2] + interval[9] <= 10000
+ R347: 10000 open[9,9,2] + interval[9] <= 10000
+ R348: 10000 open[0,0,3] + interval[0] <= 10000
+ R349: 10000 open[0,1,3] + start[0,3] - start[1,3] + interval[0] <= 10000
+ R350: 10000 open[0,2,3] + start[0,3] - start[2,3] + interval[0] <= 10000
+ R351: 10000 open[0,3,3] + start[0,3] - start[3,3] + interval[0] <= 10000
+ R352: 10000 open[0,4,3] + start[0,3] - start[4,3] + interval[0] <= 10000
+ R353: 10000 open[0,5,3] + start[0,3] - start[5,3] + interval[0] <= 10000
+ R354: 10000 open[0,6,3] + start[0,3] - start[6,3] + interval[0] <= 10000
+ R355: 10000 open[0,7,3] + start[0,3] - start[7,3] + interval[0] <= 10000
+ R356: 10000 open[0,8,3] + start[0,3] - start[8,3] + interval[0] <= 10000
+ R357: 10000 open[0,9,3] + start[0,3] - start[9,3] + interval[0] <= 10000
+ R358: 10000 open[1,0,3] - start[0,3] + start[1,3] + interval[1] <= 9999
+ R359: 10000 open[1,1,3] + interval[1] <= 9999
+ R360: 10000 open[1,2,3] + start[1,3] - start[2,3] + interval[1] <= 9999
+ R361: 10000 open[1,3,3] + start[1,3] - start[3,3] + interval[1] <= 9999
+ R362: 10000 open[1,4,3] + start[1,3] - start[4,3] + interval[1] <= 9999
+ R363: 10000 open[1,5,3] + start[1,3] - start[5,3] + interval[1] <= 9999
+ R364: 10000 open[1,6,3] + start[1,3] - start[6,3] + interval[1] <= 9999
+ R365: 10000 open[1,7,3] + start[1,3] - start[7,3] + interval[1] <= 9999
+ R366: 10000 open[1,8,3] + start[1,3] - start[8,3] + interval[1] <= 9999
+ R367: 10000 open[1,9,3] + start[1,3] - start[9,3] + interval[1] <= 9999
+ R368: 10000 open[2,0,3] - start[0,3] + start[2,3] + interval[2] <= 9997
+ R369: 10000 open[2,1,3] - start[1,3] + start[2,3] + interval[2] <= 9997
+ R370: 10000 open[2,2,3] + interval[2] <= 9997
+ R371: 10000 open[2,3,3] + start[2,3] - start[3,3] + interval[2] <= 9997
+ R372: 10000 open[2,4,3] + start[2,3] - start[4,3] + interval[2] <= 9997
+ R373: 10000 open[2,5,3] + start[2,3] - start[5,3] + interval[2] <= 9997
+ R374: 10000 open[2,6,3] + start[2,3] - start[6,3] + interval[2] <= 9997
+ R375: 10000 open[2,7,3] + start[2,3] - start[7,3] + interval[2] <= 9997
+ R376: 10000 open[2,8,3] + start[2,3] - start[8,3] + interval[2] <= 9997
+ R377: 10000 open[2,9,3] + start[2,3] - start[9,3] + interval[2] <= 9997
+ R378: 10000 open[3,0,3] - start[0,3] + start[3,3] + interval[3] <= 9998
+ R379: 10000 open[3,1,3] - start[1,3] + start[3,3] + interval[3] <= 9998
+ R380: 10000 open[3,2,3] - start[2,3] + start[3,3] + interval[3] <= 9998
+ R381: 10000 open[3,3,3] + interval[3] <= 9998
+ R382: 10000 open[3,4,3] + start[3,3] - start[4,3] + interval[3] <= 9998
+ R383: 10000 open[3,5,3] + start[3,3] - start[5,3] + interval[3] <= 9998
+ R384: 10000 open[3,6,3] + start[3,3] - start[6,3] + interval[3] <= 9998
+ R385: 10000 open[3,7,3] + start[3,3] - start[7,3] + interval[3] <= 9998
+ R386: 10000 open[3,8,3] + start[3,3] - start[8,3] + interval[3] <= 9998
+ R387: 10000 open[3,9,3] + start[3,3] - start[9,3] + interval[3] <= 9998
+ R388: 10000 open[4,0,3] - start[0,3] + start[4,3] + interval[4] <= 9998
+ R389: 10000 open[4,1,3] - start[1,3] + start[4,3] + interval[4] <= 9998
+ R390: 10000 open[4,2,3] - start[2,3] + start[4,3] + interval[4] <= 9998
+ R391: 10000 open[4,3,3] - start[3,3] + start[4,3] + interval[4] <= 9998
+ R392: 10000 open[4,4,3] + interval[4] <= 9998
+ R393: 10000 open[4,5,3] + start[4,3] - start[5,3] + interval[4] <= 9998
+ R394: 10000 open[4,6,3] + start[4,3] - start[6,3] + interval[4] <= 9998
+ R395: 10000 open[4,7,3] + start[4,3] - start[7,3] + interval[4] <= 9998
+ R396: 10000 open[4,8,3] + start[4,3] - start[8,3] + interval[4] <= 9998
+ R397: 10000 open[4,9,3] + start[4,3] - start[9,3] + interval[4] <= 9998
+ R398: 10000 open[5,0,3] - start[0,3] + start[5,3] + interval[5] <= 9997
+ R399: 10000 open[5,1,3] - start[1,3] + start[5,3] + interval[5] <= 9997
+ R400: 10000 open[5,2,3] - start[2,3] + start[5,3] + interval[5] <= 9997
+ R401: 10000 open[5,3,3] - start[3,3] + start[5,3] + interval[5] <= 9997
+ R402: 10000 open[5,4,3] - start[4,3] + start[5,3] + interval[5] <= 9997
+ R403: 10000 open[5,5,3] + interval[5] <= 9997
+ R404: 10000 open[5,6,3] + start[5,3] - start[6,3] + interval[5] <= 9997
+ R405: 10000 open[5,7,3] + start[5,3] - start[7,3] + interval[5] <= 9997
+ R406: 10000 open[5,8,3] + start[5,3] - start[8,3] + interval[5] <= 9997
+ R407: 10000 open[5,9,3] + start[5,3] - start[9,3] + interval[5] <= 9997
+ R408: 10000 open[6,0,3] - start[0,3] + start[6,3] + interval[6] <= 9999
+ R409: 10000 open[6,1,3] - start[1,3] + start[6,3] + interval[6] <= 9999
+ R410: 10000 open[6,2,3] - start[2,3] + start[6,3] + interval[6] <= 9999
+ R411: 10000 open[6,3,3] - start[3,3] + start[6,3] + interval[6] <= 9999
+ R412: 10000 open[6,4,3] - start[4,3] + start[6,3] + interval[6] <= 9999
+ R413: 10000 open[6,5,3] - start[5,3] + start[6,3] + interval[6] <= 9999
+ R414: 10000 open[6,6,3] + interval[6] <= 9999
+ R415: 10000 open[6,7,3] + start[6,3] - start[7,3] + interval[6] <= 9999
+ R416: 10000 open[6,8,3] + start[6,3] - start[8,3] + interval[6] <= 9999
+ R417: 10000 open[6,9,3] + start[6,3] - start[9,3] + interval[6] <= 9999
+ R418: 10000 open[7,0,3] - start[0,3] + start[7,3] + interval[7] <= 9998
+ R419: 10000 open[7,1,3] - start[1,3] + start[7,3] + interval[7] <= 9998
+ R420: 10000 open[7,2,3] - start[2,3] + start[7,3] + interval[7] <= 9998
+ R421: 10000 open[7,3,3] - start[3,3] + start[7,3] + interval[7] <= 9998
+ R422: 10000 open[7,4,3] - start[4,3] + start[7,3] + interval[7] <= 9998
+ R423: 10000 open[7,5,3] - start[5,3] + start[7,3] + interval[7] <= 9998
+ R424: 10000 open[7,6,3] - start[6,3] + start[7,3] + interval[7] <= 9998
+ R425: 10000 open[7,7,3] + interval[7] <= 9998
+ R426: 10000 open[7,8,3] + start[7,3] - start[8,3] + interval[7] <= 9998
+ R427: 10000 open[7,9,3] + start[7,3] - start[9,3] + interval[7] <= 9998
+ R428: 10000 open[8,0,3] - start[0,3] + start[8,3] + interval[8] <= 9998
+ R429: 10000 open[8,1,3] - start[1,3] + start[8,3] + interval[8] <= 9998
+ R430: 10000 open[8,2,3] - start[2,3] + start[8,3] + interval[8] <= 9998
+ R431: 10000 open[8,3,3] - start[3,3] + start[8,3] + interval[8] <= 9998
+ R432: 10000 open[8,4,3] - start[4,3] + start[8,3] + interval[8] <= 9998
+ R433: 10000 open[8,5,3] - start[5,3] + start[8,3] + interval[8] <= 9998
+ R434: 10000 open[8,6,3] - start[6,3] + start[8,3] + interval[8] <= 9998
+ R435: 10000 open[8,7,3] - start[7,3] + start[8,3] + interval[8] <= 9998
+ R436: 10000 open[8,8,3] + interval[8] <= 9998
+ R437: 10000 open[8,9,3] + start[8,3] - start[9,3] + interval[8] <= 9998
+ R438: 10000 open[9,0,3] - start[0,3] + start[9,3] + interval[9] <= 10000
+ R439: 10000 open[9,1,3] - start[1,3] + start[9,3] + interval[9] <= 10000
+ R440: 10000 open[9,2,3] - start[2,3] + start[9,3] + interval[9] <= 10000
+ R441: 10000 open[9,3,3] - start[3,3] + start[9,3] + interval[9] <= 10000
+ R442: 10000 open[9,4,3] - start[4,3] + start[9,3] + interval[9] <= 10000
+ R443: 10000 open[9,5,3] - start[5,3] + start[9,3] + interval[9] <= 10000
+ R444: 10000 open[9,6,3] - start[6,3] + start[9,3] + interval[9] <= 10000
+ R445: 10000 open[9,7,3] - start[7,3] + start[9,3] + interval[9] <= 10000
+ R446: 10000 open[9,8,3] - start[8,3] + start[9,3] + interval[9] <= 10000
+ R447: 10000 open[9,9,3] + interval[9] <= 10000
+ R448: 12 open[1,1,0] + 12 open[1,2,0] + 12 open[1,3,0] + 12 open[1,4,0]
+   + 12 open[1,5,0] + 12 open[1,6,0] + 12 open[1,7,0] + 12 open[1,8,0]
+   + 12 open[1,9,0] - start[1,0] <= 0
+ R449: 14 open[2,1,0] + 14 open[2,2,0] + 14 open[2,3,0] + 14 open[2,4,0]
+   + 14 open[2,5,0] + 14 open[2,6,0] + 14 open[2,7,0] + 14 open[2,8,0]
+   + 14 open[2,9,0] - start[2,0] <= 0
+ R450: 13 open[3,1,0] + 13 open[3,2,0] + 13 open[3,3,0] + 13 open[3,4,0]
+   + 13 open[3,5,0] + 13 open[3,6,0] + 13 open[3,7,0] + 13 open[3,8,0]
+   + 13 open[3,9,0] - start[3,0] <= 0
+ R451: 11 open[4,1,0] + 11 open[4,2,0] + 11 open[4,3,0] + 11 open[4,4,0]
+   + 11 open[4,5,0] + 11 open[4,6,0] + 11 open[4,7,0] + 11 open[4,8,0]
+   + 11 open[4,9,0] - start[4,0] <= 0
+ R452: 14 open[5,1,0] + 14 open[5,2,0] + 14 open[5,3,0] + 14 open[5,4,0]
+   + 14 open[5,5,0] + 14 open[5,6,0] + 14 open[5,7,0] + 14 open[5,8,0]
+   + 14 open[5,9,0] - start[5,0] <= 0
+ R453: 13 open[6,1,0] + 13 open[6,2,0] + 13 open[6,3,0] + 13 open[6,4,0]
+   + 13 open[6,5,0] + 13 open[6,6,0] + 13 open[6,7,0] + 13 open[6,8,0]
+   + 13 open[6,9,0] - start[6,0] <= 0
+ R454: 14 open[7,1,0] + 14 open[7,2,0] + 14 open[7,3,0] + 14 open[7,4,0]
+   + 14 open[7,5,0] + 14 open[7,6,0] + 14 open[7,7,0] + 14 open[7,8,0]
+   + 14 open[7,9,0] - start[7,0] <= 0
+ R455: 17 open[8,1,0] + 17 open[8,2,0] + 17 open[8,3,0] + 17 open[8,4,0]
+   + 17 open[8,5,0] + 17 open[8,6,0] + 17 open[8,7,0] + 17 open[8,8,0]
+   + 17 open[8,9,0] - start[8,0] <= 0
+ R456: 12 open[1,1,1] + 12 open[1,2,1] + 12 open[1,3,1] + 12 open[1,4,1]
+   + 12 open[1,5,1] + 12 open[1,6,1] + 12 open[1,7,1] + 12 open[1,8,1]
+   + 12 open[1,9,1] - start[1,1] <= 0
+ R457: 14 open[2,1,1] + 14 open[2,2,1] + 14 open[2,3,1] + 14 open[2,4,1]
+   + 14 open[2,5,1] + 14 open[2,6,1] + 14 open[2,7,1] + 14 open[2,8,1]
+   + 14 open[2,9,1] - start[2,1] <= 0
+ R458: 13 open[3,1,1] + 13 open[3,2,1] + 13 open[3,3,1] + 13 open[3,4,1]
+   + 13 open[3,5,1] + 13 open[3,6,1] + 13 open[3,7,1] + 13 open[3,8,1]
+   + 13 open[3,9,1] - start[3,1] <= 0
+ R459: 11 open[4,1,1] + 11 open[4,2,1] + 11 open[4,3,1] + 11 open[4,4,1]
+   + 11 open[4,5,1] + 11 open[4,6,1] + 11 open[4,7,1] + 11 open[4,8,1]
+   + 11 open[4,9,1] - start[4,1] <= 0
+ R460: 14 open[5,1,1] + 14 open[5,2,1] + 14 open[5,3,1] + 14 open[5,4,1]
+   + 14 open[5,5,1] + 14 open[5,6,1] + 14 open[5,7,1] + 14 open[5,8,1]
+   + 14 open[5,9,1] - start[5,1] <= 0
+ R461: 13 open[6,1,1] + 13 open[6,2,1] + 13 open[6,3,1] + 13 open[6,4,1]
+   + 13 open[6,5,1] + 13 open[6,6,1] + 13 open[6,7,1] + 13 open[6,8,1]
+   + 13 open[6,9,1] - start[6,1] <= 0
+ R462: 14 open[7,1,1] + 14 open[7,2,1] + 14 open[7,3,1] + 14 open[7,4,1]
+   + 14 open[7,5,1] + 14 open[7,6,1] + 14 open[7,7,1] + 14 open[7,8,1]
+   + 14 open[7,9,1] - start[7,1] <= 0
+ R463: 17 open[8,1,1] + 17 open[8,2,1] + 17 open[8,3,1] + 17 open[8,4,1]
+   + 17 open[8,5,1] + 17 open[8,6,1] + 17 open[8,7,1] + 17 open[8,8,1]
+   + 17 open[8,9,1] - start[8,1] <= 0
+ R464: 12 open[1,1,2] + 12 open[1,2,2] + 12 open[1,3,2] + 12 open[1,4,2]
+   + 12 open[1,5,2] + 12 open[1,6,2] + 12 open[1,7,2] + 12 open[1,8,2]
+   + 12 open[1,9,2] - start[1,2] <= 0
+ R465: 14 open[2,1,2] + 14 open[2,2,2] + 14 open[2,3,2] + 14 open[2,4,2]
+   + 14 open[2,5,2] + 14 open[2,6,2] + 14 open[2,7,2] + 14 open[2,8,2]
+   + 14 open[2,9,2] - start[2,2] <= 0
+ R466: 13 open[3,1,2] + 13 open[3,2,2] + 13 open[3,3,2] + 13 open[3,4,2]
+   + 13 open[3,5,2] + 13 open[3,6,2] + 13 open[3,7,2] + 13 open[3,8,2]
+   + 13 open[3,9,2] - start[3,2] <= 0
+ R467: 11 open[4,1,2] + 11 open[4,2,2] + 11 open[4,3,2] + 11 open[4,4,2]
+   + 11 open[4,5,2] + 11 open[4,6,2] + 11 open[4,7,2] + 11 open[4,8,2]
+   + 11 open[4,9,2] - start[4,2] <= 0
+ R468: 14 open[5,1,2] + 14 open[5,2,2] + 14 open[5,3,2] + 14 open[5,4,2]
+   + 14 open[5,5,2] + 14 open[5,6,2] + 14 open[5,7,2] + 14 open[5,8,2]
+   + 14 open[5,9,2] - start[5,2] <= 0
+ R469: 13 open[6,1,2] + 13 open[6,2,2] + 13 open[6,3,2] + 13 open[6,4,2]
+   + 13 open[6,5,2] + 13 open[6,6,2] + 13 open[6,7,2] + 13 open[6,8,2]
+   + 13 open[6,9,2] - start[6,2] <= 0
+ R470: 14 open[7,1,2] + 14 open[7,2,2] + 14 open[7,3,2] + 14 open[7,4,2]
+   + 14 open[7,5,2] + 14 open[7,6,2] + 14 open[7,7,2] + 14 open[7,8,2]
+   + 14 open[7,9,2] - start[7,2] <= 0
+ R471: 17 open[8,1,2] + 17 open[8,2,2] + 17 open[8,3,2] + 17 open[8,4,2]
+   + 17 open[8,5,2] + 17 open[8,6,2] + 17 open[8,7,2] + 17 open[8,8,2]
+   + 17 open[8,9,2] - start[8,2] <= 0
+ R472: 12 open[1,1,3] + 12 open[1,2,3] + 12 open[1,3,3] + 12 open[1,4,3]
+   + 12 open[1,5,3] + 12 open[1,6,3] + 12 open[1,7,3] + 12 open[1,8,3]
+   + 12 open[1,9,3] - start[1,3] <= 0
+ R473: 14 open[2,1,3] + 14 open[2,2,3] + 14 open[2,3,3] + 14 open[2,4,3]
+   + 14 open[2,5,3] + 14 open[2,6,3] + 14 open[2,7,3] + 14 open[2,8,3]
+   + 14 open[2,9,3] - start[2,3] <= 0
+ R474: 13 open[3,1,3] + 13 open[3,2,3] + 13 open[3,3,3] + 13 open[3,4,3]
+   + 13 open[3,5,3] + 13 open[3,6,3] + 13 open[3,7,3] + 13 open[3,8,3]
+   + 13 open[3,9,3] - start[3,3] <= 0
+ R475: 11 open[4,1,3] + 11 open[4,2,3] + 11 open[4,3,3] + 11 open[4,4,3]
+   + 11 open[4,5,3] + 11 open[4,6,3] + 11 open[4,7,3] + 11 open[4,8,3]
+   + 11 open[4,9,3] - start[4,3] <= 0
+ R476: 14 open[5,1,3] + 14 open[5,2,3] + 14 open[5,3,3] + 14 open[5,4,3]
+   + 14 open[5,5,3] + 14 open[5,6,3] + 14 open[5,7,3] + 14 open[5,8,3]
+   + 14 open[5,9,3] - start[5,3] <= 0
+ R477: 13 open[6,1,3] + 13 open[6,2,3] + 13 open[6,3,3] + 13 open[6,4,3]
+   + 13 open[6,5,3] + 13 open[6,6,3] + 13 open[6,7,3] + 13 open[6,8,3]
+   + 13 open[6,9,3] - start[6,3] <= 0
+ R478: 14 open[7,1,3] + 14 open[7,2,3] + 14 open[7,3,3] + 14 open[7,4,3]
+   + 14 open[7,5,3] + 14 open[7,6,3] + 14 open[7,7,3] + 14 open[7,8,3]
+   + 14 open[7,9,3] - start[7,3] <= 0
+ R479: 17 open[8,1,3] + 17 open[8,2,3] + 17 open[8,3,3] + 17 open[8,4,3]
+   + 17 open[8,5,3] + 17 open[8,6,3] + 17 open[8,7,3] + 17 open[8,8,3]
+   + 17 open[8,9,3] - start[8,3] <= 0
+ R480: 16 open[1,1,0] + 16 open[1,2,0] + 16 open[1,3,0] + 16 open[1,4,0]
+   + 16 open[1,5,0] + 16 open[1,6,0] + 16 open[1,7,0] + 16 open[1,8,0]
+   + 16 open[1,9,0] - start[1,0] >= 0
+ R481: 16 open[2,1,0] + 16 open[2,2,0] + 16 open[2,3,0] + 16 open[2,4,0]
+   + 16 open[2,5,0] + 16 open[2,6,0] + 16 open[2,7,0] + 16 open[2,8,0]
+   + 16 open[2,9,0] - start[2,0] >= 0
+ R482: 16 open[3,1,0] + 16 open[3,2,0] + 16 open[3,3,0] + 16 open[3,4,0]
+   + 16 open[3,5,0] + 16 open[3,6,0] + 16 open[3,7,0] + 16 open[3,8,0]
+   + 16 open[3,9,0] - start[3,0] >= 0
+ R483: 14 open[4,1,0] + 14 open[4,2,0] + 14 open[4,3,0] + 14 open[4,4,0]
+   + 14 open[4,5,0] + 14 open[4,6,0] + 14 open[4,7,0] + 14 open[4,8,0]
+   + 14 open[4,9,0] - start[4,0] >= 0
+ R484: 16 open[5,1,0] + 16 open[5,2,0] + 16 open[5,3,0] + 16 open[5,4,0]
+   + 16 open[5,5,0] + 16 open[5,6,0] + 16 open[5,7,0] + 16 open[5,8,0]
+   + 16 open[5,9,0] - start[5,0] >= 0
+ R485: 16 open[6,1,0] + 16 open[6,2,0] + 16 open[6,3,0] + 16 open[6,4,0]
+   + 16 open[6,5,0] + 16 open[6,6,0] + 16 open[6,7,0] + 16 open[6,8,0]
+   + 16 open[6,9,0] - start[6,0] >= 0
+ R486: 17 open[7,1,0] + 17 open[7,2,0] + 17 open[7,3,0] + 17 open[7,4,0]
+   + 17 open[7,5,0] + 17 open[7,6,0] + 17 open[7,7,0] + 17 open[7,8,0]
+   + 17 open[7,9,0] - start[7,0] >= 0
+ R487: 21 open[8,1,0] + 21 open[8,2,0] + 21 open[8,3,0] + 21 open[8,4,0]
+   + 21 open[8,5,0] + 21 open[8,6,0] + 21 open[8,7,0] + 21 open[8,8,0]
+   + 21 open[8,9,0] - start[8,0] >= 0
+ R488: 16 open[1,1,1] + 16 open[1,2,1] + 16 open[1,3,1] + 16 open[1,4,1]
+   + 16 open[1,5,1] + 16 open[1,6,1] + 16 open[1,7,1] + 16 open[1,8,1]
+   + 16 open[1,9,1] - start[1,1] >= 0
+ R489: 16 open[2,1,1] + 16 open[2,2,1] + 16 open[2,3,1] + 16 open[2,4,1]
+   + 16 open[2,5,1] + 16 open[2,6,1] + 16 open[2,7,1] + 16 open[2,8,1]
+   + 16 open[2,9,1] - start[2,1] >= 0
+ R490: 16 open[3,1,1] + 16 open[3,2,1] + 16 open[3,3,1] + 16 open[3,4,1]
+   + 16 open[3,5,1] + 16 open[3,6,1] + 16 open[3,7,1] + 16 open[3,8,1]
+   + 16 open[3,9,1] - start[3,1] >= 0
+ R491: 14 open[4,1,1] + 14 open[4,2,1] + 14 open[4,3,1] + 14 open[4,4,1]
+   + 14 open[4,5,1] + 14 open[4,6,1] + 14 open[4,7,1] + 14 open[4,8,1]
+   + 14 open[4,9,1] - start[4,1] >= 0
+ R492: 16 open[5,1,1] + 16 open[5,2,1] + 16 open[5,3,1] + 16 open[5,4,1]
+   + 16 open[5,5,1] + 16 open[5,6,1] + 16 open[5,7,1] + 16 open[5,8,1]
+   + 16 open[5,9,1] - start[5,1] >= 0
+ R493: 16 open[6,1,1] + 16 open[6,2,1] + 16 open[6,3,1] + 16 open[6,4,1]
+   + 16 open[6,5,1] + 16 open[6,6,1] + 16 open[6,7,1] + 16 open[6,8,1]
+   + 16 open[6,9,1] - start[6,1] >= 0
+ R494: 17 open[7,1,1] + 17 open[7,2,1] + 17 open[7,3,1] + 17 open[7,4,1]
+   + 17 open[7,5,1] + 17 open[7,6,1] + 17 open[7,7,1] + 17 open[7,8,1]
+   + 17 open[7,9,1] - start[7,1] >= 0
+ R495: 21 open[8,1,1] + 21 open[8,2,1] + 21 open[8,3,1] + 21 open[8,4,1]
+   + 21 open[8,5,1] + 21 open[8,6,1] + 21 open[8,7,1] + 21 open[8,8,1]
+   + 21 open[8,9,1] - start[8,1] >= 0
+ R496: 16 open[1,1,2] + 16 open[1,2,2] + 16 open[1,3,2] + 16 open[1,4,2]
+   + 16 open[1,5,2] + 16 open[1,6,2] + 16 open[1,7,2] + 16 open[1,8,2]
+   + 16 open[1,9,2] - start[1,2] >= 0
+ R497: 16 open[2,1,2] + 16 open[2,2,2] + 16 open[2,3,2] + 16 open[2,4,2]
+   + 16 open[2,5,2] + 16 open[2,6,2] + 16 open[2,7,2] + 16 open[2,8,2]
+   + 16 open[2,9,2] - start[2,2] >= 0
+ R498: 16 open[3,1,2] + 16 open[3,2,2] + 16 open[3,3,2] + 16 open[3,4,2]
+   + 16 open[3,5,2] + 16 open[3,6,2] + 16 open[3,7,2] + 16 open[3,8,2]
+   + 16 open[3,9,2] - start[3,2] >= 0
+ R499: 14 open[4,1,2] + 14 open[4,2,2] + 14 open[4,3,2] + 14 open[4,4,2]
+   + 14 open[4,5,2] + 14 open[4,6,2] + 14 open[4,7,2] + 14 open[4,8,2]
+   + 14 open[4,9,2] - start[4,2] >= 0
+ R500: 16 open[5,1,2] + 16 open[5,2,2] + 16 open[5,3,2] + 16 open[5,4,2]
+   + 16 open[5,5,2] + 16 open[5,6,2] + 16 open[5,7,2] + 16 open[5,8,2]
+   + 16 open[5,9,2] - start[5,2] >= 0
+ R501: 16 open[6,1,2] + 16 open[6,2,2] + 16 open[6,3,2] + 16 open[6,4,2]
+   + 16 open[6,5,2] + 16 open[6,6,2] + 16 open[6,7,2] + 16 open[6,8,2]
+   + 16 open[6,9,2] - start[6,2] >= 0
+ R502: 17 open[7,1,2] + 17 open[7,2,2] + 17 open[7,3,2] + 17 open[7,4,2]
+   + 17 open[7,5,2] + 17 open[7,6,2] + 17 open[7,7,2] + 17 open[7,8,2]
+   + 17 open[7,9,2] - start[7,2] >= 0
+ R503: 21 open[8,1,2] + 21 open[8,2,2] + 21 open[8,3,2] + 21 open[8,4,2]
+   + 21 open[8,5,2] + 21 open[8,6,2] + 21 open[8,7,2] + 21 open[8,8,2]
+   + 21 open[8,9,2] - start[8,2] >= 0
+ R504: 16 open[1,1,3] + 16 open[1,2,3] + 16 open[1,3,3] + 16 open[1,4,3]
+   + 16 open[1,5,3] + 16 open[1,6,3] + 16 open[1,7,3] + 16 open[1,8,3]
+   + 16 open[1,9,3] - start[1,3] >= 0
+ R505: 16 open[2,1,3] + 16 open[2,2,3] + 16 open[2,3,3] + 16 open[2,4,3]
+   + 16 open[2,5,3] + 16 open[2,6,3] + 16 open[2,7,3] + 16 open[2,8,3]
+   + 16 open[2,9,3] - start[2,3] >= 0
+ R506: 16 open[3,1,3] + 16 open[3,2,3] + 16 open[3,3,3] + 16 open[3,4,3]
+   + 16 open[3,5,3] + 16 open[3,6,3] + 16 open[3,7,3] + 16 open[3,8,3]
+   + 16 open[3,9,3] - start[3,3] >= 0
+ R507: 14 open[4,1,3] + 14 open[4,2,3] + 14 open[4,3,3] + 14 open[4,4,3]
+   + 14 open[4,5,3] + 14 open[4,6,3] + 14 open[4,7,3] + 14 open[4,8,3]
+   + 14 open[4,9,3] - start[4,3] >= 0
+ R508: 16 open[5,1,3] + 16 open[5,2,3] + 16 open[5,3,3] + 16 open[5,4,3]
+   + 16 open[5,5,3] + 16 open[5,6,3] + 16 open[5,7,3] + 16 open[5,8,3]
+   + 16 open[5,9,3] - start[5,3] >= 0
+ R509: 16 open[6,1,3] + 16 open[6,2,3] + 16 open[6,3,3] + 16 open[6,4,3]
+   + 16 open[6,5,3] + 16 open[6,6,3] + 16 open[6,7,3] + 16 open[6,8,3]
+   + 16 open[6,9,3] - start[6,3] >= 0
+ R510: 17 open[7,1,3] + 17 open[7,2,3] + 17 open[7,3,3] + 17 open[7,4,3]
+   + 17 open[7,5,3] + 17 open[7,6,3] + 17 open[7,7,3] + 17 open[7,8,3]
+   + 17 open[7,9,3] - start[7,3] >= 0
+ R511: 21 open[8,1,3] + 21 open[8,2,3] + 21 open[8,3,3] + 21 open[8,4,3]
+   + 21 open[8,5,3] + 21 open[8,6,3] + 21 open[8,7,3] + 21 open[8,8,3]
+   + 21 open[8,9,3] - start[8,3] >= 0
+ R512: start[0,0] = 0
+ R513: start[0,1] = 0
+ R514: start[0,2] = 0
+ R515: start[0,3] = 0
+ R516: start[9,0] = 24
+ R517: start[9,1] = 24
+ R518: start[9,2] = 24
+ R519: start[9,3] = 24
+ R520: open[1,1,0] + open[1,2,0] + open[1,3,0] + open[1,4,0] + open[1,5,0]
+   + open[1,6,0] + open[1,7,0] + open[1,8,0] + open[1,9,0] - 2 interval[1]
+   <= 0
+ R521: open[2,1,0] + open[2,2,0] + open[2,3,0] + open[2,4,0] + open[2,5,0]
+   + open[2,6,0] + open[2,7,0] + open[2,8,0] + open[2,9,0] - 2 interval[2]
+   <= 0
+ R522: open[3,1,0] + open[3,2,0] + open[3,3,0] + open[3,4,0] + open[3,5,0]
+   + open[3,6,0] + open[3,7,0] + open[3,8,0] + open[3,9,0] - 2 interval[3]
+   <= 0
+ R523: open[4,1,0] + open[4,2,0] + open[4,3,0] + open[4,4,0] + open[4,5,0]
+   + open[4,6,0] + open[4,7,0] + open[4,8,0] + open[4,9,0] - 2 interval[4]
+   <= 0
+ R524: open[5,1,0] + open[5,2,0] + open[5,3,0] + open[5,4,0] + open[5,5,0]
+   + open[5,6,0] + open[5,7,0] + open[5,8,0] + open[5,9,0] - 2 interval[5]
+   <= 0
+ R525: open[6,1,0] + open[6,2,0] + open[6,3,0] + open[6,4,0] + open[6,5,0]
+   + open[6,6,0] + open[6,7,0] + open[6,8,0] + open[6,9,0] - 2 interval[6]
+   <= 0
+ R526: open[7,1,0] + open[7,2,0] + open[7,3,0] + open[7,4,0] + open[7,5,0]
+   + open[7,6,0] + open[7,7,0] + open[7,8,0] + open[7,9,0] - 2 interval[7]
+   <= 0
+ R527: open[8,1,0] + open[8,2,0] + open[8,3,0] + open[8,4,0] + open[8,5,0]
+   + open[8,6,0] + open[8,7,0] + open[8,8,0] + open[8,9,0] - 2 interval[8]
+   <= 0
+ R528: open[1,1,1] + open[1,2,1] + open[1,3,1] + open[1,4,1] + open[1,5,1]
+   + open[1,6,1] + open[1,7,1] + open[1,8,1] + open[1,9,1] - 2 interval[1]
+   <= 0
+ R529: open[2,1,1] + open[2,2,1] + open[2,3,1] + open[2,4,1] + open[2,5,1]
+   + open[2,6,1] + open[2,7,1] + open[2,8,1] + open[2,9,1] - 2 interval[2]
+   <= 0
+ R530: open[3,1,1] + open[3,2,1] + open[3,3,1] + open[3,4,1] + open[3,5,1]
+   + open[3,6,1] + open[3,7,1] + open[3,8,1] + open[3,9,1] - 2 interval[3]
+   <= 0
+ R531: open[4,1,1] + open[4,2,1] + open[4,3,1] + open[4,4,1] + open[4,5,1]
+   + open[4,6,1] + open[4,7,1] + open[4,8,1] + open[4,9,1] - 2 interval[4]
+   <= 0
+ R532: open[5,1,1] + open[5,2,1] + open[5,3,1] + open[5,4,1] + open[5,5,1]
+   + open[5,6,1] + open[5,7,1] + open[5,8,1] + open[5,9,1] - 2 interval[5]
+   <= 0
+ R533: open[6,1,1] + open[6,2,1] + open[6,3,1] + open[6,4,1] + open[6,5,1]
+   + open[6,6,1] + open[6,7,1] + open[6,8,1] + open[6,9,1] - 2 interval[6]
+   <= 0
+ R534: open[7,1,1] + open[7,2,1] + open[7,3,1] + open[7,4,1] + open[7,5,1]
+   + open[7,6,1] + open[7,7,1] + open[7,8,1] + open[7,9,1] - 2 interval[7]
+   <= 0
+ R535: open[8,1,1] + open[8,2,1] + open[8,3,1] + open[8,4,1] + open[8,5,1]
+   + open[8,6,1] + open[8,7,1] + open[8,8,1] + open[8,9,1] - 2 interval[8]
+   <= 0
+ R536: open[1,1,2] + open[1,2,2] + open[1,3,2] + open[1,4,2] + open[1,5,2]
+   + open[1,6,2] + open[1,7,2] + open[1,8,2] + open[1,9,2] - 2 interval[1]
+   <= 0
+ R537: open[2,1,2] + open[2,2,2] + open[2,3,2] + open[2,4,2] + open[2,5,2]
+   + open[2,6,2] + open[2,7,2] + open[2,8,2] + open[2,9,2] - 2 interval[2]
+   <= 0
+ R538: open[3,1,2] + open[3,2,2] + open[3,3,2] + open[3,4,2] + open[3,5,2]
+   + open[3,6,2] + open[3,7,2] + open[3,8,2] + open[3,9,2] - 2 interval[3]
+   <= 0
+ R539: open[4,1,2] + open[4,2,2] + open[4,3,2] + open[4,4,2] + open[4,5,2]
+   + open[4,6,2] + open[4,7,2] + open[4,8,2] + open[4,9,2] - 2 interval[4]
+   <= 0
+ R540: open[5,1,2] + open[5,2,2] + open[5,3,2] + open[5,4,2] + open[5,5,2]
+   + open[5,6,2] + open[5,7,2] + open[5,8,2] + open[5,9,2] - 2 interval[5]
+   <= 0
+ R541: open[6,1,2] + open[6,2,2] + open[6,3,2] + open[6,4,2] + open[6,5,2]
+   + open[6,6,2] + open[6,7,2] + open[6,8,2] + open[6,9,2] - 2 interval[6]
+   <= 0
+ R542: open[7,1,2] + open[7,2,2] + open[7,3,2] + open[7,4,2] + open[7,5,2]
+   + open[7,6,2] + open[7,7,2] + open[7,8,2] + open[7,9,2] - 2 interval[7]
+   <= 0
+ R543: open[8,1,2] + open[8,2,2] + open[8,3,2] + open[8,4,2] + open[8,5,2]
+   + open[8,6,2] + open[8,7,2] + open[8,8,2] + open[8,9,2] - 2 interval[8]
+   <= 0
+ R544: open[1,1,3] + open[1,2,3] + open[1,3,3] + open[1,4,3] + open[1,5,3]
+   + open[1,6,3] + open[1,7,3] + open[1,8,3] + open[1,9,3] - 2 interval[1]
+   <= 0
+ R545: open[2,1,3] + open[2,2,3] + open[2,3,3] + open[2,4,3] + open[2,5,3]
+   + open[2,6,3] + open[2,7,3] + open[2,8,3] + open[2,9,3] - 2 interval[2]
+   <= 0
+ R546: open[3,1,3] + open[3,2,3] + open[3,3,3] + open[3,4,3] + open[3,5,3]
+   + open[3,6,3] + open[3,7,3] + open[3,8,3] + open[3,9,3] - 2 interval[3]
+   <= 0
+ R547: open[4,1,3] + open[4,2,3] + open[4,3,3] + open[4,4,3] + open[4,5,3]
+   + open[4,6,3] + open[4,7,3] + open[4,8,3] + open[4,9,3] - 2 interval[4]
+   <= 0
+ R548: open[5,1,3] + open[5,2,3] + open[5,3,3] + open[5,4,3] + open[5,5,3]
+   + open[5,6,3] + open[5,7,3] + open[5,8,3] + open[5,9,3] - 2 interval[5]
+   <= 0
+ R549: open[6,1,3] + open[6,2,3] + open[6,3,3] + open[6,4,3] + open[6,5,3]
+   + open[6,6,3] + open[6,7,3] + open[6,8,3] + open[6,9,3] - 2 interval[6]
+   <= 0
+ R550: open[7,1,3] + open[7,2,3] + open[7,3,3] + open[7,4,3] + open[7,5,3]
+   + open[7,6,3] + open[7,7,3] + open[7,8,3] + open[7,9,3] - 2 interval[7]
+   <= 0
+ R551: open[8,1,3] + open[8,2,3] + open[8,3,3] + open[8,4,3] + open[8,5,3]
+   + open[8,6,3] + open[8,7,3] + open[8,8,3] + open[8,9,3] - 2 interval[8]
+   <= 0
+ R552: 19 open[1,1,0] + 19 open[1,2,0] + 19 open[1,3,0] + 19 open[1,4,0]
+   + 19 open[1,5,0] + 19 open[1,6,0] + 19 open[1,7,0] + 19 open[1,8,0]
+   + 19 open[1,9,0] <= 30
+ R553: 19 open[1,1,1] + 19 open[1,2,1] + 19 open[1,3,1] + 19 open[1,4,1]
+   + 19 open[1,5,1] + 19 open[1,6,1] + 19 open[1,7,1] + 19 open[1,8,1]
+   + 19 open[1,9,1] <= 60
+ R554: 19 open[1,1,2] + 19 open[1,2,2] + 19 open[1,3,2] + 19 open[1,4,2]
+   + 19 open[1,5,2] + 19 open[1,6,2] + 19 open[1,7,2] + 19 open[1,8,2]
+   + 19 open[1,9,2] <= 45
+ R555: 19 open[1,1,3] + 19 open[1,2,3] + 19 open[1,3,3] + 19 open[1,4,3]
+   + 19 open[1,5,3] + 19 open[1,6,3] + 19 open[1,7,3] + 19 open[1,8,3]
+   + 19 open[1,9,3] <= 45
+ R556: 22 open[2,1,0] + 22 open[2,2,0] + 22 open[2,3,0] + 22 open[2,4,0]
+   + 22 open[2,5,0] + 22 open[2,6,0] + 22 open[2,7,0] + 22 open[2,8,0]
+   + 22 open[2,9,0] <= 30
+ R557: 22 open[2,1,1] + 22 open[2,2,1] + 22 open[2,3,1] + 22 open[2,4,1]
+   + 22 open[2,5,1] + 22 open[2,6,1] + 22 open[2,7,1] + 22 open[2,8,1]
+   + 22 open[2,9,1] <= 60
+ R558: 22 open[2,1,2] + 22 open[2,2,2] + 22 open[2,3,2] + 22 open[2,4,2]
+   + 22 open[2,5,2] + 22 open[2,6,2] + 22 open[2,7,2] + 22 open[2,8,2]
+   + 22 open[2,9,2] <= 45
+ R559: 22 open[2,1,3] + 22 open[2,2,3] + 22 open[2,3,3] + 22 open[2,4,3]
+   + 22 open[2,5,3] + 22 open[2,6,3] + 22 open[2,7,3] + 22 open[2,8,3]
+   + 22 open[2,9,3] <= 45
+ R560: 38 open[3,1,0] + 38 open[3,2,0] + 38 open[3,3,0] + 38 open[3,4,0]
+   + 38 open[3,5,0] + 38 open[3,6,0] + 38 open[3,7,0] + 38 open[3,8,0]
+   + 38 open[3,9,0] <= 30
+ R561: 38 open[3,1,1] + 38 open[3,2,1] + 38 open[3,3,1] + 38 open[3,4,1]
+   + 38 open[3,5,1] + 38 open[3,6,1] + 38 open[3,7,1] + 38 open[3,8,1]
+   + 38 open[3,9,1] <= 60
+ R562: 38 open[3,1,2] + 38 open[3,2,2] + 38 open[3,3,2] + 38 open[3,4,2]
+   + 38 open[3,5,2] + 38 open[3,6,2] + 38 open[3,7,2] + 38 open[3,8,2]
+   + 38 open[3,9,2] <= 45
+ R563: 38 open[3,1,3] + 38 open[3,2,3] + 38 open[3,3,3] + 38 open[3,4,3]
+   + 38 open[3,5,3] + 38 open[3,6,3] + 38 open[3,7,3] + 38 open[3,8,3]
+   + 38 open[3,9,3] <= 45
+ R564: 23 open[4,1,0] + 23 open[4,2,0] + 23 open[4,3,0] + 23 open[4,4,0]
+   + 23 open[4,5,0] + 23 open[4,6,0] + 23 open[4,7,0] + 23 open[4,8,0]
+   + 23 open[4,9,0] <= 30
+ R565: 23 open[4,1,1] + 23 open[4,2,1] + 23 open[4,3,1] + 23 open[4,4,1]
+   + 23 open[4,5,1] + 23 open[4,6,1] + 23 open[4,7,1] + 23 open[4,8,1]
+   + 23 open[4,9,1] <= 60
+ R566: 23 open[4,1,2] + 23 open[4,2,2] + 23 open[4,3,2] + 23 open[4,4,2]
+   + 23 open[4,5,2] + 23 open[4,6,2] + 23 open[4,7,2] + 23 open[4,8,2]
+   + 23 open[4,9,2] <= 45
+ R567: 23 open[4,1,3] + 23 open[4,2,3] + 23 open[4,3,3] + 23 open[4,4,3]
+   + 23 open[4,5,3] + 23 open[4,6,3] + 23 open[4,7,3] + 23 open[4,8,3]
+   + 23 open[4,9,3] <= 45
+ R568: 47 open[5,1,0] + 47 open[5,2,0] + 47 open[5,3,0] + 47 open[5,4,0]
+   + 47 open[5,5,0] + 47 open[5,6,0] + 47 open[5,7,0] + 47 open[5,8,0]
+   + 47 open[5,9,0] <= 30
+ R569: 47 open[5,1,1] + 47 open[5,2,1] + 47 open[5,3,1] + 47 open[5,4,1]
+   + 47 open[5,5,1] + 47 open[5,6,1] + 47 open[5,7,1] + 47 open[5,8,1]
+   + 47 open[5,9,1] <= 60
+ R570: 47 open[5,1,2] + 47 open[5,2,2] + 47 open[5,3,2] + 47 open[5,4,2]
+   + 47 open[5,5,2] + 47 open[5,6,2] + 47 open[5,7,2] + 47 open[5,8,2]
+   + 47 open[5,9,2] <= 45
+ R571: 47 open[5,1,3] + 47 open[5,2,3] + 47 open[5,3,3] + 47 open[5,4,3]
+   + 47 open[5,5,3] + 47 open[5,6,3] + 47 open[5,7,3] + 47 open[5,8,3]
+   + 47 open[5,9,3] <= 45
+ R572: 42 open[6,1,0] + 42 open[6,2,0] + 42 open[6,3,0] + 42 open[6,4,0]
+   + 42 open[6,5,0] + 42 open[6,6,0] + 42 open[6,7,0] + 42 open[6,8,0]
+   + 42 open[6,9,0] <= 30
+ R573: 42 open[6,1,1] + 42 open[6,2,1] + 42 open[6,3,1] + 42 open[6,4,1]
+   + 42 open[6,5,1] + 42 open[6,6,1] + 42 open[6,7,1] + 42 open[6,8,1]
+   + 42 open[6,9,1] <= 60
+ R574: 42 open[6,1,2] + 42 open[6,2,2] + 42 open[6,3,2] + 42 open[6,4,2]
+   + 42 open[6,5,2] + 42 open[6,6,2] + 42 open[6,7,2] + 42 open[6,8,2]
+   + 42 open[6,9,2] <= 45
+ R575: 42 open[6,1,3] + 42 open[6,2,3] + 42 open[6,3,3] + 42 open[6,4,3]
+   + 42 open[6,5,3] + 42 open[6,6,3] + 42 open[6,7,3] + 42 open[6,8,3]
+   + 42 open[6,9,3] <= 45
+ R576: 29 open[7,1,0] + 29 open[7,2,0] + 29 open[7,3,0] + 29 open[7,4,0]
+   + 29 open[7,5,0] + 29 open[7,6,0] + 29 open[7,7,0] + 29 open[7,8,0]
+   + 29 open[7,9,0] <= 30
+ R577: 29 open[7,1,1] + 29 open[7,2,1] + 29 open[7,3,1] + 29 open[7,4,1]
+   + 29 open[7,5,1] + 29 open[7,6,1] + 29 open[7,7,1] + 29 open[7,8,1]
+   + 29 open[7,9,1] <= 60
+ R578: 29 open[7,1,2] + 29 open[7,2,2] + 29 open[7,3,2] + 29 open[7,4,2]
+   + 29 open[7,5,2] + 29 open[7,6,2] + 29 open[7,7,2] + 29 open[7,8,2]
+   + 29 open[7,9,2] <= 45
+ R579: 29 open[7,1,3] + 29 open[7,2,3] + 29 open[7,3,3] + 29 open[7,4,3]
+   + 29 open[7,5,3] + 29 open[7,6,3] + 29 open[7,7,3] + 29 open[7,8,3]
+   + 29 open[7,9,3] <= 45
+ R580: 46 open[8,1,0] + 46 open[8,2,0] + 46 open[8,3,0] + 46 open[8,4,0]
+   + 46 open[8,5,0] + 46 open[8,6,0] + 46 open[8,7,0] + 46 open[8,8,0]
+   + 46 open[8,9,0] <= 30
+ R581: 46 open[8,1,1] + 46 open[8,2,1] + 46 open[8,3,1] + 46 open[8,4,1]
+   + 46 open[8,5,1] + 46 open[8,6,1] + 46 open[8,7,1] + 46 open[8,8,1]
+   + 46 open[8,9,1] <= 60
+ R582: 46 open[8,1,2] + 46 open[8,2,2] + 46 open[8,3,2] + 46 open[8,4,2]
+   + 46 open[8,5,2] + 46 open[8,6,2] + 46 open[8,7,2] + 46 open[8,8,2]
+   + 46 open[8,9,2] <= 45
+ R583: 46 open[8,1,3] + 46 open[8,2,3] + 46 open[8,3,3] + 46 open[8,4,3]
+   + 46 open[8,5,3] + 46 open[8,6,3] + 46 open[8,7,3] + 46 open[8,8,3]
+   + 46 open[8,9,3] <= 45
+ R584: open[0,0,0] = 0
+ R585: open[0,0,1] = 0
+ R586: open[0,0,2] = 0
+ R587: open[0,0,3] = 0
+ R588: open[1,1,0] = 0
+ R589: open[1,1,1] = 0
+ R590: open[1,1,2] = 0
+ R591: open[1,1,3] = 0
+ R592: open[2,2,0] = 0
+ R593: open[2,2,1] = 0
+ R594: open[2,2,2] = 0
+ R595: open[2,2,3] = 0
+ R596: open[3,3,0] = 0
+ R597: open[3,3,1] = 0
+ R598: open[3,3,2] = 0
+ R599: open[3,3,3] = 0
+ R600: open[4,4,0] = 0
+ R601: open[4,4,1] = 0
+ R602: open[4,4,2] = 0
+ R603: open[4,4,3] = 0
+ R604: open[5,5,0] = 0
+ R605: open[5,5,1] = 0
+ R606: open[5,5,2] = 0
+ R607: open[5,5,3] = 0
+ R608: open[6,6,0] = 0
+ R609: open[6,6,1] = 0
+ R610: open[6,6,2] = 0
+ R611: open[6,6,3] = 0
+ R612: open[7,7,0] = 0
+ R613: open[7,7,1] = 0
+ R614: open[7,7,2] = 0
+ R615: open[7,7,3] = 0
+ R616: open[8,8,0] = 0
+ R617: open[8,8,1] = 0
+ R618: open[8,8,2] = 0
+ R619: open[8,8,3] = 0
+ R620: open[9,9,0] = 0
+ R621: open[9,9,1] = 0
+ R622: open[9,9,2] = 0
+ R623: open[9,9,3] = 0
 Bounds
 Binaries
- open[0,0,0] open[0,0,1] open[0,1,0] open[0,1,1] open[0,2,0] open[0,2,1]
- open[0,3,0] open[0,3,1] open[0,4,0] open[0,4,1] open[0,5,0] open[0,5,1]
- open[1,0,0] open[1,0,1] open[1,1,0] open[1,1,1] open[1,2,0] open[1,2,1]
- open[1,3,0] open[1,3,1] open[1,4,0] open[1,4,1] open[1,5,0] open[1,5,1]
- open[2,0,0] open[2,0,1] open[2,1,0] open[2,1,1] open[2,2,0] open[2,2,1]
- open[2,3,0] open[2,3,1] open[2,4,0] open[2,4,1] open[2,5,0] open[2,5,1]
- open[3,0,0] open[3,0,1] open[3,1,0] open[3,1,1] open[3,2,0] open[3,2,1]
- open[3,3,0] open[3,3,1] open[3,4,0] open[3,4,1] open[3,5,0] open[3,5,1]
- open[4,0,0] open[4,0,1] open[4,1,0] open[4,1,1] open[4,2,0] open[4,2,1]
- open[4,3,0] open[4,3,1] open[4,4,0] open[4,4,1] open[4,5,0] open[4,5,1]
- open[5,0,0] open[5,0,1] open[5,1,0] open[5,1,1] open[5,2,0] open[5,2,1]
- open[5,3,0] open[5,3,1] open[5,4,0] open[5,4,1] open[5,5,0] open[5,5,1]
+ open[0,0,0] open[0,0,1] open[0,0,2] open[0,0,3] open[0,1,0] open[0,1,1]
+ open[0,1,2] open[0,1,3] open[0,2,0] open[0,2,1] open[0,2,2] open[0,2,3]
+ open[0,3,0] open[0,3,1] open[0,3,2] open[0,3,3] open[0,4,0] open[0,4,1]
+ open[0,4,2] open[0,4,3] open[0,5,0] open[0,5,1] open[0,5,2] open[0,5,3]
+ open[0,6,0] open[0,6,1] open[0,6,2] open[0,6,3] open[0,7,0] open[0,7,1]
+ open[0,7,2] open[0,7,3] open[0,8,0] open[0,8,1] open[0,8,2] open[0,8,3]
+ open[0,9,0] open[0,9,1] open[0,9,2] open[0,9,3] open[1,0,0] open[1,0,1]
+ open[1,0,2] open[1,0,3] open[1,1,0] open[1,1,1] open[1,1,2] open[1,1,3]
+ open[1,2,0] open[1,2,1] open[1,2,2] open[1,2,3] open[1,3,0] open[1,3,1]
+ open[1,3,2] open[1,3,3] open[1,4,0] open[1,4,1] open[1,4,2] open[1,4,3]
+ open[1,5,0] open[1,5,1] open[1,5,2] open[1,5,3] open[1,6,0] open[1,6,1]
+ open[1,6,2] open[1,6,3] open[1,7,0] open[1,7,1] open[1,7,2] open[1,7,3]
+ open[1,8,0] open[1,8,1] open[1,8,2] open[1,8,3] open[1,9,0] open[1,9,1]
+ open[1,9,2] open[1,9,3] open[2,0,0] open[2,0,1] open[2,0,2] open[2,0,3]
+ open[2,1,0] open[2,1,1] open[2,1,2] open[2,1,3] open[2,2,0] open[2,2,1]
+ open[2,2,2] open[2,2,3] open[2,3,0] open[2,3,1] open[2,3,2] open[2,3,3]
+ open[2,4,0] open[2,4,1] open[2,4,2] open[2,4,3] open[2,5,0] open[2,5,1]
+ open[2,5,2] open[2,5,3] open[2,6,0] open[2,6,1] open[2,6,2] open[2,6,3]
+ open[2,7,0] open[2,7,1] open[2,7,2] open[2,7,3] open[2,8,0] open[2,8,1]
+ open[2,8,2] open[2,8,3] open[2,9,0] open[2,9,1] open[2,9,2] open[2,9,3]
+ open[3,0,0] open[3,0,1] open[3,0,2] open[3,0,3] open[3,1,0] open[3,1,1]
+ open[3,1,2] open[3,1,3] open[3,2,0] open[3,2,1] open[3,2,2] open[3,2,3]
+ open[3,3,0] open[3,3,1] open[3,3,2] open[3,3,3] open[3,4,0] open[3,4,1]
+ open[3,4,2] open[3,4,3] open[3,5,0] open[3,5,1] open[3,5,2] open[3,5,3]
+ open[3,6,0] open[3,6,1] open[3,6,2] open[3,6,3] open[3,7,0] open[3,7,1]
+ open[3,7,2] open[3,7,3] open[3,8,0] open[3,8,1] open[3,8,2] open[3,8,3]
+ open[3,9,0] open[3,9,1] open[3,9,2] open[3,9,3] open[4,0,0] open[4,0,1]
+ open[4,0,2] open[4,0,3] open[4,1,0] open[4,1,1] open[4,1,2] open[4,1,3]
+ open[4,2,0] open[4,2,1] open[4,2,2] open[4,2,3] open[4,3,0] open[4,3,1]
+ open[4,3,2] open[4,3,3] open[4,4,0] open[4,4,1] open[4,4,2] open[4,4,3]
+ open[4,5,0] open[4,5,1] open[4,5,2] open[4,5,3] open[4,6,0] open[4,6,1]
+ open[4,6,2] open[4,6,3] open[4,7,0] open[4,7,1] open[4,7,2] open[4,7,3]
+ open[4,8,0] open[4,8,1] open[4,8,2] open[4,8,3] open[4,9,0] open[4,9,1]
+ open[4,9,2] open[4,9,3] open[5,0,0] open[5,0,1] open[5,0,2] open[5,0,3]
+ open[5,1,0] open[5,1,1] open[5,1,2] open[5,1,3] open[5,2,0] open[5,2,1]
+ open[5,2,2] open[5,2,3] open[5,3,0] open[5,3,1] open[5,3,2] open[5,3,3]
+ open[5,4,0] open[5,4,1] open[5,4,2] open[5,4,3] open[5,5,0] open[5,5,1]
+ open[5,5,2] open[5,5,3] open[5,6,0] open[5,6,1] open[5,6,2] open[5,6,3]
+ open[5,7,0] open[5,7,1] open[5,7,2] open[5,7,3] open[5,8,0] open[5,8,1]
+ open[5,8,2] open[5,8,3] open[5,9,0] open[5,9,1] open[5,9,2] open[5,9,3]
+ open[6,0,0] open[6,0,1] open[6,0,2] open[6,0,3] open[6,1,0] open[6,1,1]
+ open[6,1,2] open[6,1,3] open[6,2,0] open[6,2,1] open[6,2,2] open[6,2,3]
+ open[6,3,0] open[6,3,1] open[6,3,2] open[6,3,3] open[6,4,0] open[6,4,1]
+ open[6,4,2] open[6,4,3] open[6,5,0] open[6,5,1] open[6,5,2] open[6,5,3]
+ open[6,6,0] open[6,6,1] open[6,6,2] open[6,6,3] open[6,7,0] open[6,7,1]
+ open[6,7,2] open[6,7,3] open[6,8,0] open[6,8,1] open[6,8,2] open[6,8,3]
+ open[6,9,0] open[6,9,1] open[6,9,2] open[6,9,3] open[7,0,0] open[7,0,1]
+ open[7,0,2] open[7,0,3] open[7,1,0] open[7,1,1] open[7,1,2] open[7,1,3]
+ open[7,2,0] open[7,2,1] open[7,2,2] open[7,2,3] open[7,3,0] open[7,3,1]
+ open[7,3,2] open[7,3,3] open[7,4,0] open[7,4,1] open[7,4,2] open[7,4,3]
+ open[7,5,0] open[7,5,1] open[7,5,2] open[7,5,3] open[7,6,0] open[7,6,1]
+ open[7,6,2] open[7,6,3] open[7,7,0] open[7,7,1] open[7,7,2] open[7,7,3]
+ open[7,8,0] open[7,8,1] open[7,8,2] open[7,8,3] open[7,9,0] open[7,9,1]
+ open[7,9,2] open[7,9,3] open[8,0,0] open[8,0,1] open[8,0,2] open[8,0,3]
+ open[8,1,0] open[8,1,1] open[8,1,2] open[8,1,3] open[8,2,0] open[8,2,1]
+ open[8,2,2] open[8,2,3] open[8,3,0] open[8,3,1] open[8,3,2] open[8,3,3]
+ open[8,4,0] open[8,4,1] open[8,4,2] open[8,4,3] open[8,5,0] open[8,5,1]
+ open[8,5,2] open[8,5,3] open[8,6,0] open[8,6,1] open[8,6,2] open[8,6,3]
+ open[8,7,0] open[8,7,1] open[8,7,2] open[8,7,3] open[8,8,0] open[8,8,1]
+ open[8,8,2] open[8,8,3] open[8,9,0] open[8,9,1] open[8,9,2] open[8,9,3]
+ open[9,0,0] open[9,0,1] open[9,0,2] open[9,0,3] open[9,1,0] open[9,1,1]
+ open[9,1,2] open[9,1,3] open[9,2,0] open[9,2,1] open[9,2,2] open[9,2,3]
+ open[9,3,0] open[9,3,1] open[9,3,2] open[9,3,3] open[9,4,0] open[9,4,1]
+ open[9,4,2] open[9,4,3] open[9,5,0] open[9,5,1] open[9,5,2] open[9,5,3]
+ open[9,6,0] open[9,6,1] open[9,6,2] open[9,6,3] open[9,7,0] open[9,7,1]
+ open[9,7,2] open[9,7,3] open[9,8,0] open[9,8,1] open[9,8,2] open[9,8,3]
+ open[9,9,0] open[9,9,1] open[9,9,2] open[9,9,3]
 End

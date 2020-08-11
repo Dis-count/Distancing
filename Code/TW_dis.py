@@ -1,23 +1,44 @@
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
-
+import numpy as np
 # q_k capacity.
 # s_i service time for each group.
 # p_i demand number of people.
 # variable x_ijk  w_ik t_i
 # i \in N (not include 0 and N+1)
-help(gp.Model.addMVar)
+# help(gp.Model.addMVar)
 
-def TW(s,q,p):
+def TW(n,q):
 
     try:
         M = 1e4
         E = 0
         L = 24
 
-        a = [0,8, 14,10,19,0]
-        b = [0,11,15,16,21,0]
+        ss = np.random.randint(1,4,n)
+        s = list(ss)
+        s.insert(0,0)
+        s.append(0)  # before and after add 0 element.
+
+        pp = np.random.randint(10,200*0.3,n)
+        p = list(pp)
+        p.insert(0,0)
+        p.append(0)  # before and after add 0 element.
+
+        aa = np.random.randint(8,20,n)
+        a = list(aa)
+        a.insert(0,0)
+        a.append(0)  # before and after add 0 element.
+
+        # a = [0,8,14,10,19,0]
+        delta = np.random.randint(1,5,n) # 1-4 hours
+        bb = aa + delta
+        # b = [0,11,15,16,21,0]
+        b = list(bb)
+        b.insert(0,0)
+        b.append(0)
+
         subscript_i = len(s)  # the number of nodes
         subscript_j = subscript_i
         subscript_k = len(q)
@@ -29,8 +50,9 @@ def TW(s,q,p):
         t = m.addVars(subscript_i, lb=0, name="interval")
         m.update()
 
-        # Set objective   c_ij =1
+        # Set objective  c_ij =1
         m.setObjective(x.sum(), GRB.MINIMIZE)
+        # x \not 0 how to realize
 
         # Add constraints
         # constraint 1
@@ -95,8 +117,15 @@ def TW(s,q,p):
                         break
                 if (i == subscript_i-1):
                     terminate = False
-        print('The route is' + str(route))
-        print('The service start time is' + str(serviceT))
+
+        for i in range(subscript_i-2):
+            print('Customer {0} time window is [{1}-{2}]'.format(i+1, a[i+1], b[i+1]))
+            print('And its service time is {0}'.format(s[i+1]))
+
+        for i in range(len(route)):
+            print('The room {0} serves: {1}'.format(i+1, route[i][1:-1]))
+
+            print('Service start time is:' + str(serviceT[i][1:-1]))
 
         return m.objVal
 
@@ -106,8 +135,10 @@ def TW(s,q,p):
     except AttributeError:
         print('Main-Encountered an attribute error')
 
-s = [0,2,2,2,2,0]
-q = [100,200]
-p = [0,35,30,44,40,0]
+# s = [0,2,2,2,2,0]
+n = 8
+q = [100,200,150,150]
 
-TW(s,q,p)
+# p = [0,35,30,44,40,0]
+
+TW(n,q)

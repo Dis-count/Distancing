@@ -1,5 +1,8 @@
 ##  Rules:
-Time Distancing :  The time gap of each used room.
+
+Maximize the distance.
+
+Time Distancing:  The time gap of each used room.
 
 Space Distancing:  Enlarge the space distancing of each room as much as possible. That is, if we have a room contains $q_k$ seat numbers, and distance ratio is r, then the number of customers who can be served $p_i$ is less than $q_k\cdot r$.  This condition can be set as a constraint.
 
@@ -47,9 +50,9 @@ Show the specific assignment for the coming people.
 
 Give the sequence of each room, and the corresponding service start time.
 
-Benchmark: First in First out.
+Benchmark: Manual work.
 
-Question: How to determine the objective function?
+Question: How to determine the distance for the only one group in a room?
 
           How to compare the result with the benchmark?
 

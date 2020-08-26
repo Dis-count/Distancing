@@ -17,41 +17,32 @@ def TW(n,q):
 
         ss = np.random.randint(1,4,n)
         s = list(ss)
-        s.insert(0,0)
+        s.insert(0,0) # insert 0 at 0
         s.append(0)  # before and after add 0 element.
 
-        pp = np.random.randint(10,200*0.3,n)
+        pp = np.random.randint(10,60,n)
         p = list(pp)
         p.insert(0,0)
         p.append(0)  # before and after add 0 element.
-
-        aa = np.random.randint(8,20,n)
-        a = list(aa)
-        a.insert(0,0)
-        a.append(0)  # before and after add 0 element.
-
-        # a = [0,8,14,10,19,0]
-        delta = np.random.randint(1,5,n) # 1-4 hours
-        bb = aa + delta
-        # b = [0,11,15,16,21,0]
-        b = list(bb)
-        b.insert(0,0)
-        b.append(0)
 
         subscript_i = len(s)  # the number of nodes
         subscript_j = subscript_i
         subscript_k = len(q)
 
-        m = gp.Model("TW_dis")
+        m = gp.Model("dis1")
 
         x = m.addVars(subscript_i, subscript_j, subscript_k, vtype=GRB.BINARY, name="open")
         w = m.addVars(subscript_i,subscript_k, lb=0, name="start")
-        t = m.addVars(subscript_i, lb=0, name="interval")
         m.update()
 
-        # Set objective  c_ij =1
-        m.setObjective(x.sum(), GRB.MINIMIZE)
-        # x \not 0 how to realize
+        # Set objective
+        m.setObjective(x.sum(), GRB.MAXIMIZE)
+
+        w[j,k] - s[i] - w[i,k])/24 + p[i]/q[k]
+        for k in range(subscript_k)
+        for i in range(subscript_i)
+        for j in range(subscript_j)
+
 
         # Add constraints
         # constraint 1
@@ -68,26 +59,14 @@ def TW(n,q):
         m.addConstrs((gp.quicksum(x[i,subscript_j-1,k] for i in range(subscript_i-1)) == 1) for k in range(subscript_k))
 
         # constraint 5
-        m.addConstrs((w[i,k] + s[i] + t[i] -w[j,k]) <= ((1-x[i,j,k])*M) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j))
+        m.addConstrs((w[i,k] + s[i] -w[j,k]) <= ((1-x[i,j,k])*M) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j))
 
-        # constraint 6.1
-        m.addConstrs((gp.quicksum(x[i,j,k]*a[i] for j in range(1,subscript_j)) <= w[i,k]) for k in range(subscript_k) for i in range(1,subscript_i-1))
-
-        # constraint 6.2
-        m.addConstrs((gp.quicksum(x[i,j,k]*b[i] for j in range(1,subscript_j)) >= w[i,k]) for k in range(subscript_k) for i in range(1,subscript_i-1))
-
-        # constraint 7
+        # constraint 6
         m.addConstrs(w[0,k] == E for k in range(subscript_k))
         m.addConstrs(w[subscript_i-1,k] == L for k in range(subscript_k))
 
-        # constraint 8
-        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j)) <= 2*t[i]) for k in range(subscript_k) for i in range(1,subscript_i-1))
-
-        # constraint 9
-        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j)) *p[i] <= 0.3*q[k]) for i in range(1,subscript_i-1) for k in range(subscript_k))
-
-        # constructs 10
-        m.addConstrs(x[i,i,k] ==0 for i in range(subscript_i) for k in range(subscript_k))
+        # constructs 7
+        m.addConstrs(x[i,i,k] == 0 for i in range(subscript_i) for k in range(subscript_k))
 
         m.write('TW.lp')
 

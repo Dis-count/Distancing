@@ -13,15 +13,14 @@ A room contains seat number $q_k = \{....\}$.
 
 Number of group customers $p_i = \{....\}$ for each $i \in N = \{1,...,n\}$.
 
-$w_{ik}$ is the group i's start time in the room k.
+$w_{ik}$ is the group i's start time in the room $k$.
 
-$s_i$ is the service time for each group.(Given, in our case, we set all the service times are 2 hours.)
+$s_i$ is the service time for each group.(Given.)
 
 Feasibility:
-
-Time window constraints:
-
-Time window $[a_{i},b_{i}]$ for each group, but it satisfies the time constraints during opening time [E, L] for the room.
+<!-- Time window constraints: -->
+<!--
+Time window $[a_{i},b_{i}]$ for each group, but it satisfies the time constraints during opening time [E, L] for the room. -->
 
 Capacity constraint:
 
@@ -29,8 +28,8 @@ The largest number of customers in a group $p_i^*$ cannot exceed the product of 
 
 ##  Solution:
 
-Define the time distance $t_{i}$ for group i. It can be variable or the constant. In our case, we set the
-time interval as the variable and it should be larger than half an hour.
+<!-- Define the time distance $t_{i}$ for group i. It can be variable or the constant. In our case, we set the
+time interval as the variable and it should be larger than half an hour. -->
 
 Define a binary variable $x_{ijk}$ for each room. If the room k is used by (i,j) and i followed by j, then $x_{ijk} = 1$, else $x_{ijk} = 0$.
 
@@ -56,21 +55,22 @@ Question: How to determine the distance for the only one group in a room?
 
           How to compare the result with the benchmark?
 
+Input: Appointment hours $s_i$ for each group instead of the time window [a,b].
+
+Add $p_0 = 0, s_0 = 0, E = 0/8, L=24.$
+
 ****************************************************
 ##MODEL :
 
 $$
 \begin{align}
-min_{i,j,k} \quad & \sum_{(i,j) \in A} \sum_{k \in K} c_{ij} x_{ijk} \\
+max_{i,j,k} \quad & \sum_{(i,j) \in A} \sum_{k \in K} x_{ijk} (\frac{p_i}{q_k} + \frac{1}{24}(w_{jk}-w_{ik}-s_i)) \\
 s.t. \quad  & \sum_{k \in K} \sum_{j \in \delta^+ (i)} x_{ijk} =1 & \forall i \in N  \\
 & \sum_{j \in \delta^+ (0)} x_{0jk} =1 & \forall k \in K \\
 & \sum_{i \in \delta^- (n+1)} x_{i,n+1,k} =1 & \forall k \in K \\
 & \sum_{i \in \delta^- (j)} x_{ijk} - \sum_{i \in \delta^+ (j)} x_{ijk} = 0  & \forall k \in K, j \in N \\
-& w_{ik} + s_i + t_{i} - w_{jk} \leq (1-x_{ijk}) M_{ij} & \forall k \in K, (i,j) \in A \\
-& a_i \sum_{j \in \delta^+ (i)} x_{ijk} \leq w_{ik} \leq b_i \sum_{j \in \delta^+ (i)} x_{ijk} & \forall k \in K, i \in N \\
+& w_{ik} + s_i - w_{jk} \leq (1-x_{ijk}) M_{ij} & \forall k \in K, (i,j) \in A \\
 & w_{0k}=E, w_{n+1,k}=L  & \forall k \in K \\
-& t_{i} \geq 0.5 \sum_{j \in \delta^+(i)} x_{ijk}  & \forall k \in K, i \in N  \\
-& p_i \sum_{j \in \delta^+ (i)} x_{ijk} \leq 0.3 q_k & \forall k \in K, i \in N \\
 & x_{ijk} \in \{0,1\} & \forall k \in K, (i,j) \in A
 \end{align}$$
 
@@ -86,10 +86,6 @@ The constraint (5) For every room k, group j will leave when it is served.
 
 The constraint (6) i start time + service time + interval(required) < next j start time. M for linearization.
 
-The constraint (7) Time window constraints for every group.
+<!-- The constraint (7) Time window constraints for every group. -->
 
-The constraint (8) Add two node indicate the start node and end node.
-
-The constraint (9) Time distance constraint.
-
-The constraint (10) Space distance constraint.
+The constraint (7) Add two node indicate the start node and end node.

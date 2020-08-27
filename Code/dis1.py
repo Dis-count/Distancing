@@ -12,7 +12,7 @@ def TW(n,q):
 
     try:
         M = 1e4
-        E = 0
+        E = 8
         L = 24
 
         ss = np.random.randint(1,4,n)
@@ -36,13 +36,7 @@ def TW(n,q):
         m.update()
 
         # Set objective
-        m.setObjective(x.sum(), GRB.MAXIMIZE)
-
-        w[j,k] - s[i] - w[i,k])/24 + p[i]/q[k]
-        for k in range(subscript_k)
-        for i in range(subscript_i)
-        for j in range(subscript_j)
-
+        m.setObjective(gp.quicksum(x[i,j,k]*((w[j,k] - s[i] - w[i,k])/24 + p[i]/q[k]) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j)), GRB.MAXIMIZE)
 
         # Add constraints
         # constraint 1
@@ -68,7 +62,7 @@ def TW(n,q):
         # constructs 7
         m.addConstrs(x[i,i,k] == 0 for i in range(subscript_i) for k in range(subscript_k))
 
-        m.write('TW.lp')
+        m.write('dis1.lp')
 
         m.params.outputflag = 0
         m.optimize()
@@ -97,8 +91,8 @@ def TW(n,q):
                     terminate = False
 
         for i in range(subscript_i-2):
-            print('Customer {0} time window is [{1}-{2}]'.format(i+1, a[i+1], b[i+1]))
-            print('And its service time is {0}'.format(s[i+1]))
+
+            print('Its service time is {0}'.format(s[i+1]))
 
         for i in range(len(route)):
             print('The room {0} serves: {1}'.format(i+1, route[i][1:-1]))
@@ -114,8 +108,8 @@ def TW(n,q):
         print('Main-Encountered an attribute error')
 
 # s = [0,2,2,2,2,0]
-n = 8
-q = [100,200,150,150]
+n = 5
+q = [150,150,150,150]
 
 # p = [0,35,30,44,40,0]
 

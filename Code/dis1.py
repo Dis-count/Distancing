@@ -36,7 +36,7 @@ def TW(n,q):
         m.update()
 
         # Set objective
-        m.setObjective(gp.quicksum(x[i,j,k]*((w[j,k] - s[i] - w[i,k])/24 + p[i]/q[k]) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j)), GRB.MAXIMIZE)
+        m.setObjective(gp.quicksum(x[i,j,k]*((w[j,k] - s[i] - w[i,k])/10 + p[i]/q[k]) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j)), GRB.MAXIMIZE)
 
         # Add constraints
         # constraint 1
@@ -92,7 +92,8 @@ def TW(n,q):
 
         for i in range(subscript_i-2):
 
-            print('Its service time is {0}'.format(s[i+1]))
+            print('Group {0} service time is {1}'.format(i+1, s[i+1]))
+            print('The number of people is {0}'.format(p[i+1]))
 
         for i in range(len(route)):
             print('The room {0} serves: {1}'.format(i+1, route[i][1:-1]))
@@ -109,7 +110,7 @@ def TW(n,q):
 
 # s = [0,2,2,2,2,0]
 n = 5
-q = [150,150,150,150]
+q = [100,150,150,100]
 
 # p = [0,35,30,44,40,0]
 

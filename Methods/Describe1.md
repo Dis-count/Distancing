@@ -88,4 +88,4 @@ The constraint (6) i start time + service time + interval(required) < next j sta
 
 <!-- The constraint (7) Time window constraints for every group. -->
 
-The constraint (7) Add two node indicate the start node and end node.
+The constraint (7) Add two node which indicate the start node and end node.

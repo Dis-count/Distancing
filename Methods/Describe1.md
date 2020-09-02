@@ -76,6 +76,31 @@ s.t. \quad  & \sum_{k \in K} \sum_{j \in \delta^+ (i)} x_{ijk} =1 & \forall i \i
 
 The constraint (1) Minimizes the cost resulted by opening rooms.
 
+--------------------------------------------
+
+How to change the quadratic terms to the linear terms(linearization)
+
+Note that the
+$y =x_1 x_2$  where $x_1 \in \{0,1\}, x_2 \in [l,u] \to$
+$$
+\begin{align*}
+& y \leq x_2 \\
+& y \geq x_2 - u(1-x_1)    \\
+& l x_1 \leq y \leq u x_1
+\end{align*}$$
+
+Let $(w_{jk}-w_{ik}-s_i) = y_{ijk}$ and $T_{ijk} = x_{ijk} y_{ijk}$
+
+多加三个 i*j*k 数量的约束. Let l = 0.
+
+$$
+\begin{align}
+& T_{ijk} \leq y_{ijk} \\
+& T_{ijk} \geq y_{ijk} - u(1-x_{ijk})    \\
+& T_{ijk} \leq u x_{ijk}
+\end{align}$$
+
+
 The constraint (2) Every group i which is followed by group j is only served once by one room k.
 
 The constraint (3) For every room k, start from group 0.

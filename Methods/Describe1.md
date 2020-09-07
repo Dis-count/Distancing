@@ -64,12 +64,12 @@ Add $p_0 = 0, s_0 = 0, E = 0/8, L=24.$
 
 $$
 \begin{align}
-max_{i,j,k} \quad & \sum_{(i,j) \in A} \sum_{k \in K} x_{ijk} (\frac{p_i}{q_k} + \frac{1}{24}(w_{jk}-w_{ik}-s_i)) \\
+max_{i,j,k} \quad & \sum_{(i,j) \in A} \sum_{k \in K} \frac{p_i}{q_k} x_{ijk} + \frac{1}{24} T_{ijk} \\
 s.t. \quad  & \sum_{k \in K} \sum_{j \in \delta^+ (i)} x_{ijk} =1 & \forall i \in N  \\
 & \sum_{j \in \delta^+ (0)} x_{0jk} =1 & \forall k \in K \\
 & \sum_{i \in \delta^- (n+1)} x_{i,n+1,k} =1 & \forall k \in K \\
 & \sum_{i \in \delta^- (j)} x_{ijk} - \sum_{i \in \delta^+ (j)} x_{ijk} = 0  & \forall k \in K, j \in N \\
-& w_{ik} + s_i - w_{jk} \leq (1-x_{ijk}) M_{ij} & \forall k \in K, (i,j) \in A \\
+& y_{ijk} \geq (x_{ijk}-1) M_{ij} & \forall k \in K, (i,j) \in A \\
 & w_{0k}=E, w_{n+1,k}=L  & \forall k \in K \\
 & x_{ijk} \in \{0,1\} & \forall k \in K, (i,j) \in A
 \end{align}$$
@@ -91,7 +91,7 @@ $$
 
 Let $(w_{jk}-w_{ik}-s_i) = y_{ijk}$ and $T_{ijk} = x_{ijk} y_{ijk}$
 
-多加三个 i*j*k 数量的约束. Let l = 0.
+多加三个 i*j*k 数量的约束. Let $l = 0$.
 
 $$
 \begin{align}

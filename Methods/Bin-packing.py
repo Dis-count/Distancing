@@ -2,7 +2,7 @@ import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
 
-# q_k capacity. k\in K
+# q_k capacity. k\in K  The Number of room
 # i \in N
 # s_i service time for each group.
 # p_i demand number of people.
@@ -13,98 +13,65 @@ from gurobipy import GRB
 def binPacking(n,q):
 
     try:
-        M = 1e4
-        E = 8
-        L = 24
 
         ss = np.random.randint(1,4,n)
         s = list(ss)
-        s.insert(0,0) # insert 0 at 0
-        s.append(0)  # before and after add 0 element.
 
         pp = np.random.randint(10,60,n)
         p = list(pp)
-        p.insert(0,0)
-        p.append(0)  # before and after add 0 element.
 
-        subscript_i = len(s)  # the number of nodes
-        subscript_j = subscript_i
+        subscript_i = len(s)
         subscript_k = len(q)
 
         m = gp.Model("Bin")
 
-        x = m.addVars(subscript_i, subscript_j, subscript_k, vtype=GRB.BINARY, name="open")
-        w = m.addVars(subscript_i,subscript_k, lb=0, name="start")
+        x = m.addVars(subscript_i, subscript_k, vtype=GRB.BINARY, name="open")
+        t = m.addVar(lb=0, name="min")
         m.update()
 
         # Set objective
-        m.setObjective(gp.quicksum(x[i,j,k]*((w[j,k] - s[i] - w[i,k])/10 + p[i]/q[k]) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j)), GRB.MAXIMIZE)
-
-# min (\sum_i {x_{ik} t_i p_i})/ (24 * q_k )  k \in K
-# capacity  x_ik p_i \leq q_k  \forall i \in N  \forall k \in K
-# time      \sum_{i\in N} x_{ik} t_i \leq T_k = 24- (数量-1)*最小distance
+        m.setObjective(t, GRB.MAXIMIZE)
 
         # Add constraints
         # constraint 1
-        m.addConstrs((gp.quicksum(x[i,j,k] for j in range(1,subscript_j) for k in range(subscript_k)) == 1) for i in range(1,subscript_i-1))
+        m.addConstrs((x[i, k]* p[i]) <= q[k] for i in range(subscript_i) for k in range(subscript_k))
 
         # constraint 2
-
-        m.addConstrs((gp.quicksum(x[i,j,k] for i in range(subscript_i)) == gp.quicksum(x[j,i,k] for i in range(subscript_i))) for j in range(1,subscript_j-1) for k in range(subscript_k))
+        m.addConstrs((gp.quicksum(x[i, k]*s[i] for i in range(subscript_i)) <= gp.quicksum(24.5-0.5*x[i, k] for i in range(subscript_i))) for k in range(subscript_k))
 
         # constraint 3
-        m.addConstrs((gp.quicksum(x[0,j,k] for j in range(1,subscript_j)) == 1) for k in range(subscript_k))
+        m.addConstrs((gp.quicksum((x[i, k]*s[i]*p[i])/(24*q[k]) for i in range(subscript_i)) >= t) for k in range(subscript_k))
 
         # constraint 4
-        m.addConstrs((gp.quicksum(x[i,subscript_j-1,k] for i in range(subscript_i-1)) == 1) for k in range(subscript_k))
+        m.addConstrs((gp.quicksum(x[i, k] for k in range(subscript_k)) == 1) for i in range(subscript_i))
 
-        # constraint 5
-        m.addConstrs((w[i,k] + s[i] -w[j,k]) <= ((1-x[i,j,k])*M) for k in range(subscript_k) for i in range(subscript_i) for j in range(subscript_j))
-
-        # constraint 6
-        m.addConstrs(w[0,k] == E for k in range(subscript_k))
-        m.addConstrs(w[subscript_i-1,k] == L for k in range(subscript_k))
-
-        # constructs 7
-        m.addConstrs(x[i,i,k] == 0 for i in range(subscript_i) for k in range(subscript_k))
-
-        m.write('dis1.lp')
+        m.write('Bin.lp')
 
         m.params.outputflag = 0
         m.optimize()
 
-        x_ijk =  m.getAttr('X', x)
-
-        w_ik = m.getAttr('X', w)
+        x_ik =  m.getAttr('X', x)
 
         route = []
-        serviceT = []
-        # Generate the route and Specific service time
+
+        # Generate the route for each room
+
         for k in range(subscript_k):
             route.append([0])
-            i = 0
-            serviceT.append([w_ik[i,k]])
+
             terminate = True
-            while terminate:
-                for j in range(subscript_j):
-                    if x_ijk[i,j,k] >= 0.5:
 
-                        route[k].append(j)
-                        serviceT[k].append(w_ik[j,k])
-                        i = j
-                        break
-                if (i == subscript_i-1):
-                    terminate = False
+            for i in range(subscript_i):
+                if x_ik[i,k] >= 0.5:
+                    route[k].append(i+1)
 
-        for i in range(subscript_i-2):
+        for i in range(subscript_i):
 
-            print('Group {0} service time is {1}'.format(i+1, s[i+1]))
-            print('The number of people is {0}'.format(p[i+1]))
+            print('Group {0} service time is {1}'.format(i+1, s[i]))
+            print('The number of people is {0}'.format(p[i]))
 
         for i in range(len(route)):
-            print('The room {0} serves: {1}'.format(i+1, route[i][1:-1]))
-
-            print('Service start time is:' + str(serviceT[i][1:-1]))
+            print('The room {0} serves: {1}'.format(i+1, route[i][1:]))
 
         return m.objVal
 

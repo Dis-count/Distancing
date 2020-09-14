@@ -82,7 +82,7 @@ def binPacking(n,q):
         print('Main-Encountered an attribute error')
 
 # s = [0,2,2,2,2,0]
-n = 5
+n = 10
 q = [100,150,150,100]
 
 # p = [0,35,30,44,40,0]

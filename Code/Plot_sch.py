@@ -22,5 +22,3 @@ if  __name__ == "__main__":
     plt.yticks(np.arange(0, max(macStartTime) + 5, step =1 ))
     plt.xticks(np.arange(0, 4, step =1 ))
     plt.show()
-
-help(plt.xticks)

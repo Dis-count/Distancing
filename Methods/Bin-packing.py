@@ -89,6 +89,35 @@ capacity = [100,150,150,100]  # The capacity for the room.
 
 capacity_ratio = []
 
-# QUESTION:  is  how to Generate the sequence you need.
+# QUESTION:  is How to Generate the sequence you need.
+#  How to change a  list  1[ 2 3 5 7]
+                #         2[ 1 6  ]
+                #         3[ 4 8  ]
+#  To  [2 1 1 3 1 2 1 3 ]
+#  At first generate the list is full of zeros.
+
+def inv(my_list, n):
+
+    lis=[0]*n
+
+route = [[2,3,5,7], [1,6], [4,8]]
+
+    for i in range(len(route)):
+        for j in range(route[i][1:])
+            lis[route[i][1:]-1] = i
+
+    return lis
+
 
 binPacking(n,q)
+
+
+route = [[2,3,5,7], [1,6], [4,8]]
+lis=[0]*8
+lis
+for i in range(len(route)):
+    for j in route[i][:]:
+        lis[j-1] = i+1
+route[1][:]
+
+lis

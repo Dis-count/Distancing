@@ -10,12 +10,8 @@ from gurobipy import GRB
 # Width for the capacity.   q_k for K. p_i  for N.
 # variable x_ik
 # help(gp.Model.addMVar)
-def binPacking(n,q):
-
+def binPacking(s,p,n,q):
     try:
-
-        ss = np.random.randint(1,4,n)
-        s = list(ss)
 
         pp = np.random.randint(10,60,n)
         p = list(pp)
@@ -81,10 +77,18 @@ def binPacking(n,q):
     except AttributeError:
         print('Main-Encountered an attribute error')
 
-# s = [0,2,2,2,2,0]
-n = 10
-q = [100,150,150,100]
+n = 10   # The number of group
 
-# p = [0,35,30,44,40,0]
+ss = np.random.randint(1,4,n)
+s = list(ss)   # The time length of each group
+
+pp = np.random.randint(10,60,n)
+p = list(pp)   # The number of people for each group
+
+capacity = [100,150,150,100]  # The capacity for the room.
+
+capacity_ratio = []
+
+# QUESTION:  is  how to Generate the sequence you need.
 
 binPacking(n,q)

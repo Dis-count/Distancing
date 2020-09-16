@@ -1,3 +1,5 @@
+# This one is used to show the horizontal bar
+
 import matplotlib.pyplot as plt
 import numpy as np
 

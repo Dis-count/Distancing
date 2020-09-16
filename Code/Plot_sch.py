@@ -1,3 +1,5 @@
+# This one is used to show the vertical bar.
+
 import matplotlib.pyplot as plt
 import numpy as np
 

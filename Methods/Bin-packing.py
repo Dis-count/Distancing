@@ -1,7 +1,7 @@
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
-
+import matplotlib.pyplot as plt
 # q_k capacity. k\in K  The Number of room
 # i \in N
 # s_i service time for each group.
@@ -10,6 +10,7 @@ from gurobipy import GRB
 # Width for the capacity.   q_k for K. p_i  for N.
 # variable x_ik
 # help(gp.Model.addMVar)
+
 def binPacking(s,p,n,q):
     try:
 
@@ -41,7 +42,7 @@ def binPacking(s,p,n,q):
         # constraint 4
         m.addConstrs((gp.quicksum(x[i, k] for k in range(subscript_k)) == 1) for i in range(subscript_i))
 
-        m.write('Bin.lp')
+        m.write('BinPacking.lp')
 
         m.params.outputflag = 0
         m.optimize()
@@ -61,21 +62,57 @@ def binPacking(s,p,n,q):
                 if x_ik[i,k] >= 0.5:
                     route[k].append(i+1)
 
-        for i in range(subscript_i):
-
-            print('Group {0} service time is {1}'.format(i+1, s[i]))
-            print('The number of people is {0}'.format(p[i]))
+        # for i in range(subscript_i):
+        #     print('Group {0} service time is {1}'.format(i+1, s[i]))
+        #     print('The number of people is {0}'.format(p[i]))
 
         for i in range(len(route)):
             print('The room {0} serves: {1}'.format(i+1, route[i][1:]))
 
-        return m.objVal
+        print(m.objVal)
+
+        return route
 
     except gp.GurobiError as e:
         print('Main-Error code ' + str(e.errno) + ": " + str(e))
 
     except AttributeError:
         print('Main-Encountered an attribute error')
+
+def capRatio(route, n):
+    capacity_ratio = [0]*n
+    for i in range(len(route)):
+        cap1 = capacity[i]
+        for j in route[i][1:]:
+            capacity_ratio[j-1] = p[j-1]/cap1
+    return capacity_ratio
+
+def startTime(route, n):
+    start_time = [0]*n
+    for i in range(len(route)):
+        k = 0  # Is used to restore the starttime of the last one.
+        for j in route[i][1:]:
+            start_time[j-1] = k + 0.5 + s[j-1]
+
+            k = start_time[j-1]
+
+    return start_time
+
+def inv(route, n):
+
+    machineNum = [0]*n
+    # because the first one is 0 for route.
+    for i in range(len(route)):
+        for j in route[i][1:]:
+            machineNum[j-1] = i +1
+
+    return machineNum
+
+def gantt(macInfo, flow, macStartTime, Capacity, workpiece):
+    for j in range(len(macInfo)):
+        i = macInfo[j]
+        plt.bar(i, flow[j], Capacity[j], bottom=macStartTime[j])
+        plt.text(i,macStartTime[j] + flow[j] / 8, 'G%s' % (workpiece[j]), color = "white", size = 15)
 
 n = 10   # The number of group
 
@@ -86,38 +123,21 @@ pp = np.random.randint(10,60,n)
 p = list(pp)   # The number of people for each group
 
 capacity = [100,150,150,100]  # The capacity for the room.
+route = binPacking(s,p,n,capacity)
 
-capacity_ratio = []
+capacity_ratio = capRatio(route, n)
 
+machineNum = inv(route, n)
+
+maStartTime = startTime(route, n)
+
+J = list(range(1,n+1))  # Job List
+
+gantt(machineNum, s, maStartTime,capacity_ratio ,J)
 # QUESTION:  is How to Generate the sequence you need.
 #  How to change a  list  1[ 2 3 5 7]
                 #         2[ 1 6  ]
                 #         3[ 4 8  ]
+# i.e. route = [[2,3,5,7], [1,6], [4,8]]
 #  To  [2 1 1 3 1 2 1 3 ]
-#  At first generate the list is full of zeros.
-
-def inv(my_list, n):
-
-    lis=[0]*n
-
-route = [[2,3,5,7], [1,6], [4,8]]
-
-    for i in range(len(route)):
-        for j in range(route[i][1:])
-            lis[route[i][1:]-1] = i
-
-    return lis
-
-
-binPacking(n,q)
-
-
-route = [[2,3,5,7], [1,6], [4,8]]
-lis=[0]*8
-lis
-for i in range(len(route)):
-    for j in route[i][:]:
-        lis[j-1] = i+1
-route[1][:]
-
-lis
+#  At first, generate the list is full of zeros.

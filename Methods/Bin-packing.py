@@ -87,16 +87,14 @@ def capRatio(route, n):
             capacity_ratio[j-1] = p[j-1]/cap1
     return capacity_ratio
 
-def startTime(route, n):
-    start_time = [0]*n
+def finishTime(route, n):
+    finish_time = [0]*n
     for i in range(len(route)):
-        k = 0  # Is used to restore the starttime of the last one.
+        k = -0.5
         for j in route[i][1:]:
-            start_time[j-1] = k + 0.5 + s[j-1]
-
-            k = start_time[j-1]
-
-    return start_time
+            finish_time[j-1] = k + 0.5 + s[j-1]
+            k = finish_time[j-1]  # record the finish time
+    return finish_time
 
 def inv(route, n):
 
@@ -112,7 +110,7 @@ def gantt(macInfo, flow, macStartTime, Capacity, workpiece):
     for j in range(len(macInfo)):
         i = macInfo[j]
         plt.bar(i, flow[j], Capacity[j], bottom=macStartTime[j])
-        plt.text(i,macStartTime[j] + flow[j] / 8, 'G%s' % (workpiece[j]), color = "white", size = 15)
+        plt.text(i,macStartTime[j] + flow[j] / 8, 'G%s' % (workpiece[j]), color = "black", size = 15)
 
 n = 10   # The number of group
 
@@ -125,15 +123,17 @@ p = list(pp)   # The number of people for each group
 capacity = [100,150,150,100]  # The capacity for the room.
 route = binPacking(s,p,n,capacity)
 
-capacity_ratio = capRatio(route, n)
+capacity_ratio = capRatio(route, n)  # The capacity ratio
 
-machineNum = inv(route, n)
+machineNum = inv(route, n)  # The ordinal number.
 
-maStartTime = startTime(route, n)
+finish_Time = finishTime(route, n)
 
 J = list(range(1,n+1))  # Job List
 
-gantt(machineNum, s, maStartTime,capacity_ratio ,J)
+StartTime = [finish_Time[i] - s[i] for i in range(0,n)]
+
+gantt(machineNum, s, StartTime,capacity_ratio ,J)
 # QUESTION:  is How to Generate the sequence you need.
 #  How to change a  list  1[ 2 3 5 7]
                 #         2[ 1 6  ]
@@ -141,3 +141,14 @@ gantt(machineNum, s, maStartTime,capacity_ratio ,J)
 # i.e. route = [[2,3,5,7], [1,6], [4,8]]
 #  To  [2 1 1 3 1 2 1 3 ]
 #  At first, generate the list is full of zeros.
+
+room_num = len(capacity)
+
+for i in range(room_num):
+    plt.vlines(i + 1.5, 0, 15, colors = "c", linestyles = "dashed")
+
+plt.yticks(np.arange(0, 16, step =1))
+
+plt.xticks(np.arange(0.5, room_num + 0.5, step =1))
+
+plt.show()

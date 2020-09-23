@@ -144,10 +144,13 @@ gantt(machineNum, s, StartTime,capacity_ratio ,J)
 
 room_num = len(capacity)
 
-for i in range(room_num):
-    plt.vlines(i + 1.5, 0, 15, colors = "c", linestyles = "dashed")
+finish_max = max(finish_Time)
 
-plt.yticks(np.arange(0, 16, step =1))
+
+for i in range(room_num):
+    plt.vlines(i + 1.5, 0, finish_max, colors = "c", linestyles = "dashed")
+
+plt.yticks(np.arange(0, finish_max, step =1))
 
 plt.xticks(np.arange(0.5, room_num + 0.5, step =1))
 

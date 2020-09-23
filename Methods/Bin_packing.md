@@ -6,9 +6,10 @@
 - variable $x_{ik}$ indicates group i served by room k.
 
 The Original model:
+最小化 (最大 占据空间 k \in K)
 $$
 \begin{align*}
-min  \quad  & (\sum_i {x_{ik} s_i p_i})/(24 * q_k ),\quad \forall k \in K \\
+\min \quad (\max & (\sum_i {x_{ik} s_i p_i})/(24 * q_k ),\quad \forall k \in K) \\
 s.t. \quad  & x_{ik} p_i \leq q_k,\quad  \forall i \in N, \forall k \in K  \\
 & \sum_{i\in N} x_{ik} s_i \leq T_k = 24 - (\sum_{i\in N} x_{ik} - 1)*0.5,\quad \forall k \in K \\
 & \sum_{k} x_{ik} =1,\quad \forall i \in N
@@ -23,6 +24,17 @@ s.t. \quad  & x_{ik} p_i \leq q_k, \quad \forall i \in N,  \forall k \in K  \\
 & t \leq \sum_i{x_{ik} s_i p_i}/(24 * q_k),\quad  \forall k \in K \\
 & \sum_{k} x_{ik} =1,\quad \forall i \in N
 \end{align}$$
+
+$$
+\begin{align}
+min \quad & t \\
+s.t. \quad  & x_{ik} p_i \leq q_k, \quad \forall i \in N,  \forall k \in K  \\
+& \sum_{i\in N} x_{ik} s_i \leq T_k = 24 - (\sum_{i\in N} x_{ik} - 1)*0.5,\quad\forall k \in K \\
+& t \geq \sum_i{x_{ik} s_i p_i}/(24 * q_k),\quad  \forall k \in K \\
+& \sum_{k} x_{ik} =1,\quad \forall i \in N
+\end{align}$$
+
+So what is the difference?
 
 The constraint (1) Capacity ratio.
 

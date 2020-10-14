@@ -1,4 +1,4 @@
-- $q_k$ capacity. k\in K  The Number of room
+- $q_k$ capacity. $k\in K$  The Number of room
 - $s_i$ service time for each group.
 - $p_i$ demand number of people.  $i \in N$
 - Length for time.          24 for K. $s_i$ for N.

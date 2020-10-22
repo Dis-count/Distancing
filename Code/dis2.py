@@ -70,7 +70,7 @@ def TW(n,q):
         m.addConstrs(T[i,j,k] <= y[i,j,k] for i in range(subscript_i) for j in range(subscript_j) for k in range(subscript_k))
 
         # constructs 9
-        m.addConstrs(T[i,j,k] >= y[i,j,k]- u(1-x[i,j,k]) for i in range(subscript_i) for j in range(subscript_j) for k in range(subscript_k))
+        m.addConstrs(T[i,j,k] >= y[i,j,k]- u*(1-x[i,j,k]) for i in range(subscript_i) for j in range(subscript_j) for k in range(subscript_k))
 
         # constructs 10
         m.addConstrs(T[i,j,k] <= u* x[i,j,k] for i in range(subscript_i) for j in range(subscript_j) for k in range(subscript_k))

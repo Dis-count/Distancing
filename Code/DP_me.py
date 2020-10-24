@@ -89,31 +89,79 @@ def multibag(backpack, item, c):
         print('\nIncrease c')
         return False
 
-a = 0
-b = 24
-c = (a+b)/2
+def mutemultibag(backpack, item, c):  # ignore the print
 
-flag = multibag(backpack, item, c)
+    space_backpack = np.random.randint(10,80,backpack)  # space for each backpack
+    service = np.random.randint(1,4,item) # service time for each item
+    service_item = list(service) # list service time for each item
+    length = np.random.randint(10,60,item)   # space for each item
+    length_item = list(length) # list space for each item
+    # total_product = np.dot(length, servce)
+    # total_space = 24 * sum(space_backpack)
+    # ratio = total_product/ total_space   # The ratio between item space and backpack space
+    # c = 24 * ratio  # Capacity of time   # ratio 的方案不太行  至少对于room 和 group space 差距过大的情况 不适合
+    value_item = list(np.multiply(service,length)) # value for each item
+    # print('共有', backpack, '个背包')
+    # print('共有', item, '个物品')
+    rest_service = service_item
+    rest_value = value_item
+    rest_item = item
+    ordinal_item = [i for i in range(item)]
 
-if flag > 0.5:  # decrease c
+    for i in range(backpack):
+        value = bag(rest_item, c, rest_service, rest_value)
+        # print('\n最大价值为:', value[rest_item][c])
+        rest_x,cut_num = show(rest_item, c, rest_service, value)  #list
+        # print('第', i+1, '个背包中所装物品为:')
+        for k in range(rest_item-1,-1,-1): # 注意这里要倒序  删除的时候才不会出问题
+            if not rest_x[k]:
+                sel = ordinal_item.pop(k) # 删除第k个元素
+                # print('第', sel, '个,', end='')
 
-c = (c+0)/2
+        rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]]
 
-flag = multibag(backpack, item, c)
+        rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]]
 
-if flag > 0.5  # decrease c
+        rest_item = rest_item - cut_num
 
+        if rest_item == 0:
+            # print('\nDecrease c')
+            return True
+
+    if rest_item > 0:
+        # print('\nIncrease c')
+        return False
+
+def di():  # 二分法(0,24)  用于调用 mutemultibag 返回c值
+    a = 0
+    b = 24
+    c = round((a+b)/2)
+
+    while c < (b-0.5):
+        flag = mutemultibag(backpack, item, c)  # 这里还需要写一个 mute 的函数用于 隐藏输出
+        if flag > 0.5:  # Decrease c
+            b = c
+            c = round((a+b)/2)
+
+        else:       # Increase c
+            a = c
+            c = round((a+b)/2)
+    return c
+
+# Print c  but need to enlarge to 24, this in fact don't need
 
 # 还需要写一个 arrangement 的函数 进行预处理
+def preprocess():
+
+
 
 # if __name__ == '__main__':
 
 
 
-# def di():  # 二分法  用于调用multibag 调整c值
-
-
-# 根据 总占比得到  排序  从小到大   跟最优比较  占比.
+# 直接按从小到大的顺序 先将room 进行排序
+# 然后对于每个背包利用单背包问题进行求解即可
+# 需要注意的是 每次单个背包结束后, 需要减去用掉的item 同时加上下个阶段需要用到的item
 
 def binPacking(s,p,n,q):  # s is ServiceTime, p Groupspace, n is GroupNumber, q is space
     try:

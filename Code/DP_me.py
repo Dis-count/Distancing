@@ -25,7 +25,7 @@ def bag(n, c, w, v):
     return value
 
 def show(n, c, w, value):
-    # Set the selected one as false
+    # Set the selected one as false  选了是 0 没选是1
     x = [True for i in range(n)]
     j = c
     k = 0  # Record the selected number
@@ -51,8 +51,8 @@ def multibag(backpack, item, c):
     length_item = list(length) # list space for each item
     # total_product = np.dot(length, servce)
     # total_space = 24 * sum(space_backpack)
-    # ratio = total_product/ total_space   # The ratio between item space and backpack space
     # c = 24 * ratio  # Capacity of time   # ratio 的方案不太行  至少对于room 和 group space 差距过大的情况 不适合
+    # ratio = total_product/ total_space   # The ratio between item space and backpack space
     value_item = list(np.multiply(service,length)) # value for each item
     print('共有', backpack, '个背包')
     print('共有', item, '个物品')
@@ -132,9 +132,56 @@ def mutemultibag(backpack, item, c):  # ignore the print
         # print('\nIncrease c')
         return False
 
-def di():  # 二分法(0,24)  用于调用 mutemultibag 返回c值
-    a = 0
-    b = 24
+def multibag2(backpack, item, c):  # 从小到大根据c依次排, 可选集改变方式是去掉选出的物品,然后并上下一个范围的可选集
+# 排不下时, 就增大c.
+    space_backpack = np.random.randint(10,80,backpack)  # space for each backpack
+    service = np.random.randint(1,4,item) # service time for each item
+    service_item = list(service) # list service time for each item
+    length = np.random.randint(10,60,item)   # space for each item
+    length_item = list(length) # list space for each item
+    # total_product = np.dot(length, servce)
+    # total_space = 24 * sum(space_backpack)
+    # ratio = total_product/ total_space   # The ratio between item space and backpack space
+    value_item = list(np.multiply(service,length)) # value for each item
+    rest_service = service_item
+    rest_value = value_item
+    rest_item = item
+    ordinal_item = [i for i in range(item)]
+
+#  segmentation 分别是每个背包间隔 第一个可选集为segmentation[0]  到下一个背包时, 可选集为 segmentation[0] - selected + segmentation[1]
+
+    rest_item = length(segmentation[0])  # 初始值
+
+    for i in range(backpack):
+
+        value = bag(rest_item, c, rest_service, rest_value)
+        rest_x,cut_num = show(rest_item, c, rest_service, value)  # list
+        for k in range(rest_item-1,-1,-1): # 注意这里要倒序  删除的时候才不会出问题
+            if not rest_x[k]:
+                sel = ordinal_item.pop(k) # 删除第k个元素
+
+        rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]]
+
+        rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]]
+# list(set(a).union(set(b)))  用于求并集
+        rest_item = rest_item + length(segmentation[i])
+a = [1,2,3,4]
+
+b =[1,2,3]
+list(set(a).union(set(b)))
+list(a.union(b))
+
+        if rest_item == 0:
+            # print('\nDecrease c')
+            return True
+
+    if rest_item > 0:
+        # print('\nIncrease c')
+        return False
+
+
+
+def di(a, b):  # 二分法(0,24)  用于调用 mutemultibag 返回c值
     c = round((a+b)/2)
 
     while c < (b-0.5):
@@ -149,21 +196,40 @@ def di():  # 二分法(0,24)  用于调用 mutemultibag 返回c值
     return c
 
 # Print c  but need to enlarge to 24, this in fact don't need
+length = np.random.randint(10,60,item)
+space_backpack = np.random.randint(10,80,backpack)
+# 还需要写一个 pretreatment 的函数 进行预处理
+def pretreatment(length, space_backpack):
+#   This function is used to convert the group into a list according to the capacity of all backpacks
+# Example:  Input: two vectors  items: [2,4,5,6,7]  room capacity:   [2,6,8]
+# Output:  List:  [[2],[4,5,6],[7]]
+    sorted_space = sorted(space_backpack)
+    sorted_length= sorted(length)
+    segmentation = []
+    index = 0   #  indicate the ordinal
+    for c in sorted_space:
+        segmentation.append([])
+        for a in sorted_length:
+            if a <= c:
+                segmentation[index].append(a)
+                del sorted_length[0]
+            else:
+                continue
+        index = index + 1
 
-# 还需要写一个 arrangement 的函数 进行预处理
-def preprocess():
+    return segmentation
 
+pretreatment(length, space_backpack)
 
 
 # if __name__ == '__main__':
-
-
 
 # 直接按从小到大的顺序 先将room 进行排序
 # 然后对于每个背包利用单背包问题进行求解即可
 # 需要注意的是 每次单个背包结束后, 需要减去用掉的item 同时加上下个阶段需要用到的item
 
-def binPacking(s,p,n,q):  # s is ServiceTime, p Groupspace, n is GroupNumber, q is space
+def binPacking(s,p,n,q):
+    # s is ServiceTime, p Groupspace, n is GroupNumber, q is space
     try:
         pp = np.random.randint(10,60,n)
         p = list(pp)

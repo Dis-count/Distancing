@@ -132,25 +132,26 @@ def mutemultibag(backpack, item, c):  # ignore the print
         # print('\nIncrease c')
         return False
 
-def multibag2(backpack, item, c):  # 从小到大根据c依次排, 可选集改变方式是去掉选出的物品,然后并上下一个范围的可选集
+def multibag2(backpack, item, c):
+    # 从小到大根据c依次排, 可选集改变方式是去掉选出的物品,然后 加上 下一个范围的可选集
 # 排不下时, 就增大c.
     space_backpack = np.random.randint(10,80,backpack)  # space for each backpack
     service = np.random.randint(1,4,item) # service time for each item
     service_item = list(service) # list service time for each item
     length = np.random.randint(10,60,item)   # space for each item
     length_item = list(length) # list space for each item
-    # total_product = np.dot(length, servce)
-    # total_space = 24 * sum(space_backpack)
-    # ratio = total_product/ total_space   # The ratio between item space and backpack space
+
+    segmentation = pretreatment(length, space_backpack)
+
     value_item = list(np.multiply(service,length)) # value for each item
     rest_service = service_item
     rest_value = value_item
-    rest_item = item
+
     ordinal_item = [i for i in range(item)]
 
 #  segmentation 分别是每个背包间隔 第一个可选集为segmentation[0]  到下一个背包时, 可选集为 segmentation[0] - selected + segmentation[1]
 
-    rest_item = length(segmentation[0])  # 初始值
+    rest_item = len(segmentation[0])  # 初始值
 
     for i in range(backpack):
 
@@ -164,12 +165,7 @@ def multibag2(backpack, item, c):  # 从小到大根据c依次排, 可选集改�
 
         rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]]
 # list(set(a).union(set(b)))  用于求并集
-        rest_item = rest_item + length(segmentation[i])
-a = [1,2,3,4]
-
-b =[1,2,3]
-list(set(a).union(set(b)))
-list(a.union(b))
+        rest_item = rest_item + len(segmentation[i])
 
         if rest_item == 0:
             # print('\nDecrease c')
@@ -207,21 +203,22 @@ def pretreatment(length, space_backpack):
     sorted_length= sorted(length)
     segmentation = []
     index = 0   #  indicate the ordinal
+
     for c in sorted_space:
+        del_num = 0
         segmentation.append([])
         for a in sorted_length:
             if a <= c:
                 segmentation[index].append(a)
-                del sorted_length[0]
+                del_num = del_num + 1
             else:
                 continue
+        del sorted_length[0:del_num]
         index = index + 1
 
     return segmentation
-
-pretreatment(length, space_backpack)
-
-
+seg = pretreatment(length, space_backpack)
+seg[2]
 # if __name__ == '__main__':
 
 # 直接按从小到大的顺序 先将room 进行排序

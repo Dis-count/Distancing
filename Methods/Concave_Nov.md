@@ -68,3 +68,50 @@ The constraint (4) Objective capacity ratio constraints |K|.
 The constraint (5) Every group is served once |N|.
 
 Virables: |N|*|K|+1, refers to $x_{ik},t$
+
+--------------------------------------------
+Besides, when we convert the original problem into several sub-problems.
+Each sub-problem can be expressed as:
+Let $k = k_0$,
+$$
+\begin{align}
+(Sub) = min \quad & |\sum_i{x_{ik_0} f(s_i,p_i)}-r*f(24, q_{k_0})| \\
+s.t. \quad  & x_{ik_0} p_i \leq q_{k_0}, \quad \forall i \in N_0  \\
+& \sum_{i\in N_0} x_{ik_0} s_i \leq 24 \\
+\end{align}$$
+
+Here, f(ServiceTime, Space) represents the area function.
+In fact, (12) is obviously satisfied because of the pretreatment which is used to get rid of the trouble of assignment constraints.
+Thus when we calculate the situation of under ratio, this sub-problem can be converted into
+
+$$
+\begin{align}
+(Sub1) = max \quad & \sum_{i\in N_0}{x_{ik_0} f(s_i,p_i)} \\
+s.t. \quad  & \sum_{i\in N_0} x_{ik_0} f(s_i,p_i) \leq r*f(24, q_{k_0}) \\
+& \sum_{i\in N_0} x_{ik_0} s_i \leq 24 \\
+\end{align}$$
+The final value equals to (-Sub1+$r*f(24, q_{k_0})$)
+This is a two-dimentional knapsack problem.
+
+For any fixed $m\geq 2$, these problems do admit a pseudo-polynomial time algorithm (similar to the one for basic knapsack) and a PTAS.
+
+Add one dimentional variable to the basic DP algorithm for knapsack.
+
+https://blog.csdn.net/k_young1997/article/details/76204314
+
+Next time finish the code.
+
+https://blog.csdn.net/SL_World/article/details/78948409?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control
+
+https://www.bilibili.com/read/cv6360104/
+$$
+\begin{align}
+(Sub2) = min \quad & \sum_{i\in N_0}{x_{ik_0} f(s_i,p_i)} \\
+s.t. \quad  & \sum_{i\in N_0} x_{ik_0} f(s_i,p_i) \geq r*f(24, q_{k_0}) \\
+& \sum_{i\in N_0} x_{ik_0} s_i \leq 24 \\
+\end{align}$$
+
+The final value equals to (Sub2 - $r*f(24, q_{k_0})$)
+
+In fact, we do not need to calculate this form.
+We can obtain Sub1 firstly, then add a rest item with the minimum area.

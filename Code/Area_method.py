@@ -8,7 +8,12 @@
 # 函数 show 返回 逻辑向量表示是否选中(0) 和 选中数量
 # 函数  pretreatment 用于预处理
 #  [2,6,5,4,7] by [2,6,8]  to [[2],[4,5,6],[7]] 分组 和 [[0],[3,2,1],[4]] 下标.
-# 函数 multibag2 
+# 函数 multibag2  用于求 时间给定情况下的分配结果。
+# 在我们的情况中，先求解 平均 ratio,  
+# 函数 di  用于二分求解
+# 函数 printmultibag2 用于打印结果。
+
+# 这里需要定义一个面积函数，用于代替时间和空间的直接乘积
 
 import numpy as np
 import gurobipy as gp

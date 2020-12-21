@@ -306,4 +306,4 @@ service = np.random.randint(1,4,item)
 length = np.random.randint(10,60,item)
 space_backpack = np.random.randint(10,80,backpack)
 
-binPacking(service, length , item, space_backpack)
+binPacking(service, length, item, space_backpack)

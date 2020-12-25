@@ -1,6 +1,6 @@
 #coding:utf-8
 # 是 DP_me 的加强版，把随机数都写在了函数的外层，而DP_me 中间有函数重复使用了 service = random.,  unnecessary.
-# 随机得到的变量。
+# 随机得到的变量有:
 # 背包数量：backpack 物品数量：item
 # 每个背包容量：space_backpack  每个物品占据空间：length  每个物品服务时间：service.
 # 然后该程序的实现顺序是
@@ -8,7 +8,8 @@
 # 函数 show 返回 逻辑向量表示是否选中(0) 和 选中数量
 # 函数  pretreatment 用于预处理
 #  [2,6,5,4,7] by [2,6,8]  to [[2],[4,5,6],[7]] 分组 和 [[0],[3,2,1],[4]] 下标.
-# 函数 multibag2 
+# 函数 multibag2 用于求 时间给定情况下的分配结果
+# 函数 printmultibag2 用于打印结果。
 
 import numpy as np
 import gurobipy as gp

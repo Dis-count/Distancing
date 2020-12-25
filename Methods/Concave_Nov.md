@@ -97,11 +97,7 @@ For any fixed $m\geq 2$, these problems do admit a pseudo-polynomial time algori
 
 Add one dimentional variable to the basic DP algorithm for knapsack.
 
-https://blog.csdn.net/k_young1997/article/details/76204314
-
 Next time finish the code.
-
-https://blog.csdn.net/SL_World/article/details/78948409?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-2.control
 
 https://www.bilibili.com/read/cv6360104/
 $$

@@ -1,65 +1,84 @@
-#coding:utf-8
-# 是 DP_me 的加强版，把随机数都写在了函数的外层，而DP_me 中间有函数重复使用了 service = random.,  unnecessary.
-# 随机得到的变量。
+# coding:utf-8
+# 把随机数都写在了函数的外层.
+# 随机得到的变量有:
 # 背包数量：backpack 物品数量：item
 # 每个背包容量：space_backpack  每个物品占据空间：length  每个物品服务时间：service.
 # 然后该程序的实现顺序是
-# 函数 bag 得到动态规划(DP)求解 n*c 的value 值。
+# 函数 bag(一维),bag2(二维) 得到动态规划(DP)求解 n*c 的value 值。
 # 函数 show 返回 逻辑向量表示是否选中(0) 和 选中数量
 # 函数  pretreatment 用于预处理
 #  [2,6,5,4,7] by [2,6,8]  to [[2],[4,5,6],[7]] 分组 和 [[0],[3,2,1],[4]] 下标.
-# 函数 multibag2  用于求 时间给定情况下的分配结果。
-# 在我们的情况中，先求解 平均 ratio,  
-# 函数 di  用于二分求解
-# 函数 printmultibag2 用于打印结果。
-
-# 这里需要定义一个面积函数，用于代替时间和空间的直接乘积
+# 在我们的情况中，先求解 平均 ratio,
+# 设置一种机制 用于筛选单个背包的解（最简单的一种机制，前面一半都小于 后面都加上当前面积最小的item）
+# 函数 multibag 用于处理连续的背包
+# 面积函数 area，用于代替时间和空间的直接乘积
 
 import numpy as np
 import gurobipy as gp
 from gurobipy import GRB
 import matplotlib.pyplot as plt
 
-def bag(n, c, w, v):
+def bag2(n, c1,c2, w1,w2, v):
     """
     测试数据：
-    n = 6  物品的数量，
-    c = 10 书包能承受的重量，
-    w = [2, 2, 3, 1, 5, 2] 每个物品的重量
+    n = 6  物品的数量
+    c1 = 10 书包能承受的重量1
+    c2 = 13 书包能承受的重量2
+    w1 = [2, 2, 3, 1, 5, 2] 每个物品的重量1
+    w2 = [1, 2, 3, 3, 2, 1] 每个物品的重量2
     v = [2, 3, 1, 5, 4, 3] 每个物品的价值
     """
     # 置零，表示初始状态
-    value = [[0 for j in range(c + 1)] for i in range(n + 1)]
-    for i in range(1, n + 1):
-        for j in range(1, c + 1):
-            value[i][j] = value[i - 1][j]
-            # 背包总容量够放当前物体，遍历前一个状态考虑是否置换
-            if j >= w[i - 1] and value[i][j] < value[i - 1][j - w[i - 1]] + v[i - 1]:
-                value[i][j] = value[i - 1][j - w[i - 1]] + v[i - 1]
-    # for x in value:
-    #     print(x)
+    value = [[[0 for j in range(c2 + 1)] for i in range(c1 + 1)] for k in range(n + 1)] # 定义三维向量
+    for k in range(1, n+1):
+        for i in range(1, c1 + 1):
+            for j in range(1, c2 + 1):
+                if j >= w2[k - 1] and i >= w1[k-1]:
+                    value[k][i][j] = max(value[k][i][j], value[k][i-w1[k - 1]][j - w2[k - 1]] + v[k - 1])
     return value
 
-def show(n, c, w, value):
+def show(n, c1,c2, w1,w2, value):
     # Set the selected one as false  选了是 0 没选是1
     x = [True for i in range(n)]
-    j = c
-    k = 0  # Record the selected number
-    for i in range(n, 0, -1):
-        if value[i][j] > value[i - 1][j]:
-            k = k+1
-            x[i - 1] = False
-            j -= w[i - 1]
+    i = c1
+    j = c2
+    t = 0  # Record the selected number
+    for k in range(n, 0, -1):
+        if value[k][i][j] > value[k - 1][i][j]:
+            t = t + 1
+            x[k - 1] = False
+            i -= w1[k - 1]
+            j -= w2[k - 1]
     # for i in range(n):
     #     if x[i]:
     #         print('第', i+1, '个,', end='')
-    return x,k
+    return x,t
+
+def sumArea(time, space):
+    #  time for each room: 24 or item:service
+    #  space for each item: length
+    inner_product = np.dot(time,space)
+    return inner_product
+
+def area(time, space):
+    #  time for each room: 24 or item:service
+    #  space for each item: length
+    #  return vectors.
+    product = [time[i]*space[i] for i in range(len(time))]
+    return product
 
 backpack = np.random.randint(3,7)  # 3-6 integer / number of backpacks
 item = np.random.randint(10,21)   # 10-20 /Number of total items
 space_backpack = np.random.randint(10,80,backpack)   # space for each backpack
 service = np.random.randint(1,4,item) # service time for each item
 length = np.random.randint(10,60,item)   # space for each item
+ratio = sumArea(service,length)/sumArea(24* np.ones(backpack),space_backpack)
+
+c1 = 24
+c2 = ratio * area(24,space_backpack[k]) # for each k
+w1 = service
+w2 = area(service, length)
+v = w2
 
 # 还需要写一个 pretreatment 的函数 进行预处理
 def pretreatment(length, space_backpack):
@@ -116,6 +135,7 @@ def multibag2(backpack, item, c, space_backpack, service, length):
     for i in range(backpack):
 
         value = bag(rest_item, c, rest_service, rest_value)
+        bag2(n, c1,c2, w1,w2, v)
         rest_x,cut_num = show(rest_item, c, rest_service, value)  # list
         # for k in range(rest_item-1,-1,-1): # 注意这里要倒序  删除的时候才不会出问题
         #     if not rest_x[k]:

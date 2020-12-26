@@ -228,7 +228,6 @@ c = di(0,24)
 multibag2(backpack, item, c)
 # Print c  but need to enlarge to 24, this in fact don't need
 
-
 # if __name__ == '__main__':
 
 # 直接按从小到大的顺序 先将room 进行排序

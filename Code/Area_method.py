@@ -14,6 +14,7 @@
 # 面积函数 area，用于代替时间和空间的直接乘积
 
 import numpy as np
+import math
 import gurobipy as gp
 from gurobipy import GRB
 import matplotlib.pyplot as plt
@@ -64,7 +65,10 @@ def area(time, space):
     #  time for each room: 24 or item:service
     #  space for each item: length
     #  return vectors.
-    product = [time[i]*space[i] for i in range(len(time))]
+    if len(time)>1:
+        product = [time[i]*space[i] for i in range(len(time))]
+    else :
+        product = time[0]*space[0]
     return product
 
 backpack = np.random.randint(3,7)  # 3-6 integer / number of backpacks
@@ -73,12 +77,6 @@ space_backpack = np.random.randint(10,80,backpack)   # space for each backpack
 service = np.random.randint(1,4,item) # service time for each item
 length = np.random.randint(10,60,item)   # space for each item
 ratio = sumArea(service,length)/sumArea(24* np.ones(backpack),space_backpack)
-
-c1 = 24
-c2 = ratio * area(24,space_backpack[k]) # for each k
-w1 = service
-w2 = area(service, length)
-v = w2
 
 # 还需要写一个 pretreatment 的函数 进行预处理
 def pretreatment(length, space_backpack):
@@ -113,110 +111,78 @@ def pretreatment(length, space_backpack):
 
     return segmentation, order_list
 
-def multibag2(backpack, item, c, space_backpack, service, length):
-    # 从小到大根据c依次排, 可选集改变方式是去掉选出的物品,然后 加上 下一个范围的可选集
-# 排不下时, 就增大c.
-    service_item = list(service) # list service time for each item
-    length_item = list(length) # list space for each item
-    segmentation, order_list = pretreatment(length, space_backpack)
-    segmentation.append([])
-    order_list.append([])
-    value_item = list(np.multiply(service,length)) # value for each item
+#  可选集改变方式是去掉选出的物品, 然后 加上 下一个范围的可选集.
+service_item = list(service) # list service time for each item
+w2 = area(service, length)
+length_item = list(length) # list space for each item
+segmentation, order_list = pretreatment(length, space_backpack)
+segmentation.append([])
+order_list.append([])
+value_item = w2 # value for each item
 
-    # ordinal_item = [i for i in range(item)]
+# ordinal_item = [i for i in range(item)]
 
 #  segmentation 分别是每个背包间隔 第一个可选集为 segmentation[0]  到下一个背包时, 可选集为 segmentation[0] - selected + segmentation[1]
 
-    rest_service = [service_item[i] for i in order_list[0]]  # 相当于 item 容量
-    rest_value   = [value_item[i] for i in order_list[0]]    # 相当于 item 价值
+rest_service = [service_item[i] for i in order_list[0]]  # 相当于 item 容量w1
+rest_service2 = [w2[i] for i in order_list[0]]  # item w2
+rest_value   = [value_item[i] for i in order_list[0]]    # 相当于 item 价值
+rest_item = len(segmentation[0])  # 初始 item 数量
 
-    rest_item = len(segmentation[0])  # 初始 item 数量
+def rest_less(backpack, item, space_backpack, service, length):
+    value = bag2(rest_item, c1, c2, rest_service, rest_service2, rest_value)
 
-    for i in range(backpack):
+    rest_x,cut_num = show(rest_item, c1,c2, rest_service,rest_service2, value)
 
-        value = bag(rest_item, c, rest_service, rest_value)
-        bag2(n, c1,c2, w1,w2, v)
-        rest_x,cut_num = show(rest_item, c, rest_service, value)  # list
-        # for k in range(rest_item-1,-1,-1): # 注意这里要倒序  删除的时候才不会出问题
-        #     if not rest_x[k]:
-        #         sel = ordinal_item.pop(k) # 删除第k个元素
+    return rest_x,cut_num,value
 
-        rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]] + [service_item[j] for j in order_list[i+1]]
+def rest_more(backpack, item, space_backpack, service, length):
+    value = bag2(rest_item, c1, c2, rest_service, rest_service2, rest_value)
 
-        rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]] + [value_item[j] for j in order_list[i+1]]
+    rest_x,cut_num = show(rest_item, c1,c2, rest_service,rest_service2, value)
 
-        rest_item = rest_item - cut_num + len(segmentation[i+1])
+    min_value = []
+    for num in range(rest_item):
+        if rest_x[num]:
+            min_value.append(rest_value[num])
+        else:
+            min_value.append(0)
+    min_index = min_value.index(min(min_value))
 
-        if rest_item == 0:
-            # print('\nDecrease c')
-            return True
+    rest_x[min_index] = False
+    cut_num += 1
 
-    if rest_item > 0:
-        # print('\nIncrease c')
-        return False
+    return rest_x,cut_num
 
-def di(a, b):  # 二分法(0,24)  用于调用 mutemultibag 返回c值
-    c = round((a+b)/2)
-    con = 0
-    while c < (b-0.5) or (con < 10):
-        flag = multibag2(backpack, item, c, space_backpack, service, length)  # 这里还需要写一个 mute 的函数用于 隐藏输出
-        if flag > 0.5:  # Decrease c
-            b = c
-            c = round((a+b)/2)
+order_record = order_list[0]
+capa_ratio = [0] * backpack
 
-        else:       # Increase c
-            a = c
-            c = round((a+b)/2)
-        con +=1
-    return c
 
-c = di(0,24)
-c = 6
-multibag2(backpack, item, c, space_backpack, service, length)
+for i in range(backpack):
+    c1 = 24
+    c2 = math.ceil(ratio* area([24],[space_backpack[i]]))
+    # if  i > round(backpack/2):
+    rest_x,cut_num,value = rest_less(backpack, item, space_backpack, service, length)
+    # else :
+    #     rest_x,cut_num = rest_more(backpack, item, space_backpack, service, length)
 
-def printmultibag2(backpack, item, c, space_backpack, service, length):
-    #  用于输出 各个背包的占比结果. 需要 backpack space 是升序的.
-    space_backpack = sorted(space_backpack)
-    service_item = list(service) # list service time for each item
-    length_item = list(length) # list space for each item
+    capa_ratio[i] = value[rest_item][c1][c2] / (24 * space_backpack[i])
+    rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]] + [service_item[j] for j in order_list[i+1]]
 
-    segmentation, order_list = pretreatment(length, space_backpack)
-    segmentation.append([])
-    order_list.append([])
+    rest_service2 = [rest_service2[num] for num in range(rest_item) if rest_x[num]] + [w2[j] for j in order_list[i+1]]
 
-    value_item = list(np.multiply(service, length)) # value for each item
+    rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]] + [value_item[j] for j in order_list[i+1]]
 
-    rest_service = [service_item[i] for i in order_list[0]]  # 相当于 item 容量
-    rest_value   = [value_item[i] for i in order_list[0]]    # 相当于 item 价值
-
-    rest_item = len(segmentation[0])  # 初始 item 数量
-    order_record = order_list[0]
-    capa_ratio = [0] * backpack
-
-    for i in range(backpack):
-
-        value = bag(rest_item, c, rest_service, rest_value)
-        # print('\n最大价值为:', value[rest_item][c])
-        rest_x,cut_num = show(rest_item, c, rest_service, value)  # list
-        print('\n第', i+1, '个背包中所装物品为:')
-        for k in range(rest_item-1,-1,-1): # 注意这里要倒序  删除的时候才不会出问题
-            if not rest_x[k]:
-                sel = order_record.pop(k) # 记录并删除第k个元素
-                print('第', sel+1, '个,', end='')
-
-        rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]] + [service_item[j] for j in order_list[i+1]]
-
-        rest_value = [rest_value[num] for num in range(rest_item) if rest_x[num]] + [value_item[j] for j in order_list[i+1]]
-        capa_ratio[i] = value[rest_item][c] / (24 * space_backpack[i])
-        rest_item = rest_item - cut_num + len(segmentation[i+1])
-        order_record = order_record + order_list[i+1]
-
-    return capa_ratio
-c = 6
-capa_ratio = printmultibag2(backpack, item, c, space_backpack, service, length)
-capa_ratio
-# Print c  but need to enlarge to 24, this in fact don't need
-
+    print('\n第',i+1,'个背包中所装物品为:')
+    print(rest_item)
+    for k in range(rest_item-1,-1,-1):
+        if not rest_x[k]:
+            sel = order_record.pop(k)
+            print('第', sel+1, '个,', end='')
+    order_record = order_record + order_list[i+1]
+    rest_item = rest_item - cut_num + len(segmentation[i+1])
+    print('背包占比为:',capa_ratio[i])
+print('平均占比',ratio)
 # if __name__ == '__main__':
 
 # 直接按从小到大的顺序 先将room 进行排序
@@ -234,11 +200,11 @@ def binPacking(s,p,n,q): # s is ServiceTime, p Groupspace, n is GroupNumber, q i
         m = gp.Model("Bin")
 
         x = m.addVars(subscript_i, subscript_k, vtype=GRB.BINARY, name="open")
-        t = m.addVar(lb=0, name="min")
+        t = m.addVar(lb=0, name="max_t")
         m.update()
 
         # Set objective
-        m.setObjective(t, GRB.MAXIMIZE)
+        m.setObjective(t, GRB.MINIMIZE)
 
         # Add constraints
         # constraint 1
@@ -248,14 +214,14 @@ def binPacking(s,p,n,q): # s is ServiceTime, p Groupspace, n is GroupNumber, q i
         # m.addConstrs((gp.quicksum(x[i, k]*s[i] for i in range(subscript_i)) <= gp.quicksum(24.5-0.5*x[i, k] for i in range(subscript_i))) for k in range(subscript_k))
         m.addConstrs((gp.quicksum(x[i, k]*s[i] for i in range(subscript_i)) <= 24) for k in range(subscript_k))
         # constraint 3
-        m.addConstrs((gp.quicksum((x[i, k]*s[i]*p[i])/(24*q[k]) for i in range(subscript_i)) >= t) for k in range(subscript_k))
+        m.addConstrs((gp.quicksum((x[i, k]*s[i]*p[i])/(24*q[k]) for i in range(subscript_i)) <= t) for k in range(subscript_k))
 
         # constraint 4
         m.addConstrs((gp.quicksum(x[i, k] for k in range(subscript_k)) == 1) for i in range(subscript_i))
 
         m.write('BinPacking.lp')
 
-        m.params.outputflag = 0
+        # m.params.outputflag = 0
         m.optimize()
 
         x_ik =  m.getAttr('X', x)
@@ -276,14 +242,14 @@ def binPacking(s,p,n,q): # s is ServiceTime, p Groupspace, n is GroupNumber, q i
         # for i in range(subscript_i):
         #     print('Group {0} service time is {1}'.format(i+1, s[i]))
         #     print('The number of people is {0}'.format(p[i]))
-
+        capa = [0]* subscript_k
         for i in range(len(route)):
-            capa_ratio[i] = np.dot([s[j] for j in route[i][1:]], [p[j] for j in route[i][1:]])/ (24* q[i])
+            capa[i] = np.dot([s[j] for j in route[i][1:]], [p[j] for j in route[i][1:]])/ (24* q[i])
             print('The room {0} serves: {1}'.format(i+1, route[i][1:]))
 
         print(m.objVal)
 
-        return route, capa_ratio
+        return route, capa
 
     except gp.GurobiError as e:
         print('Main-Error code ' + str(e.errno) + ": " + str(e))

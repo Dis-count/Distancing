@@ -111,3 +111,9 @@ The final value equals to (Sub2 - $r*f(24, q_{k_0})$)
 
 In fact, we do not need to calculate this form.
 We can obtain Sub1 firstly, then add a rest item with the minimum area.
+
+https://www.quora.com/A-group-of-N-integer-numbers-need-to-be-divided-fairly-into-K-subgroups-A-fair-division-is-that-the-max-of-the-sums-of-K-subgroups-is-minimal
+
+https://my.oschina.net/u/3242615/blog/1940533?tdsourcetag=s_pcqq_aiomsg
+
+https://blog.csdn.net/chun2674/article/details/100591973

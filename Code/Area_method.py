@@ -71,11 +71,12 @@ def area(time, space):
         product = time[0]*space[0]
     return product
 
-backpack = np.random.randint(3,7)  # 3-6 integer / number of backpacks
-item = np.random.randint(10,21)   # 10-20 /Number of total items
-space_backpack = np.random.randint(10,80,backpack)   # space for each backpack
+backpack = np.random.randint(2,3)  # 3-6 integer / number of backpacks
+item = np.random.randint(4,6)   # 10-20 /Number of total items
+space_backpack = np.sort(np.random.randint(30,50,backpack))
+# space for each backpack
 service = np.random.randint(1,4,item) # service time for each item
-length = np.random.randint(10,60,item)   # space for each item
+length = np.random.randint(10,30,item)   # space for each item
 ratio = sumArea(service,length)/sumArea(24* np.ones(backpack),space_backpack)
 
 # 还需要写一个 pretreatment 的函数 进行预处理
@@ -128,6 +129,15 @@ rest_service = [service_item[i] for i in order_list[0]]  # 相当于 item 容量
 rest_service2 = [w2[i] for i in order_list[0]]  # item w2
 rest_value   = [value_item[i] for i in order_list[0]]    # 相当于 item 价值
 rest_item = len(segmentation[0])  # 初始 item 数量
+order_list[0]
+rest_item
+service
+rest_service
+rest_service2
+value = bag2(rest_item, c1, c2, rest_service, rest_service2, rest_value)
+
+value[rest_item][c1][c2]
+
 
 def rest_less(backpack, item, space_backpack, service, length):
     value = bag2(rest_item, c1, c2, rest_service, rest_service2, rest_value)
@@ -157,14 +167,14 @@ def rest_more(backpack, item, space_backpack, service, length):
 order_record = order_list[0]
 capa_ratio = [0] * backpack
 
-
-for i in range(backpack):
+print('平均占比',ratio)
+for i in range(backpack-1):
     c1 = 24
-    c2 = math.ceil(ratio* area([24],[space_backpack[i]]))
-    # if  i > round(backpack/2):
-    rest_x,cut_num,value = rest_less(backpack, item, space_backpack, service, length)
-    # else :
-    #     rest_x,cut_num = rest_more(backpack, item, space_backpack, service, length)
+    c2 = math.ceil(ratio* area([24],[space_backpack[i]]))+10
+    # rest_x,cut_num,value = rest_less(backpack, item, space_backpack, service, length)
+    value = bag2(rest_item, c1, c2, rest_service, rest_service2, rest_value)
+
+    rest_x,cut_num = show(rest_item, c1,c2, rest_service,rest_service2, value)
 
     capa_ratio[i] = value[rest_item][c1][c2] / (24 * space_backpack[i])
     rest_service = [rest_service[num] for num in range(rest_item) if rest_x[num]] + [service_item[j] for j in order_list[i+1]]
@@ -182,7 +192,16 @@ for i in range(backpack):
     order_record = order_record + order_list[i+1]
     rest_item = rest_item - cut_num + len(segmentation[i+1])
     print('背包占比为:',capa_ratio[i])
-print('平均占比',ratio)
+
+# 单独列出最后的背包
+print('\n第',backpack,'个背包中所装物品为:')
+cap = 0
+for k in range(rest_item-1,-1,-1):
+    sel = order_record.pop(k)
+    cap += service[sel]* length[sel]
+    print('第', sel+1, '个,', end='')
+cap = cap/(24*space_backpack[backpack-1])
+print('背包占比为:',cap)
 # if __name__ == '__main__':
 
 # 直接按从小到大的顺序 先将room 进行排序
